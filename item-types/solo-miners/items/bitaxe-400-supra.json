@@ -1,0 +1,200 @@
+{
+  "id": "bitaxe-400-supra",
+  "name": "Bitaxe Supra",
+  "purchasable": true,
+  "basic-information": {
+    "year": {
+      "value": "2024"
+    },
+    "assembled-in": {
+      "value": "USA"
+    }
+  },
+  "company": "osmu",
+  "communities": {
+    "telegram": {
+      "value": "-"
+    },
+    "reddit": {
+      "value": "-"
+    }
+  },
+  "official-store": {
+    "btc-on-chain": {
+      "value": "-",
+      "supported": false
+    },
+    "btc-lightning": {
+      "value": "-",
+      "supported": false
+    },
+    "alt-coins": {
+      "value": "-",
+      "supported": false
+    },
+    "credit-debit-card": {
+      "value": "-",
+      "supported": false
+    }
+  },
+  "size-materials": {
+    "warranty": {
+      "value": "?"
+    },
+    "case-material": {
+      "value": "-"
+    },
+    "weight": {
+      "value": "?"
+    },
+    "dimensions": {
+      "value": "?"
+    }
+  },
+  "display": {
+    "screen": {
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
+    },
+    "screen-type": {
+      "value": "OLED"
+    },
+    "color-screen": {
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
+    },
+    "touch-screen": {
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
+    },
+    "screen-size": {
+      "value": "?"
+    },
+    "screen-resolution": {
+      "value": "?"
+    }
+  },
+  "power": {
+    "input-voltage": {
+      "value": "5V 4A DC"
+    },
+    "consumption": {
+      "value": "15W"
+    },
+    "power-efficiency": {
+      "value": "20 J/TH"
+    },
+    "overclocked-consumption": {
+      "value": "-"
+    }
+  },
+  "connectivity": {
+    "2-4-ghz-wifi": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "5-ghz-wifi": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "ethernet": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    }
+  },
+  "hardware": {
+    "hash-rate": {
+      "value": "0.7 TH/s"
+    },
+    "asic-chips": {
+      "value": "1",
+      "texts": [
+        "BM1368 ASIC from the Antminer S21"
+      ]
+    },
+    "hashboards": {
+      "value": "?"
+    },
+    "noise-level": {
+      "value": "40 dB",
+      "flag": "positive"
+    },
+    "cooling-type": {
+      "value": "Active Cooling"
+    },
+    "air-outlet-temparature": {
+      "value": "?"
+    },
+    "storage": {
+      "value": "?"
+    },
+    "ram": {
+      "value": "?"
+    }
+  },
+  "firmware": {
+    "name": {
+      "value": "ESP Miner"
+    },
+    "latest-version": {
+      "value": "?"
+    },
+    "latest-release-date": {
+      "value": "?"
+    },
+    "release-notes": {
+      "value": "YES",
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Releases Notes",
+          "url": "https://github.com/bitaxeorg/ESP-Miner/releases"
+        }
+      ]
+    },
+    "source-available": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Source Code",
+          "url": "https://github.com/bitaxeorg/ESP-Miner"
+        }
+      ]
+    },
+    "open-source": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "license": {
+      "value": "GPLv3",
+      "links": [
+        {
+          "title": "License",
+          "url": "https://github.com/bitaxeorg/ESP-Miner?tab=GPL-3.0-1-ov-file"
+        }
+      ]
+    }
+  },
+  "other-features": {
+    "stratum-v2": {
+      "value": "?",
+      "supported": false
+    },
+    "supported-pools": {
+      "value": "ALL",
+      "flag": "positive",
+      "texts": [
+        "Mine to any stratum pool of your choice. Easily configured with the AxeOS dashboard."
+      ]
+    }
+  }
+}

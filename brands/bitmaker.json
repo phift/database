@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "value": "BitMaker"
+  },
+  "headquarters": {
+    "value": "?"
+  },
+  "website": {
+    "value": "bitronics.store",
+    "url": "https://bitronics.store/"
+  },
+  "blog": {
+    "value": "-"
+  },
+  "twitter": {
+    "value": "@BitMaker_",
+    "url": "https://x.com/BitMaker_"
+  },
+  "nostr": {
+    "value": "-"
+  },
+  "youtube": {
+    "value": "@bitmaker_",
+    "url": "https://www.youtube.com/@bitmaker_"
+  },
+  "github": {
+    "value": "BitMaker-hub",
+    "url": "https://github.com/BitMaker-hub"
+  },
+  "slack": {
+    "value": "-"
+  },
+  "discord": {
+    "value": "-"
+  }
+}

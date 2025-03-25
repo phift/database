@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "value": "OSMU"
+  },
+  "headquarters": {
+    "value": "-"
+  },
+  "website": {
+    "value": "osmu.wiki",
+    "url": "https://osmu.wiki/"
+  },
+  "blog": {
+    "value": "-"
+  },
+  "twitter": {
+    "value": "@osmu_global",
+    "url": "https://x.com/osmu_global"
+  },
+  "nostr": {
+    "value": "-"
+  },
+  "youtube": {
+    "value": "-"
+  },
+  "github": {
+    "value": "bitaxeorg",
+    "url": "https://github.com/bitaxeorg"
+  },
+  "slack": {
+    "value": "-"
+  },
+  "discord": {
+    "value": "Open Source Miners United",
+    "url": "https://discord.com/invite/osmu"
+  }
+}

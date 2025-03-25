@@ -1,0 +1,37 @@
+{
+  "brand": {
+    "value": "Braiins"
+  },
+  "headquarters": {
+    "value": "Czech Republic"
+  },
+  "website": {
+    "value": "braiins.com",
+    "url": "https://braiins.com/"
+  },
+  "blog": {
+    "value": "Blog",
+    "url": "https://braiins.com/blog"
+  },
+  "twitter": {
+    "value": "@BraiinsMining",
+    "url": "https://x.com/BraiinsMining"
+  },
+  "nostr": {
+    "value": "-"
+  },
+  "youtube": {
+    "value": "@Braiins-Mining",
+    "url": "https://www.youtube.com/channel/UClUiH7v_yj0SNpda99s9_tQ"
+  },
+  "github": {
+    "value": "ACINQ",
+    "url": "https://github.com/ACINQ"
+  },
+  "slack": {
+    "value": "-"
+  },
+  "discord": {
+    "value": "-"
+  }
+}
