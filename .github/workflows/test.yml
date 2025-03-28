@@ -7,6 +7,8 @@ jobs:
   check-branch:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Check if branch exists
         run: |
           BRANCH_NAME="test"
