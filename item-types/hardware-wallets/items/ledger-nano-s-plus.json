@@ -499,6 +499,10 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "change-verification": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {

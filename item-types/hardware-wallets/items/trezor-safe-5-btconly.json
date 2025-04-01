@@ -591,6 +591,10 @@
           "url": "https://trezor.io/learn/a/sign-verify"
         }
       ]
+    },
+    "change-verification": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {

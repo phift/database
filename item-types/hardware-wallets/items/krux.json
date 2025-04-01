@@ -554,6 +554,10 @@
       "texts": [
         "Sign messages from Sparrow and Specter, via QR code, also attesting a Bitcoin address belongs to you."
       ]
+    },
+    "change-verification": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {

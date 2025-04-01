@@ -434,6 +434,10 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
+    },
+    "change-verification": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {

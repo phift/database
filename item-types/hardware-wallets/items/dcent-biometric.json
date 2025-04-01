@@ -511,6 +511,10 @@
     "message-signing": {
       "value": "?",
       "supported": false
+    },
+    "change-verification": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {

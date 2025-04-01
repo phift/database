@@ -606,6 +606,17 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "change-verification": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Backup a multisig configuration on Jade",
+          "url": "https://help.blockstream.com/hc/en-us/articles/20389615544089-Backup-a-multisig-configuration-on-Jade"
+        }
+      ]
     }
   },
   "fees": {

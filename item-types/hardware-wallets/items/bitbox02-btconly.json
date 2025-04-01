@@ -635,6 +635,11 @@
           "url": "https://support.bitbox.swiss/how-can-i-sign-messages-via-electrum-with-my-bitbox02"
         }
       ]
+    },
+    "change-verification": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "fees": {

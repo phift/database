@@ -520,6 +520,11 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "change-verification": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {

@@ -614,6 +614,11 @@
           "url": "https://docs.foundation.xyz/passport/passport-menu/account/#sign-a-message"
         }
       ]
+    },
+    "change-verification": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "fees": {

@@ -503,6 +503,11 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
+    },
+    "change-verification": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {

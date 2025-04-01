@@ -522,6 +522,10 @@
       "texts": [
         "Support for BTC BIP322-simple message signing"
       ]
+    },
+    "change-verification": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {
