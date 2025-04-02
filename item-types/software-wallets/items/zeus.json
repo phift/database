@@ -75,9 +75,9 @@
       "flag": "positive"
     },
     "duress-pin": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "dynamic-keypad": {
       "value": "YES",
@@ -85,9 +85,9 @@
       "flag": "positive"
     },
     "countdown-reset-pin": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "alphanumeric-pin": {
       "value": "YES",
@@ -272,9 +272,9 @@
       "flag": "positive"
     },
     "message-signing": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "multisig": {
