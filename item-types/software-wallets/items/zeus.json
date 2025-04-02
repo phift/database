@@ -100,9 +100,9 @@
       "flag": "negative"
     },
     "fingerprint-lock": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "dummy-wallet": {
       "value": "NO",
