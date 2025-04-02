@@ -350,9 +350,12 @@
   },
   "node-integration": {
     "own-node": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "Full own node is supported indirectly when connecting the wallet to an own lightning node"
+      ]
     },
     "local-node": {
       "value": "NO",
