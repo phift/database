@@ -556,8 +556,9 @@
       ]
     },
     "change-verification": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "fees": {
