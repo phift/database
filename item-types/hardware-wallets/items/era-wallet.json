@@ -85,9 +85,9 @@
       "value": "E-Ink"
     },
     "gorilla-glass": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
     },
     "color-screen": {
       "value": "NO",
@@ -212,8 +212,8 @@
       "supported": true
     },
     "anti-klepto": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     }
   },
   "networks": {
@@ -280,14 +280,14 @@
       "flag": "positive"
     },
     "dummy-wallet": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
-    },
-    "dynamic-keypad": {
       "value": "NO",
       "supported": false,
       "flag": "negative"
+    },
+    "dynamic-keypad": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "countdown-brick-reset-pin": {
       "value": "YES",
