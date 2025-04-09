@@ -178,16 +178,28 @@ function fetchRelease(itemType, json) {
             } else if (itemId.startsWith("mynode-")) {
                 // === v0.3.25 ===
                 // - Released 1/11/24
-                var line = lines[0]
-                regex = /^=== v([\d.]+) ===/;
-                var match = line.match(regex);
-                if (match) {
-                    latestVersion = match[1];
-                    line = lines[1]
-                    regex = /^- Released ([\d.]+)\/([\d.]+)\/([\d.]+)/;
-                    if (match) {
-                        match = line.match(regex);
-                        latestReleaseDate = `${getShortMonthByIndex(parseInt(match[1]) - 1)} ${match[2]}, ${2000 + parseInt(match[3])}`;
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                
+                    if (line.startsWith("===")) {
+                        const versionRegex = /^=== v([\d.]+) ===/;
+                        const versionMatch = line.match(versionRegex);
+                
+                        if (versionMatch) {
+                            latestVersion = versionMatch[1];
+                
+                            // Check if the next line exists
+                            const nextLine = lines[i + 1]?.trim();
+                            const dateRegex = /^- Released ([\d.]+)\/([\d.]+)\/([\d.]+)/;
+                            const dateMatch = nextLine.match(dateRegex);
+                
+                            if (dateMatch) {
+                                latestReleaseDate = `${getShortMonthByIndex(parseInt(dateMatch[1]) - 1)} ${dateMatch[2]}, ${2000 + parseInt(dateMatch[3])}`;
+                            }
+                        }
+                
+                        break; // Only need the first match
                     }
                 }
             } else if (itemId.startsWith("nodl-")) {

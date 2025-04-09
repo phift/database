@@ -5,16 +5,17 @@ const { exit } = require('process');
 
 dotenv.config();
 
-// Load Twitter API credentials from .env file
-const client = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_SECRET,
-});
-
 async function postTweetWithImage(tweetText, imagePath = null) {
     try {
+
+      // Load Twitter API credentials from .env file
+      const client = new TwitterApi({
+        appKey: process.env.TWITTER_API_KEY,
+        appSecret: process.env.TWITTER_API_SECRET,
+        accessToken: process.env.TWITTER_ACCESS_TOKEN,
+        accessSecret: process.env.TWITTER_ACCESS_SECRET,
+      });
+
       if (imagePath != null) {
         const mediaData = await client.v1.uploadMedia(imagePath);
         const tweet = await client.v2.tweet({
@@ -43,7 +44,7 @@ const MAX_TWEET_CHARS = 280
 let charsCount = 0
 let text = ""
 let imagePath = null
-let twitterEnabled
+let twitterEnabled = false
 
 function setTwitterEnabled(twitterEnabledFlag) {
   twitterEnabled = twitterEnabledFlag

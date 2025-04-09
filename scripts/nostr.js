@@ -13,7 +13,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-let nostrEnabled
+let nostrEnabled = false
 let text = ""
 let tags = []
 
