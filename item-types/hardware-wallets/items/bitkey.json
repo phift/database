@@ -256,9 +256,9 @@
       "value": "-"
     },
     "source-available": {
-      "value": "YES",
+      "value": "YES (missing 3rd party library)",
       "supported": true,
-      "flag": "positive",
+      "flag": "neutral",
       "links": [
         {
           "title": "Source Code",
@@ -529,9 +529,9 @@
   },
   "privacy": {
     "coin-control": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "UTXO Consolidation only",
+      "supported": true,
+      "flag": "neutral"
     },
     "custom-node": {
       "value": "YES",
