@@ -238,6 +238,14 @@
       "supported": false,
       "flag": "negative"
     },
+    "secure-boot": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "Secure bootloader for firmware protection. Secure Boot On every startup, the device verifies that the installed firmware has a valid signature."
+      ]
+    },
     "upgrade": {
       "value": "From NFC",
       "flag": "neutral",

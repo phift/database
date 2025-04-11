@@ -220,6 +220,11 @@
       "supported": true,
       "flag": "positive"
     },
+    "secure-boot": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
     "upgrade": {
       "value": "From MicroSD Card",
       "flag": "positive"

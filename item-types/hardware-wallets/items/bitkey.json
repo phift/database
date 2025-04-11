@@ -235,6 +235,14 @@
       "supported": true,
       "flag": "positive"
     },
+    "secure-boot": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "Secure boot and firmware protections: Bitkey’s hardware enforces a secure boot process, meaning it will only run firmware signed for Bitkey. Bitkey cannot be debugged or reflashed, even by the Bitkey team. The only way to update a Bitkey is through over-the-air firmware updates, which are signed, and also require unlocking the device to begin. Not even Bitkey can update your firmware without you unlocking your device."
+      ]
+    },
     "upgrade": {
       "value": "From NFC",
       "supported": true,

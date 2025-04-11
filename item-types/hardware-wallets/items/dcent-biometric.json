@@ -250,6 +250,10 @@
       "supported": false,
       "flag": "negative"
     },
+    "secure-boot": {
+      "value": "?",
+      "supported": false
+    },
     "upgrade": {
       "value": "From USB or OTG cable",
       "flag": "neutral",

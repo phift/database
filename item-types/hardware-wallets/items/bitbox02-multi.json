@@ -285,6 +285,11 @@
       "supported": false,
       "flag": "negative"
     },
+    "secure-boot": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
     "upgrade": {
       "value": "From USB",
       "flag": "neutral"

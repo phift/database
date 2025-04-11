@@ -233,6 +233,10 @@
       "supported": true,
       "flag": "positive"
     },
+    "secure-boot": {
+      "value": "-",
+      "supported": false
+    },
     "upgrade": {
       "value": "Not posible",
       "flag": "negative"

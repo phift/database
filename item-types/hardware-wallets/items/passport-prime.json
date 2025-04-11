@@ -248,6 +248,17 @@
       "supported": false,
       "flag": "negative"
     },
+    "secure-boot": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Developer PubKey",
+          "url": "https://docs.foundation.xyz/advanced/developer-pubkey/"
+        }
+      ]
+    },
     "upgrade": {
       "value": "From Bluetooth",
       "flag": "neutral",
