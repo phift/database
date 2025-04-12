@@ -261,7 +261,15 @@
       "value": "-"
     },
     "release-notes": {
-      "value": "-"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Release Notes",
+          "url": "https://bitkey.world/en-US/releases"
+        }
+      ]
     },
     "source-available": {
       "value": "YES (missing 3rd party library)",
