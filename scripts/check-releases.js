@@ -3,6 +3,7 @@ const { exit } = require('process');
 const axios = require('axios');
 const util = require('util');
 const path = require('path');
+const cheerio = require('cheerio');
 
 eval(fs.readFileSync('./tweet.js', 'utf-8'));
 eval(fs.readFileSync('./nostr.js', 'utf-8'));
@@ -54,6 +55,7 @@ function fetchRelease(itemType, json) {
     const allReleasesInclude = json["all-releases-include"]
     const allReleasesExclude = json["all-releases-exclude"]
     const assetsMatch = json["assets-match"]
+    const preReleaseSupported = itemId == "frostnap"
     
     const githubApiKey = process.env.GITHUB_TOKEN
     const gitlabApiKey = process.env.GITLAB_TOKEN
@@ -98,7 +100,25 @@ function fetchRelease(itemType, json) {
 
         // var assets = []
         var body = ""
-        if (latestRelease == true) {
+
+        if (itemId == "bitkey") {
+            const $ = cheerio.load(response.data);
+            let found = false;
+
+            $('.border-t.py-6').each((_, element) => {
+                if (found) return;
+
+                const date = $(element).find('.text-primary50').first().text().trim();
+                const versionText = $(element).find('.font-semibold').first().text().trim();
+                const type = $(element).find('.text-primary50').first().next().text().trim();
+
+                if (type.toLowerCase().includes('firmware')) {
+                    latestVersion = versionText
+                    latestReleaseDate = date
+                    found = true
+                }
+            });
+        } else if (latestRelease == true) {
             console.log("Using latest releases API")
             body = response.data.body
     
@@ -322,8 +342,9 @@ function fetchRelease(itemType, json) {
             }
         }
     
-        if (!ignoreVersion(itemId, latestVersion)) {
+        if (!ignoreVersion(itemId, latestVersion, preReleaseSupported)) {
 
+            console.log("Pre processed latestVersion: " + latestVersion)
             if (itemType == "bitcoin-nodes") {
                 // MiniBolt
                 latestVersion = latestVersion.replace(/^MiniBolt /, '');
@@ -426,7 +447,9 @@ function fetchRelease(itemType, json) {
             }
 
             // For example: "2023-09-08T2009-v5.1.4"
-            latestVersion = latestVersion.replace(/.*-([^:]+)$/, '$1');
+            if (!preReleaseSupported) {
+                latestVersion = latestVersion.replace(/.*-([^:]+)$/, '$1');
+            }
     
             latestVersion = latestVersion.replace(/^(v\d+(\.\d+)+):(.*)$/, '$1');
             latestVersion = latestVersion.replace(/^Android Release\s*/, '');
@@ -435,14 +458,15 @@ function fetchRelease(itemType, json) {
 
             latestVersion = latestVersion.replace(/^v\./, '');
     
-            // Check if the input starts with "v" and is a valid version (x.y.z)
-            const versionPattern = /^v\d+(\.\d+)*$/;
-            if (!versionPattern.test(latestVersion)) {
+            // Check if the input starts with "v"
+            if (!latestVersion.startsWith("v")) {
                 // If it doesn't match the version pattern, add the "v" prefix
                 latestVersion = "v" + latestVersion;
             }
+
+            console.log("Post processed latestVersion: " + latestVersion)
     
-            if (!isValidVersion(latestVersion)) {
+            if (!isValidVersion(latestVersion, preReleaseSupported)) {
                 console.error('Invalid version found: ' + latestVersion);
                 exit(1);
             }
@@ -653,8 +677,10 @@ function getLongMonthIndex(month) {
     return longMonths.indexOf(month)
 }
 
-function isValidVersion(str) {
-    const regex = /^v\d+(\.\d+)*$/;
+function isValidVersion(str, preReleaseSupported) {
+    const base = '^v\\d+(\\.\\d+)*';
+    const preRelease = '(?:-(alpha|beta|rc)(\\.\\d+)?)?';
+    const regex = new RegExp(preReleaseSupported ? `${base}${preRelease}$` : `${base}$`);
     return regex.test(str);
 }
 
@@ -781,7 +807,7 @@ function getDate(publishedAt) {
     }
 }
 
-function ignoreVersion(itemId, latestVersion) {
+function ignoreVersion(itemId, latestVersion, preReleaseSupported) {
 
     // Ignore if it ends with "-pre1", "-pre2", etc.
     var pattern = /-pre\d+$/;
@@ -790,12 +816,12 @@ function ignoreVersion(itemId, latestVersion) {
     }
 
     // Ignore if it contains "-alpha"
-    if (latestVersion.toLowerCase().includes("-alpha")) {
+    if (!preReleaseSupported && latestVersion.toLowerCase().includes("-alpha")) {
         return true
     }
 
     // Ignore if contains the word beta
-    if (latestVersion.toLowerCase().includes("beta")) {
+    if (!preReleaseSupported && latestVersion.toLowerCase().includes("beta")) {
         return true
     }
 
@@ -806,7 +832,7 @@ function ignoreVersion(itemId, latestVersion) {
 
     // Ignore if it ends with "-rc", "-rc1", "-rc2", etc.
     pattern = /-rc\d*$/;
-    if (pattern.test(latestVersion)) {
+    if (!preReleaseSupported && pattern.test(latestVersion)) {
         return true
     }
 
