@@ -31,6 +31,12 @@
       "github-repo": "x1_wallet_firmware",
       "latest-release": true
     },
+    "frostnap": {
+      "item-id": "frostnap",
+      "github-org": "frostsnap",
+      "github-repo": "frostsnap",
+      "latest-release": true
+    },
     "gridplus-lattice1": {
       "item-id": "gridplus-lattice1",
       "github-org": "GridPlus",

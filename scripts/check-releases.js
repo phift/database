@@ -789,6 +789,11 @@ function ignoreVersion(itemId, latestVersion) {
         return true
     }
 
+    // Ignore if it contains "-alpha"
+    if (latestVersion.toLowerCase().includes("-alpha")) {
+        return true
+    }
+
     // Ignore if contains the word beta
     if (latestVersion.toLowerCase().includes("beta")) {
         return true
