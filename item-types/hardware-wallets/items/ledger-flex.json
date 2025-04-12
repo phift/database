@@ -244,13 +244,21 @@
       "flag": "neutral"
     },
     "latest-version": {
-      "value": "-"
+      "value": "?"
     },
     "latest-release-date": {
-      "value": "-"
+      "value": "?"
     },
     "release-notes": {
-      "value": "-"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Release Notes",
+          "url": "https://support.ledger.com/article/Ledger-Flex-OS-release"
+        }
+      ]
     },
     "source-available": {
       "value": "NO",
