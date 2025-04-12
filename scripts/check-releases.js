@@ -253,7 +253,7 @@ function fetchRelease(itemType, json) {
                         onSection = true
                     }
                 }
-            } else if (itemId == "trezor-model-t" || itemId.startsWith("trezor-safe-3") || itemId.startsWith("trezor-safe-3-btc-only")) {
+            } else if (itemId == "trezor-model-t" || itemId.startsWith("trezor-safe")) {
                 // Example: ## [2.7.0] (20th March 2024) or ## [2.8.5] (internal release)
                 const regex = /^## \[([\d.]+)\] \((\d{1,2}(?:st|nd|rd|th) \w+ \d{4}|internal release)\)/;
                 for (const line of lines) {
@@ -356,6 +356,9 @@ function fetchRelease(itemType, json) {
                 latestVersion = latestVersion.replace(/^Passport /, '');
                 latestVersion = latestVersion.replace(/ Firmware$/, '');
     
+                // Portal
+                latestVersion = latestVersion.replace(/^Firmware /, '');
+
                 // ProKey
                 latestVersion = latestVersion.replace(/^Prokey Firmware /, '');
     

@@ -237,7 +237,15 @@
       "value": "-"
     },
     "release-notes": {
-      "value": "-"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Release Notes",
+          "url": "https://github.com/TwentyTwoHW/portal-software/releases"
+        }
+      ]
     },
     "source-available": {
       "value": "YES",
@@ -246,7 +254,7 @@
       "links": [
         {
           "title": "Source Code",
-          "url": "https://github.com/TwentyTwoHW/portal-hardware"
+          "url": "https://github.com/TwentyTwoHW/portal-software"
         }
       ]
     },
@@ -256,11 +264,11 @@
       "flag": "positive"
     },
     "license": {
-      "value": "CERN-OHL-S",
+      "value": "GPLv3",
       "links": [
         {
           "title": "License",
-          "url": "https://github.com/TwentyTwoHW/portal-hardware/blob/master/LICENSE"
+          "url": "https://github.com/TwentyTwoHW/portal-software/blob/master/LICENSE"
         }
       ]
     },

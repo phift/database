@@ -95,6 +95,12 @@
       "github-repo": "passport2",
       "latest-release": true
     },
+    "portal": {
+      "item-id": "portal",
+      "github-org": "TwentyTwoHW",
+      "github-repo": "portal-software",
+      "latest-release": true
+    },
     "prokey-optimum": {
       "item-id": "prokey-optimum",
       "github-org": "prokey-io",
