@@ -493,7 +493,7 @@ function checkRelease(itemType, json, latestVersion, latestReleaseDate) {
                     var currentVersion = item[`${platform}-support`][`${platform}-latest-version`].value
                     var currentReleaseDate = item[`${platform}-support`][`${platform}-latest-release-date`].value
                     console.log("- Current version found: " + currentVersion + " (" + currentReleaseDate + ")")
-                    console.log("-  Latest version found: " + latestVersion + " (" + latestReleaseDate + ")")
+                    console.log("- Latest version found: " + latestVersion + " (" + latestReleaseDate + ")")
     
                     if (latestVersion !== currentVersion) {
                         releaseVersion = latestVersion
@@ -504,7 +504,7 @@ function checkRelease(itemType, json, latestVersion, latestReleaseDate) {
                 var currentVersion = item["firmware"]["latest-version"].value
                 var currentReleaseDate = item["firmware"]["latest-release-date"].value
                 console.log("- Current version found: " + currentVersion + " (" + currentReleaseDate + ")")
-                console.log("-  Latest version found: " + latestVersion + " (" + latestReleaseDate + ")")
+                console.log("- Latest version found: " + latestVersion + " (" + latestReleaseDate + ")")
 
                 
                 if (latestVersion !== currentVersion) {
@@ -611,9 +611,15 @@ function updateRelease(itemType, json, releaseVersion, releaseDate) {
                 }
 
                 if (newRelease) {
-                    postNewRelease(itemType, json["item-id"], item.name, releaseVersion, changelogUrl, item.company, json.platforms)
+                    const inputDate = new Date(releaseVersion);
+                    const oneWeekAgo = new Date();
+                    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+                    if (inputDate > oneWeekAgo) {
+                        postNewRelease(itemType, json["item-id"], item.name, releaseVersion, changelogUrl, item.company, json.platforms)
+                    } else {
+                        console.log("Post ignored, release date more than one week old.")
+                    }
                 }
-    
             } else {
                 console.error('Error updating JSON. Both versions are the same');
                 exit(1);
