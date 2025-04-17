@@ -254,7 +254,7 @@
       "flag": "negative"
     },
     "upgrade": {
-      "value": "YES",
+      "value": "From NFC",
       "flag": "positive",
       "supported": true
     },
