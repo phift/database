@@ -336,9 +336,9 @@
       "flag": "negative"
     },
     "built-in-secure-communication": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "paynyms": {
       "value": "NO",
