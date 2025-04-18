@@ -34,7 +34,7 @@
     },
     "credit-debit-card": {
       "value": "NO",
-      "supported": true
+      "supported": false
     }
   },
   "hardware": {

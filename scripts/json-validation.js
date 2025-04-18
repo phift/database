@@ -13,6 +13,10 @@ function validateJsonFile(filePath) {
       process.exit(1);
     }
 
+    // Check for invalid value-supported combinations
+    checkInvalidValueSupportedCombination(parsedJson, filePath);
+
+    // Check formatting
     if (JSON.stringify(parsedJson, null, 2) === fileContent) {
       console.log(`JSON file '${filePath}' is valid.`);
     } else {
@@ -22,6 +26,30 @@ function validateJsonFile(filePath) {
   } catch (error) {
     console.error(`Error in JSON file '${filePath}':`, error.message);
     process.exit(1); // Exit with a non-zero status code
+  }
+}
+
+function checkInvalidValueSupportedCombination(obj, filePath) {
+  if (typeof obj !== 'object' || obj === null) return;
+
+  for (const key in obj) {
+    const value = obj[key];
+
+    if (typeof value === 'object' && value !== null) {
+      // Check directly if it has both 'value' and 'supported' keys
+      if ('value' in value && 'supported' in value) {
+        const val = value['value'];
+        const supported = value['supported'];
+
+        if ((val === 'YES' && supported === false) || (val === 'NO' && supported === true)) {
+          console.error(`❌ Validation failed in '${filePath}': Invalid combination in key "${key}". Found: value="${val}", supported=${supported}`);
+          process.exit(1);
+        }
+      }
+
+      // Recursively check nested objects
+      checkInvalidValueSupportedCombination(value, filePath);
+    }
   }
 }
 
@@ -42,4 +70,4 @@ fs.readdirSync(itemTypesDir, { withFileTypes: true }).forEach((entry) => {
   }
 });
 
-console.log("*** JSONs validation finised OK ***")
+console.log("*** JSONs validation finished OK ***");

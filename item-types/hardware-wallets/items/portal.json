@@ -213,7 +213,7 @@
     },
     "alt-coins": {
       "value": "NO",
-      "supported": true
+      "supported": false
     }
   },
   "firmware": {

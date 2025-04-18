@@ -122,8 +122,8 @@
     },
     "hexadecimal-strings": {
       "value": "NO",
-      "flag": "positive",
-      "supported": true
+      "flag": "negative",
+      "supported": false
     },
     "ascii-strings": {
       "value": "YES",

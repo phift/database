@@ -169,11 +169,11 @@
   "connectivity": {
     "usb-data": {
       "value": "NO",
-      "supported": true
+      "supported": false
     },
     "bluetooth": {
       "value": "NO",
-      "supported": true
+      "supported": false
     },
     "wifi": {
       "value": "NO",
@@ -236,7 +236,7 @@
     },
     "alt-coins": {
       "value": "NO",
-      "supported": true
+      "supported": false
     }
   },
   "firmware": {

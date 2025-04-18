@@ -585,7 +585,7 @@
     },
     "u2f-authentication": {
       "value": "NO",
-      "supported": true
+      "supported": false
     },
     "fido-authentication": {
       "value": "NO",

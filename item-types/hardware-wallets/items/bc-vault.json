@@ -41,7 +41,7 @@
     },
     "alt-coins": {
       "value": "YES",
-      "supported": false
+      "supported": true
     },
     "credit-debit-card": {
       "value": "YES",
