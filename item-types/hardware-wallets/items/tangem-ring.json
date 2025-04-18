@@ -254,8 +254,9 @@
       "value": "-",
       "supported": false
     },
-    "upgrade": {
-      "value": "Not Possible",
+    "upgradable-firmware": {
+      "value": "NO",
+      "supported": false,
       "flag": "negative",
       "texts": [
         "For user safety, the ring is flashed once and is not updated again. This eliminates the risk of counterfeit firmware and possible theft of funds.",
@@ -268,6 +269,28 @@
           "url": "https://tangem.com/en/blog/post/firmware-update-a-necessity-or-a-danger/"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "-"

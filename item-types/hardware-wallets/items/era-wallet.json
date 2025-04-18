@@ -246,12 +246,35 @@
         "Secure bootloader for firmware protection. Secure Boot On every startup, the device verifies that the installed firmware has a valid signature."
       ]
     },
-    "upgrade": {
-      "value": "From NFC",
-      "flag": "neutral",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
       "texts": [
         "Signed firmware updates are delivered via NFC using the companion mobile app (iOS & Android)."
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "YES",
+      "supported": true
     },
     "latest-version": {
       "value": "?"

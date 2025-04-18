@@ -238,9 +238,32 @@
       "value": "-",
       "supported": false
     },
-    "upgrade": {
-      "value": "Not Possible",
+    "upgradable-firmware": {
+      "value": "NO",
+      "supported": false,
       "flag": "negative"
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "-"

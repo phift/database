@@ -254,9 +254,10 @@
       "value": "?",
       "supported": false
     },
-    "upgrade": {
-      "value": "From USB or OTG cable",
-      "flag": "neutral",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
       "links": [
         {
           "title": "Firmware Update (from computer)",
@@ -267,6 +268,28 @@
           "url": "https://userguide.dcentwallet.com/biometric-wallet/firmware-update-from-mobile"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "?"

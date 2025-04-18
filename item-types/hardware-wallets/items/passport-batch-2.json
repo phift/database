@@ -249,8 +249,9 @@
         }
       ]
     },
-    "upgrade": {
-      "value": "From MicroSD Card",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
       "flag": "positive",
       "links": [
         {
@@ -266,6 +267,28 @@
           "url": "https://www.youtube.com/watch?v=tH63FUlROZ8"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "v2.3.5"

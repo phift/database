@@ -252,15 +252,38 @@
       "supported": true,
       "flag": "positive"
     },
-    "upgrade": {
-      "value": "From USB",
-      "flag": "neutral",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
       "links": [
         {
           "title": "How to install and update Trezor firmware",
           "url": "https://www.youtube.com/watch?v=gRCoWsGbP4g"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "v1.13.0"

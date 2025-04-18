@@ -139,7 +139,13 @@ All the features supported:
 | Networks | networks | Bitcoin Testnet | btc-testnet |
 | Networks | networks | Alt Coins | alt-coins |
 | Firmware | firmware | Bitcoin-only firmware | bitcoin-only-firmware |
-| Firmware | firmware | Upgrade | upgrade |
+| Firmware | firmware | Upgradable Firmware | upgradable-firmware |
+| Firmware | firmware | Upgrade via MicroSD Card | upgrade-via-sdcard |
+| Firmware | firmware | Upgrade via USB External Storage | upgrade-via-usb-external-storage |
+| Firmware | firmware | Upgrade via USB Cable | upgrade-via-usb-cable |
+| Firmware | firmware | Upgrade via Bluetooth | upgrade-via-bluetooth |
+| Firmware | firmware | Upgrade via NFC | upgrade-via-nfc |
+| Firmware | firmware | Secure Boot | secure-boot |
 | Firmware | firmware | Latest Version | latest-version |
 | Firmware | firmware | Latest Release Date | latest-release-date |
 | Firmware | firmware | Release Notes | release-notes |
@@ -188,6 +194,7 @@ All the features supported:
 | Signing | signing | BBQr | bbqr |
 | Signing | signing | NFC Push Tx | nfc-push-tx |
 | Signing | signing | Sign Messages | message-signing |
+| Signing | signing | Change Verification | change-verification |
 | Fees | fees | Fee Control | fee-control |
 | Fees | fees | Replace-by-fee (RBF) | replace-by-fee |
 | Fees | fees | Child-pays-for-parent (CPFP) | child-pays-for-parent |

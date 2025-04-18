@@ -259,12 +259,35 @@
         }
       ]
     },
-    "upgrade": {
-      "value": "From Bluetooth",
-      "flag": "neutral",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
       "texts": [
-        "Update will be via Bluetooth intiially, but later via external storage options"
+        "Update will be via Bluetooth initially, but later via external storage options"
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "-"

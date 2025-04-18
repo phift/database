@@ -137,6 +137,7 @@ All the features supported:
 | Signing | signing | Sign by QR | qr |
 | Signing | signing | UR2.0 Animated QRs | ur-2-animated-qrs |
 | Signing | signing | BBQr | bbqr |
+| Signing | signing | Sign Messages | message-signing |
 | Multi-Sig | multisig | Multi-sig (PSBTs) | multi-sig |
 | Multi-Sig | multisig | Taproot Multi-sig (MuSig2) | taproot-multi-sig |
 | Multi-Sig | multisig | Frost | frost |

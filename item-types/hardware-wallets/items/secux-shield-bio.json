@@ -233,10 +233,10 @@
       "value": "-",
       "supported": false
     },
-    "upgrade": {
-      "value": "From Bluetooth",
+    "upgradable-firmware": {
+      "value": "YES",
       "supported": true,
-      "flag": "neutral",
+      "flag": "positive",
       "links": [
         {
           "title": "Firmware Update on Mobile",
@@ -244,8 +244,27 @@
         }
       ]
     },
-    "latest-version": {
-      "value": "?"
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-release-date": {
       "value": "?"

@@ -243,8 +243,8 @@
         "Secure boot and firmware protections: Bitkey’s hardware enforces a secure boot process, meaning it will only run firmware signed for Bitkey. Bitkey cannot be debugged or reflashed, even by the Bitkey team. The only way to update a Bitkey is through over-the-air firmware updates, which are signed, and also require unlocking the device to begin. Not even Bitkey can update your firmware without you unlocking your device."
       ]
     },
-    "upgrade": {
-      "value": "From NFC",
+    "upgradable-firmware": {
+      "value": "YES",
       "supported": true,
       "flag": "positive",
       "links": [
@@ -253,6 +253,28 @@
           "url": "https://support.bitkey.world/hc/en-us/articles/19504716235796-How-do-I-update-my-hardware-"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "YES",
+      "supported": true
     },
     "latest-version": {
       "value": "v1.0.91"

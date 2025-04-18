@@ -246,9 +246,32 @@
         "The NGRAVE wallet firmware is also matched with a highly secure hardware component, integrating one of the newest, most secure and tamper-proof micro-processing units (MPUs) from ST Electronics, the ​2019 STM32MP157C​ with HW crypto and secure boot and ultra low power consumption. The ZERO also has a built-in secure element (SE) for optimized security."
       ]
     },
-    "upgrade": {
-      "value": "From USB",
-      "flag": "neutral"
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "?"

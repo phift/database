@@ -271,8 +271,9 @@
       "supported": true,
       "flag": "positive"
     },
-    "upgrade": {
-      "value": "From MicroSD Card",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
       "flag": "positive",
       "links": [
         {
@@ -280,6 +281,28 @@
           "url": "https://coldcard.com/docs/upgrade/#upgrading-your-coldcards-firmware"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "v5.4.2"

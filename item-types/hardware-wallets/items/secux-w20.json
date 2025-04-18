@@ -234,9 +234,32 @@
         "The Infineon Secure Element, which SecuX uses in all our wallets, not only has secure storage and tamper detection capabilities, but it also has Secure Boot, which is a feature that only allows trusted software onto a device. There is also malware protection and Secure Boot can also be used to only give system access to authorized users."
       ]
     },
-    "upgrade": {
-      "value": "From Bluetooth",
-      "flag": "neutral"
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "upgrade-via-sdcard": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-bluetooth": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "?"

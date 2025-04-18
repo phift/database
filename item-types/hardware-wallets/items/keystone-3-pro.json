@@ -286,8 +286,9 @@
       "supported": true,
       "flag": "positive"
     },
-    "upgrade": {
-      "value": "From MicroSD Card or USB",
+    "upgradable-firmware": {
+      "value": "YES",
+      "supported": true,
       "flag": "positive",
       "texts": [
         "Offline Firmware Upgrades. In order to minimize all attack vectors, firmware upgrades are done via a MicroSD Card. You can optionally decide to upgrade via USB"
@@ -306,6 +307,28 @@
           "url": "https://guide.keyst.one/docs/btc-firmware-update-usb"
         }
       ]
+    },
+    "upgrade-via-sdcard": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "upgrade-via-usb-external-storage": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "upgrade-via-usb-cable": {
+      "value": "YES",
+      "supported": true
+    },
+    "upgrade-via-bluetooth": {
+      "value": "NO",
+      "supported": false
+    },
+    "upgrade-via-nfc": {
+      "value": "NO",
+      "supported": false
     },
     "latest-version": {
       "value": "v2.0.4"
