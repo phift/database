@@ -13,8 +13,8 @@ function validateJsonFile(filePath) {
       process.exit(1);
     }
 
-    // Check for invalid value-supported combinations
-    checkInvalidValueSupportedCombination(parsedJson, filePath);
+    // Check for invalid field combinations
+    checkInvalidCombinations(parsedJson, filePath);
 
     // Check formatting
     if (JSON.stringify(parsedJson, null, 2) === fileContent) {
@@ -29,26 +29,49 @@ function validateJsonFile(filePath) {
   }
 }
 
-function checkInvalidValueSupportedCombination(obj, filePath) {
+function checkInvalidCombinations(obj, filePath) {
   if (typeof obj !== 'object' || obj === null) return;
 
   for (const key in obj) {
     const value = obj[key];
 
     if (typeof value === 'object' && value !== null) {
-      // Check directly if it has both 'value' and 'supported' keys
-      if ('value' in value && 'supported' in value) {
-        const val = value['value'];
-        const supported = value['supported'];
+      const val = value['value'];
+      const supported = value['supported'];
+      const flag = value['flag'];
 
+      // value + supported validation
+      if ('value' in value && 'supported' in value) {
         if ((val === 'YES' && supported === false) || (val === 'NO' && supported === true)) {
-          console.error(`❌ Validation failed in '${filePath}': Invalid combination in key "${key}". Found: value="${val}", supported=${supported}`);
+          console.error(`❌ Validation failed in '${filePath}': Invalid value-supported combination in key "${key}". Found: value="${val}", supported=${supported}`);
           process.exit(1);
         }
       }
 
-      // Recursively check nested objects
-      checkInvalidValueSupportedCombination(value, filePath);
+      // value + flag validation
+      if ('value' in value && 'flag' in value) {
+        if ((val === 'YES' && flag === 'negative') || (val === 'NO' && flag === 'positive')) {
+          console.error(`❌ Validation failed in '${filePath}': Invalid value-flag combination in key "${key}". Found: value="${val}", flag="${flag}"`);
+          process.exit(1);
+        }
+      }
+
+      // supported + flag validation
+      if ('supported' in value && 'flag' in value) {
+        if ((supported === true && flag === 'negative') || (supported === false && flag === 'positive')) {
+          console.error(`❌ Validation failed in '${filePath}': Invalid supported-flag combination in key "${key}". Found: supported=${supported}, flag="${flag}"`);
+          process.exit(1);
+        }
+      }
+
+      // value "?" + supported/flag
+      if (val === '?' && (supported === true || flag === 'positive' || flag === 'neutral')) {
+        console.error(`❌ ${filePath}: Invalid unknown-value combination in key "${key}". value="?", supported=${supported}, flag="${flag}"`);
+        process.exit(1);
+      }
+
+      // Recursively check deeper objects
+      checkInvalidCombinations(value, filePath);
     }
   }
 }

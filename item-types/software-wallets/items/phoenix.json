@@ -417,7 +417,7 @@
     },
     "encrypted-storage": {
       "value": "?",
-      "supported": true
+      "supported": false
     },
     "dark-mode": {
       "value": "YES",

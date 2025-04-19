@@ -121,7 +121,6 @@
   "power": {
     "battery": {
       "value": "No Needed",
-      "flag": "positive",
       "supported": false
     },
     "removable-battery": {
