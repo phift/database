@@ -2,6 +2,7 @@
   "id": "frostnap",
   "name": "Frostnap",
   "coming-soon": true,
+  "price-history-enabled": false,
   "basic-information": {
     "year": {
       "value": "2025"

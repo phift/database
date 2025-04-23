@@ -2,6 +2,7 @@
   "id": "specter-diy",
   "name": "Specter DIY",
   "buildable": true,
+  "price-history-enabled": false,
   "basic-information": {
     "year": {
       "value": "2020"

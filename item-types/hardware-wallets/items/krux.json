@@ -2,6 +2,7 @@
   "id": "krux",
   "name": "Krux",
   "buildable": true,
+  "price-history-enabled": false,
   "basic-information": {
     "year": {
       "value": "2022"
