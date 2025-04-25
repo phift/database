@@ -404,7 +404,7 @@
     },
     "portal": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "seedsigner": {

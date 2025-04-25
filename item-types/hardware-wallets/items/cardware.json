@@ -275,12 +275,12 @@
     },
     "source-available": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "open-source": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "license": {

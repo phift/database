@@ -637,12 +637,12 @@
     },
     "blockstream-green": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "bluewallet": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "bitcoin-keeper": {
@@ -662,7 +662,7 @@
     },
     "unchained": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     }
   }

@@ -396,7 +396,7 @@
     },
     "batch-transactions": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "miniscript": {

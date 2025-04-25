@@ -297,12 +297,12 @@
     },
     "release-notes": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "source-available": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral"
     },
     "open-source": {
@@ -315,7 +315,7 @@
     },
     "reproducible-builds": {
       "value": "SOON",
-      "supported": true,
+      "supported": false,
       "flag": "neutral",
       "links": [
         {

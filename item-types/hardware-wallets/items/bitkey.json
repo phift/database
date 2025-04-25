@@ -25,12 +25,13 @@
   },
   "official-store": {
     "po-box-support": {
-      "value": "?",
+      "value": "SOON",
+      "flag": "neutral",
       "supported": false
     },
     "btc-on-chain": {
-      "value": "NO",
-      "flag": "negative",
+      "value": "SOON",
+      "flag": "neutral",
       "supported": false
     },
     "btc-lightning": {

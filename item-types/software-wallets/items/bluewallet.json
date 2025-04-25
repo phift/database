@@ -886,8 +886,8 @@
     },
     "portal": {
       "value": "SOON",
-      "supported": true,
-      "flag": "positive"
+      "supported": false,
+      "flag": "neutral"
     },
     "trezor-model-one": {
       "value": "Watch-only",
