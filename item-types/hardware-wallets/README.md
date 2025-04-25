@@ -195,6 +195,7 @@ All the features supported:
 | Signing | signing | NFC Push Tx | nfc-push-tx |
 | Signing | signing | Sign Messages | message-signing |
 | Signing | signing | Change Verification | change-verification |
+| Signing | signing | Change Address Display | change-address-display |
 | Fees | fees | Fee Control | fee-control |
 | Fees | fees | Replace-by-fee (RBF) | replace-by-fee |
 | Fees | fees | Child-pays-for-parent (CPFP) | child-pays-for-parent |

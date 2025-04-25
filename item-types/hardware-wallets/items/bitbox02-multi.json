@@ -670,6 +670,11 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "change-address-display": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {

@@ -547,6 +547,11 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
+    },
+    "change-address-display": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {

@@ -660,6 +660,11 @@
     "change-verification": {
       "value": "?",
       "supported": false
+    },
+    "change-address-display": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {

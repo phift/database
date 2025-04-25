@@ -653,6 +653,11 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "change-address-display": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "fees": {

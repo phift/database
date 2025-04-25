@@ -565,6 +565,10 @@
     "change-verification": {
       "value": "?",
       "supported": false
+    },
+    "change-address-display": {
+      "value": "?",
+      "supported": false
     }
   },
   "fees": {

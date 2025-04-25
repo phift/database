@@ -652,6 +652,11 @@
           "url": "https://help.blockstream.com/hc/en-us/articles/20389615544089-Backup-a-multisig-configuration-on-Jade"
         }
       ]
+    },
+    "change-address-display": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {
