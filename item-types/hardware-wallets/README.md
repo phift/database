@@ -203,6 +203,7 @@ All the features supported:
 | Privacy | privacy | Tor | tor |
 | Privacy | privacy | Silent Payments | silent-payments |
 | Other Features | other-features | Miniscript | miniscript |
+| Other Features | other-features | Taproot Miniscript | taproot-miniscript |
 | Other Features | other-features | Virtual Disk Mode | virtual-disk-mode |
 | Other Features | other-features | Password Manager | password-manager |
 | Other Features | other-features | U2F authentication | u2f-authentication |

@@ -737,6 +737,11 @@
         }
       ]
     },
+    "taproot-miniscript": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
     "virtual-disk-mode": {
       "value": "NO",
       "supported": false

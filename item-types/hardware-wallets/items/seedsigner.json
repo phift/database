@@ -567,6 +567,11 @@
       "supported": false,
       "flag": "neutral"
     },
+    "taproot-miniscript": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
     "virtual-disk-mode": {
       "value": "NO",
       "supported": false

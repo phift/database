@@ -790,6 +790,17 @@
         }
       ]
     },
+    "taproot-miniscript": {
+      "value": "Experimental",
+      "supported": true,
+      "flag": "neutral",
+      "links": [
+        {
+          "title": "Miniscript",
+          "url": "https://github.com/Coldcard/firmware/blob/edge/docs/miniscript.md"
+        }
+      ]
+    },
     "virtual-disk-mode": {
       "value": "YES (disabled by default)",
       "supported": true

@@ -392,6 +392,11 @@
       "supported": true,
       "flag": "positive"
     },
+    "taproot-miniscript": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
     "timelocks": {
       "value": "YES",
       "supported": true,

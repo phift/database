@@ -161,6 +161,7 @@ All the features supported:
 | Other Features | other-features | Transaction Labeling | transaction-labeling |
 | Other Features | other-features | Batch Transactions | batch-transactions |
 | Other Features | other-features | Miniscript | miniscript |
+| Other Features | other-features | Taproot Miniscript | taproot-miniscript |
 | Other Features | other-features | Timelocks | timelocks |
 | Other Features | other-features | Encrypted Storage | encrypted-storage |
 | Other Features | other-features | Dark Mode | dark-mode |
