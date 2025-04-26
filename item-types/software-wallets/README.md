@@ -145,6 +145,7 @@ All the features supported:
 | Fees | fees | Replace-by-fee (RBF) | replace-by-fee |
 | Fees | fees | Child-pays-for-parent (CPFP) | child-pays-for-parent |
 | Privacy | privacy | Coin Control | coin-control |
+| Privacy | privacy | Labels Import/Export (BIP329) | labels-import-export-bip329 |
 | Privacy | privacy | Coinjoin | coinjoin |
 | Privacy | privacy | Hide Sensitive Data | hide-sensitive-data |
 | Privacy | privacy | Stealth Mode | stealth-mode |

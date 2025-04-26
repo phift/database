@@ -356,6 +356,11 @@
         }
       ]
     },
+    "labels-import-export-bip329": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
     "coinjoin": {
       "value": "NO",
       "supported": false,
