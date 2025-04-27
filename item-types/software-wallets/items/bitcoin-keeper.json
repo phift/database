@@ -28,9 +28,9 @@
       "flag": "positive"
     },
     "btc-testnet": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "btc-regtest": {
       "value": "NO",
