@@ -322,7 +322,11 @@
     "labels-import-export-bip329": {
       "value": "YES",
       "supported": true,
-      "flag": "positive"
+      "flag": "positive",
+      "texts": [
+        "Encrypted cloud backup (via nostr) of labels",
+        "Label synchronization between different computers"
+      ]
     },
     "coinjoin": {
       "value": "NO",
@@ -340,9 +344,12 @@
       "flag": "negative"
     },
     "built-in-secure-communication": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+         "Wallet chat and PSBTs sharing between different computers"
+      ]
     },
     "paynyms": {
       "value": "NO",

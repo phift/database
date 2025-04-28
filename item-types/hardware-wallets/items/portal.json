@@ -413,7 +413,7 @@
       "flag": "positive"
     },
     "display-12-24-words": {
-      "value": "Via Companion app",
+      "value": "On Setup only",
       "supported": true,
       "flag": "neutral"
     },
