@@ -70,6 +70,12 @@ function checkInvalidCombinations(obj, filePath) {
         process.exit(1);
       }
 
+      // value "SOON" + supported
+      if (val === 'SOON' && supported === true) {
+        console.error(`❌ ${filePath}: Invalid SOON-supported combination in key "${key}". value="SOON", supported=${supported}`);
+        process.exit(1);
+      }
+
       // Recursively check deeper objects
       checkInvalidCombinations(value, filePath);
     }
