@@ -61,6 +61,12 @@
       "supported": true,
       "texts": [
         "With a Casa vault, you can easily replace a compromised key when needed and retain full control over your digital assets."
+      ],
+      "links": [
+        {
+          "title": "Key rotation (replacing a key in the Casa app)",
+          "url": "https://support.casa.io/knowledge/key-rotation-replacing-a-key-in-the-casa-app"
+        }
       ]
     },
     "beneficiary-key-lost-protection": {
@@ -168,17 +174,6 @@
       "value": "NO",
       "flag": "negative",
       "supported": false
-    },
-    "key-replacement-support": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true,
-      "links": [
-        {
-          "title": "Key rotation (replacing a key in the Casa app)",
-          "url": "https://support.casa.io/knowledge/key-rotation-replacing-a-key-in-the-casa-app"
-        }
-      ]
     },
     "onchain-timelock": {
       "value": "NO",

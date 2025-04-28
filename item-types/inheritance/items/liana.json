@@ -243,26 +243,6 @@
           "url": "https://lianalite.com/"
         }
       ]
-    },
-    "web-release-notes": {
-      "value": "-",
-      "supported": false
-    },
-    "web-source-available": {
-      "value": "-",
-      "supported": false
-    },
-    "web-open-source": {
-      "value": "-",
-      "supported": false
-    },
-    "web-license": {
-      "value": "-",
-      "supported": false
-    },
-    "web-reproducible-builds": {
-      "value": "-",
-      "supported": false
     }
   },
   "macos-support": {

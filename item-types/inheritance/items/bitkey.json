@@ -134,11 +134,6 @@
       "value": "NO",
       "supported": false
     },
-    "private": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
-    },
     "message-for-beneficiary": {
       "value": "NO",
       "flag": "negative",

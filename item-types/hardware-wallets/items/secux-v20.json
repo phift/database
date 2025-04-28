@@ -548,16 +548,6 @@
     }
   },
   "other-features": {
-    "frost": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
-    },
-    "testnet": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
-    },
     "miniscript": {
       "value": "NO",
       "supported": false,
