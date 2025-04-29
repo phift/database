@@ -30,7 +30,7 @@ async function processReleases() {
 
                 for (const key of Object.keys(json)) {
                     await fetchRelease(itemType, json[key]);
-                    await sleep(500);
+                    await sleep(1000);
                 }
             }
         } catch (err) {
@@ -38,12 +38,14 @@ async function processReleases() {
             process.exit(1);
         }
     }
+    console.log("✅ Check releases finished OK");
 }
 
 processReleases();
 
 function fetchRelease(itemType, json) {
 
+    const enabled = json["enabled"]
     const itemId = json["item-id"]
     const changelogUrl = json["changelog-url"]
     const githubOwner = json["github-org"]
@@ -56,6 +58,11 @@ function fetchRelease(itemType, json) {
     const allReleasesExclude = json["all-releases-exclude"]
     const assetsMatch = json["assets-match"]
     const preReleaseSupported = itemId == "frostnap"
+
+    if (enabled == false) {
+        console.warn(`⚠️ ${json["item-id"]} disabled`)
+        return
+    }
     
     const githubApiKey = process.env.GITHUB_TOKEN
     const gitlabApiKey = process.env.GITLAB_TOKEN
@@ -86,18 +93,17 @@ function fetchRelease(itemType, json) {
         exit(1);
     }
     
-    var latestVersion
-    var latestReleaseDate
-    // var assetFileNames = [];
-    
+    console.log('---------------------');
+    console.log(`Item Id: ${json["item-id"]}`);
+    console.log("Request url: " + apiUrl)
     axios
       .get(apiUrl, { headers })
       .then((response) => {
-    
-        console.log('---------------------');
-        console.log(`Item Id: ${json["item-id"]}`);
-        console.log("Request url: " + apiUrl)
 
+        var latestVersion
+        var latestReleaseDate
+        // var assetFileNames = [];
+    
         // var assets = []
         var body = ""
 
@@ -488,7 +494,7 @@ function fetchRelease(itemType, json) {
         }
       })
       .catch((error) => {
-        console.error('Error fetching release information:', error.message);
+        console.error(`Error fetching release information from ${apiUrl}:`, error.message);
         exit(1);
       });
 }

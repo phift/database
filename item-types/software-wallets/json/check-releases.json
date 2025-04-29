@@ -174,6 +174,7 @@
     "latest-release": true
   },
   "specter-start-os": {
+    "enabled": false,
     "item-id": "specter",
     "github-org": "Start9Labs",
     "github-repo": "specter-startos",

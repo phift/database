@@ -99,4 +99,4 @@ fs.readdirSync(itemTypesDir, { withFileTypes: true }).forEach((entry) => {
   }
 });
 
-console.log("*** JSONs validation finished OK ***");
+console.log("✅ JSONs validation finished OK");
