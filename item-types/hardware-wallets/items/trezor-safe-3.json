@@ -642,8 +642,9 @@
       ]
     },
     "change-verification": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "change-address-display": {
       "value": "NO",
