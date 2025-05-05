@@ -92,6 +92,13 @@
       "all-releases": true,
       "all-releases-include": "classic"
     },
+    "onekey-classic-1s-pure": {
+      "item-id": "onekey-classic-1s-pure",
+      "github-org": "OneKeyHQ",
+      "github-repo": "firmware",
+      "all-releases": true,
+      "all-releases-include": "classic"
+    },
     "onekey-pro": {
       "item-id": "onekey-pro",
       "github-org": "OneKeyHQ",
