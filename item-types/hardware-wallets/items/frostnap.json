@@ -489,6 +489,10 @@
     "child-pays-for-parent": {
       "value": "?",
       "supported": false
+    },
+    "maximum-fee-protection": {
+      "value": "?",
+      "supported": false
     }
   },
   "privacy": {

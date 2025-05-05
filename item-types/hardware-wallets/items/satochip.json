@@ -573,6 +573,11 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "maximum-fee-protection": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "privacy": {

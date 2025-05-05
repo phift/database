@@ -690,6 +690,14 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "maximum-fee-protection": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "BitBox02 shows the transaction fee on its own display. The user can verify that the transaction fee has not been altered. It will even warn the user if the fee is unreasonably high (more than 10% of the transaction amount)."
+      ]
     }
   },
   "privacy": {
