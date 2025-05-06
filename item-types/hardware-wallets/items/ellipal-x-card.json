@@ -1,6 +1,7 @@
 {
-  "id": "cardware",
-  "name": "Cardware",
+  "id": "ellipal-x-card",
+  "name": "X Card",
+  "full-name": "Ellipal X Card",
   "purchasable": true,
   "pre-order": true,
   "basic-information": {
@@ -8,32 +9,30 @@
       "value": "2025"
     },
     "assembled-in": {
-      "value": "South Africa"
+      "value": "Hong Kong"
     },
     "diy": {
       "value": "NO",
       "supported": false
     }
   },
-  "company": "cardware-wallet",
+  "company": "ellipal",
   "communities": {
     "telegram": {
-      "value": "cardwarewallet",
-      "url": "https://t.me/cardwarewallet"
+      "value": "-"
     },
     "reddit": {
-      "value": "CardwareWallet",
-      "url": "https://www.reddit.com/r/CardwareWallet/"
+      "value": "ELLIPAL_Official",
+      "url": "https://www.reddit.com/r/ELLIPAL_Official/"
     }
   },
   "official-store": {
     "po-box-support": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
+      "value": "?",
+      "supported": false
     },
     "btc-on-chain": {
-      "value": "YES (via BTCPay)",
+      "value": "YES (via Crypto.com Pay or Coinbase Commerce)",
       "flag": "positive",
       "supported": true
     },
@@ -43,7 +42,7 @@
       "supported": false
     },
     "alt-coins": {
-      "value": "YES (via WalletConnect)",
+      "value": "YES (via Crypto.com Pay or Coinbase Commerce)",
       "supported": true
     },
     "credit-debit-card": {
@@ -54,67 +53,68 @@
   "size-materials": {
     "warranty": {
       "value": "1 year",
-      "flag": "positive"
+      "flag": "positive",
+      "supported": true
     },
     "weight": {
-      "value": "60g / 2.11oz"
+      "value": "6g / 0.21oz"
     },
     "dimensions": {
-      "value": "86 x 54 x 11 mm"
+      "value": "85.6 x 53.98 mm"
     },
     "materials": {
       "value": "Plastic"
     },
     "available-in-colors": {
-      "value": "NO"
+      "value": "NO",
+      "supported": false
     },
     "waterproof": {
       "value": "NO",
       "flag": "negative",
-      "supported": false
+      "supported": false,
+      "texts": [
+        "The X Card is splash-resistant , built to withstand brief exposure to rain or sweat."
+      ]
     }
   },
   "display": {
     "screen": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
     },
     "screen-type": {
-      "value": "LCD"
+      "value": "-",
+      "flag": "negative"
     },
     "gorilla-glass": {
-      "value": "NO",
+      "value": "-",
       "flag": "negative",
       "supported": false
     },
     "color-screen": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
+      "value": "-",
+      "flag": "negative",
+      "supported": false
     },
     "touch-screen": {
-      "value": "NO",
+      "value": "-",
       "flag": "negative",
       "supported": false
     },
     "screen-size": {
-      "value": "2.14\"",
-      "flag": "positive"
+      "value": "-",
+      "flag": "negative"
     },
     "screen-resolution": {
-      "value": "128 x 160 px"
+      "value": "-",
+      "flag": "negative"
     }
   },
   "input": {
     "controls": {
-      "value": "Buttons",
-      "links": [
-        {
-          "title": "Navigate your Cardware Device",
-          "url": "https://www.youtube.com/watch?v=ZQI1zbwh7cM"
-        }
-      ]
+      "value": "-"
     },
     "qwerty-keyboard": {
       "value": "NO",
@@ -124,37 +124,29 @@
   },
   "power": {
     "battery": {
-      "value": "NO",
-      "flag": "negative",
+      "value": "No Needed",
       "supported": false
     },
     "removable-battery": {
-      "value": "NO",
-      "flag": "negative",
+      "value": "-",
       "supported": false
     },
     "battery-size": {
-      "value": "-",
-      "flag": "negative"
+      "value": "-"
     },
     "usb-charging": {
-      "value": "USB-C",
-      "flag": "positive",
-      "supported": true
+      "value": "-",
+      "supported": false
     },
     "wireless-charging": {
-      "value": "NO",
-      "flag": "negative",
+      "value": "-",
       "supported": false
     }
   },
   "connectivity": {
     "usb-data": {
       "value": "NO",
-      "supported": false,
-      "texts": [
-        "The USB-C port is configured exclusively for power delivery, with only the power and ground connections active. All data lines are physically disconnected, a design aspect that is visibly apparent on the transparent circuit board."
-      ]
+      "supported": false
     },
     "bluetooth": {
       "value": "NO",
@@ -169,8 +161,9 @@
       "supported": false
     },
     "nfc": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "microsd-card": {
       "value": "NO",
@@ -178,14 +171,14 @@
       "flag": "negative"
     },
     "qr-scanner": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "air-gapped": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "security": {
@@ -199,16 +192,16 @@
       "supported": true,
       "flag": "positive",
       "texts": [
-        "Hardware-level read/write protection combine to guard against physical tampering, unauthorized access, and firmware-based exploits."
+        "Each X Card contains a unique encrypted ID that is verified by the app. Only genuine cards sold by ELLIPAL will be recognized and allowed to connect—fake cards are blocked."
       ]
     },
     "deterministic-nonces": {
-      "value": "YES",
-      "supported": true
+      "value": "?",
+      "supported": false
     },
     "anti-klepto": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     }
   },
   "networks": {
@@ -223,15 +216,21 @@
       "flag": "negative"
     },
     "alt-coins": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "links": [
+        {
+          "title": "List of Supported Tokens",
+          "url": "https://www.ellipal.com/pages/coin-list"
+        }
+      ]
     }
   },
   "firmware": {
     "bitcoin-only-firmware": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "secure-boot": {
       "value": "-",
@@ -265,39 +264,37 @@
       "supported": false
     },
     "latest-version": {
-      "value": "?"
+      "value": "-"
     },
     "latest-release-date": {
-      "value": "?"
+      "value": "-"
     },
     "release-notes": {
       "value": "-"
     },
     "source-available": {
-      "value": "SOON",
+      "value": "NO",
       "supported": false,
-      "flag": "neutral"
+      "flag": "negative"
     },
     "open-source": {
-      "value": "SOON",
+      "value": "NO",
       "supported": false,
-      "flag": "neutral"
+      "flag": "negative"
     },
     "license": {
-      "value": "?"
+      "value": "-"
     },
     "reproducible-builds": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "device-lock": {
     "pin-entry": {
-      "value": "On Device",
-      "flag": "positive",
-      "texts": [
-        "Your PIN can be 4 to 8 digits long"
-      ]
+      "value": "On Mobile App",
+      "flag": "negative"
     },
     "dummy-wallet": {
       "value": "NO",
@@ -314,13 +311,7 @@
       "supported": true,
       "flag": "positive",
       "texts": [
-        "You have 5 attempts to enter your PIN correctly when prompted. Entering it incorrectly 5 times will erase the device."
-      ],
-      "links": [
-        {
-          "title": "Erasing Device",
-          "url": "https://www.youtube.com/watch?v=JYwMWRw99fI"
-        }
+        "After 10 incorrect PIN attempts, all information on the X Card will be permanently wiped."
       ]
     },
     "brick-reset-pin": {
@@ -358,18 +349,9 @@
       "supported": false
     },
     "user-added-entropy": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive",
-      "texts": [
-        "During setup, users generate their private keys with robust entropy via dice rolls (with a D20 die included in every box) or through video streaming, ensuring truly random key creation."
-      ],
-      "links": [
-        {
-          "title": "Generating Entropy with a D20 Dice",
-          "url": "https://www.youtube.com/watch?v=IVTedW3qlHg"
-        }
-      ]
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "multiple-private-keys": {
       "value": "NO",
@@ -382,18 +364,18 @@
       "flag": "positive"
     },
     "passphrase-entry": {
-      "value": "On Device",
-      "flag": "positive"
+      "value": "Via Companion app",
+      "flag": "negative"
     },
     "master-key-fingerprint": {
       "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "supported": false,
+      "flag": "negative"
     },
     "bip85": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "shamir-backup": {
       "value": "NO",
@@ -411,14 +393,17 @@
       "flag": "negative"
     },
     "backup-recovery-nfc-card": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "You can duplicate a wallet to up to 10 additional X Cards during creation or recovery, allowing for flexible backup options."
+      ]
     },
     "create-12-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "create-24-words": {
       "value": "YES",
@@ -431,20 +416,14 @@
       "flag": "neutral"
     },
     "import-12-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "On Device",
+      "supported": true,
+      "flag": "positive"
     },
     "import-24-words": {
-      "value": "YES",
+      "value": "On Device",
       "supported": true,
-      "flag": "positive",
-      "links": [
-        {
-          "title": "Restoring/Importing Seed Phrase",
-          "url": "https://www.youtube.com/watch?v=qMxdRqGduHQ"
-        }
-      ]
+      "flag": "positive"
     },
     "seed-qr": {
       "value": "NO",
@@ -454,19 +433,19 @@
   },
   "address-format": {
     "legacy": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
-    },
-    "nested-segwit": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
-    },
-    "native-segwit": {
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "nested-segwit": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "native-segwit": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "taproot": {
       "value": "NO",
@@ -476,9 +455,9 @@
   },
   "addresses": {
     "view-address-text": {
-      "value": "YES",
+      "value": "On App",
       "supported": true,
-      "flag": "positive"
+      "flag": "neutral"
     },
     "view-address-qr": {
       "value": "On App",
@@ -491,16 +470,16 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "signing": {
     "multi-sig": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "frost": {
       "value": "NO",
@@ -521,17 +500,19 @@
       "supported": false
     },
     "message-signing": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "change-verification": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "change-address-display": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "fees": {
@@ -541,35 +522,36 @@
       "flag": "positive"
     },
     "replace-by-fee": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "child-pays-for-parent": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "maximum-fee-protection": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "privacy": {
     "coin-control": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "custom-node": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "tor": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "silent-payments": {
       "value": "NO",
@@ -611,8 +593,8 @@
   },
   "official-apps": {
     "web-app": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "windows-app": {
       "value": "NO",
@@ -639,12 +621,24 @@
       "supported": false
     },
     "android-app": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "links": [
+        {
+          "title": "Download from Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.ellipal.wallet"
+        }
+      ]
     },
     "ios-app": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "links": [
+        {
+          "title": "Download from Apple Store",
+          "url": "https://apps.apple.com/us/app/ellipal/id1426179665"
+        }
+      ]
     }
   },
   "third-party-apps": {
@@ -659,9 +653,9 @@
       "flag": "negative"
     },
     "sparrow": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "specter-desktop": {
       "value": "NO",
