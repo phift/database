@@ -113,9 +113,10 @@ All the features supported:
 | Private Keys | private-keys | User Added Entropy | user-added-entropy |
 | Private Keys | private-keys | Passphrases support | passphrase-support |
 | Private Keys | private-keys | Master Key Fingerprint | master-key-fingerprint |
-| Private Keys | private-keys | Backup Output Descriptor | backup-output-descriptor |
-| Private Keys | private-keys | Restore from Output Descriptor | restore-output-descriptor |
-| Private Keys | private-keys | Backup / recovery with BIP39 seed phrase | backup-recovery-seedphrase |
+| Private Keys | private-keys | Output Descriptor Backup | backup-output-descriptor |
+| Private Keys | private-keys | Output Descriptor Import | restore-output-descriptor |
+| Private Keys | private-keys | Shamir (SLIP39) Backup / Import | shamir-backup |
+| Private Keys | private-keys | BIP39 seed phrase Backup / Import | backup-recovery-seedphrase |
 | Private Keys | private-keys | 12 Words BIP39 Seed Creation | create-12-words |
 | Private Keys | private-keys | 24 Words BIP39 Seed Creation | create-24-words |
 | Private Keys | private-keys | 12 Words BIP39 Seed Import | import-12-words |

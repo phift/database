@@ -146,6 +146,11 @@
       "supported": true,
       "flag": "positive"
     },
+    "shamir-backup": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
     "backup-recovery-seedphrase": {
       "value": "YES",
       "supported": true,

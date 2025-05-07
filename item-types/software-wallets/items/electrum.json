@@ -146,6 +146,11 @@
       "supported": false,
       "flag": "negative"
     },
+    "shamir-backup": {
+      "value": "Import Only",
+      "supported": true,
+      "flag": "neutral"
+    },
     "backup-recovery-seedphrase": {
       "value": "YES",
       "supported": true,

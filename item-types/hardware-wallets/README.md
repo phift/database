@@ -170,16 +170,16 @@ All the features supported:
 | Private Keys | private-keys | Passphrase entry | passphrase-entry |
 | Private Keys | private-keys | Master Key Fingerprint | master-key-fingerprint |
 | Private Keys | private-keys | Deterministic Entropy (BIP-85) | bip85 |
-| Private Keys | private-keys | Shamir Backup (SLIP39) | shamir-backup |
-| Private Keys | private-keys | Seed XOR | seed-xor |
-| Private Keys | private-keys | Backup / recovery on microSD card | backup-recovery-microsd |
-| Private Keys | private-keys | Backup / recovery on NFC card | backup-recovery-nfc-card |
+| Private Keys | private-keys | Shamir (SLIP39) Backup / Import | shamir-backup |
+| Private Keys | private-keys | Seed XOR Backup / Import | seed-xor |
+| Private Keys | private-keys | microSD card Backup / Import | backup-recovery-microsd |
+| Private Keys | private-keys | NFC card Backup / Import | backup-recovery-nfc-card |
 | Private Keys | private-keys | 12 Words BIP39 Seed Creation | create-12-words |
 | Private Keys | private-keys | 24 Words BIP39 Seed Creation | create-24-words |
 | Private Keys | private-keys | 12/24 BIP39 Words Display | display-12-24-words |
 | Private Keys | private-keys | 12 Words BIP39 Seed Import | import-12-words |
 | Private Keys | private-keys | 24 Words BIP39 Seed Import | import-24-words |
-| Private Keys | private-keys | SeedQR | seed-qr |
+| Private Keys | private-keys | SeedQR Backup / Import | seed-qr |
 | Address Format | address-format | Legacy (P2PKH) | legacy |
 | Address Format | address-format | Nested Segwit (P2SH) | nested-segwit |
 | Address Format | address-format | Native Segwit (P2WPKH) | native-segwit |
@@ -199,6 +199,7 @@ All the features supported:
 | Fees | fees | Fee Control | fee-control |
 | Fees | fees | Replace-by-fee (RBF) | replace-by-fee |
 | Fees | fees | Child-pays-for-parent (CPFP) | child-pays-for-parent |
+| Fees | fees | Maximum Fee Protection | maximum-fee-protection |
 | Privacy | privacy | Coin Control | coin-control |
 | Privacy | privacy | Custom Node | custom-node |
 | Privacy | privacy | Tor | tor |
