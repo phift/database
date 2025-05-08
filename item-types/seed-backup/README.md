@@ -79,16 +79,8 @@ All the features supported:
 
 | Category | Category Id | Feature | Feature Id |
 | --- | --- | --- | --- |
-| Basic Information | basic-information | Price | price |
-| Basic Information | basic-information | Discounts | discounts |
-| Basic Information | basic-information | Available at Amazon | amazon |
-| Company | company | Brand | brand |
-| Company | company | Headquarters | headquarters |
-| Company | company | Website | website |
-| Company | company | Blog | blog |
-| Company | company | X (Twitter) | twitter |
-| Company | company | Nostr | nostr |
-| Company | company | YouTube | youtube |
+
+
 | Payment Methods to buy the device | payment-methods | BTC On Chain | btc-on-chain |
 | Payment Methods to buy the device | payment-methods | BTC Lightning | btc-lightning |
 | Payment Methods to buy the device | payment-methods | Alt Coins | alt-coins |

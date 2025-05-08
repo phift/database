@@ -82,17 +82,8 @@ All the features supported:
 
 | Category | Category Id | Feature | Feature Id |
 | --- | --- | --- | --- |
-| Basic Information | basic-information | Price | price |
-| Basic Information | basic-information | Discounts | discounts |
 | Basic Information | basic-information | Launch Year | year |
-| Company / Project | company | Brand | brand |
-| Company / Project | company | Headquarters / Location | headquarters |
-| Company / Project | company | Website | website |
-| Company / Project | company | Blog | blog |
-| Company / Project | company | X (Twitter) | twitter |
-| Company / Project | company | Nostr | nostr |
-| Company / Project | company | YouTube | youtube |
-| Company / Project | company | GitHub / GitLab | github |
+
 | Communities | communities | Telegram | telegram |
 | Communities | communities | Reddit | reddit |
 | Payment Methods to buy the node | payment-methods | BTC On Chain | btc-on-chain |

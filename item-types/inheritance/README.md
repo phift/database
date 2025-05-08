@@ -80,15 +80,8 @@ All the features supported:
 
 | Category | Category Id | Feature | Feature Id |
 | --- | --- | --- | --- |
-| Basic Information | basic-information | Minimum Yearly Price | price |
-| Company | company | Brand | brand |
-| Company | company | Headquarters | headquarters |
-| Company | company | Website | website |
-| Company | company | Blog | blog |
-| Company | company | X (Twitter) | twitter |
-| Company | company | Nostr | nostr |
-| Company | company | YouTube | youtube |
-| Company | company | GitHub | github |
+
+
 | Subscription Payment Methods | payment-methods | BTC On Chain | btc-on-chain |
 | Subscription Payment Methods | payment-methods | BTC Lightning | btc-lightning |
 | Subscription Payment Methods | payment-methods | Alt Coins | alt-coins |
