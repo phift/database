@@ -14,7 +14,8 @@
     "citadel": {
       "item-id": "citadel",
       "gitlab-project-id": "48888641",
-      "tag": true
+      "tag": true,
+      "enabled": false
     },
     "minibolt": {
       "item-id": "minibolt",
