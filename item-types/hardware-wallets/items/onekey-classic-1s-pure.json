@@ -356,7 +356,7 @@
         "10 wrong code attempts trigger self-erase"
       ]
     },
-    "login-countdown": {
+    "time-delay-to-unlock": {
       "value": "NO",
       "supported": false,
       "flag": "negative"
