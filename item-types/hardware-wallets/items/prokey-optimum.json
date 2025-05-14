@@ -270,12 +270,6 @@
       "value": "NO",
       "supported": false
     },
-    "latest-version": {
-      "value": "v1.10.5"
-    },
-    "latest-release-date": {
-      "value": "Oct 9, 2023"
-    },
     "release-notes": {
       "value": "YES",
       "supported": true,

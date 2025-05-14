@@ -276,12 +276,6 @@
       "value": "YES",
       "supported": true
     },
-    "latest-version": {
-      "value": "?"
-    },
-    "latest-release-date": {
-      "value": "?"
-    },
     "release-notes": {
       "value": "NO",
       "flag": "negative"

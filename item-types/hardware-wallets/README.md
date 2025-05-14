@@ -136,8 +136,6 @@ All the features supported:
 | Firmware | firmware | Upgrade via Bluetooth | upgrade-via-bluetooth |
 | Firmware | firmware | Upgrade via NFC | upgrade-via-nfc |
 | Firmware | firmware | Secure Boot | secure-boot |
-| Firmware | firmware | Latest Version | latest-version |
-| Firmware | firmware | Latest Release Date | latest-release-date |
 | Firmware | firmware | Release Notes | release-notes |
 | Firmware | firmware | Source-available | source-available |
 | Firmware | firmware | Free & Open Source (FOSS) | open-source |

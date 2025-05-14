@@ -528,12 +528,6 @@
         }
       ]
     },
-    "android-latest-version": {
-      "value": "v4.1.8"
-    },
-    "android-latest-release-date": {
-      "value": "Apr 7, 2025"
-    },
     "android-release-notes": {
       "value": "YES",
       "supported": true,
@@ -602,12 +596,6 @@
           "url": "https://blog.blockstream.com/blockstream-green-makes-it-easier-to-secure-your-stack-beta-now-open-2/"
         }
       ]
-    },
-    "ios-latest-version": {
-      "value": "v4.1.8"
-    },
-    "ios-latest-release-date": {
-      "value": "Apr 5, 2025"
     },
     "ios-release-notes": {
       "value": "YES",
@@ -697,12 +685,6 @@
         }
       ]
     },
-    "macos-latest-version": {
-      "value": "v2.0.25"
-    },
-    "macos-latest-release-date": {
-      "value": "Apr 24, 2025"
-    },
     "macos-release-notes": {
       "value": "YES",
       "supported": true,
@@ -757,12 +739,6 @@
           "url": "https://blog.blockstream.com/en-blockstream-green-now-on-desktop/"
         }
       ]
-    },
-    "linux-latest-version": {
-      "value": "v2.0.25"
-    },
-    "linux-latest-release-date": {
-      "value": "Apr 24, 2025"
     },
     "linux-release-notes": {
       "value": "YES",
@@ -819,12 +795,6 @@
         }
       ]
     },
-    "windows-latest-version": {
-      "value": "v2.0.25"
-    },
-    "windows-latest-release-date": {
-      "value": "Apr 24, 2025"
-    },
     "windows-release-notes": {
       "value": "YES",
       "supported": true,
@@ -874,12 +844,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "umbrel-os-latest-version": {
-      "value": "-"
-    },
-    "umbrel-os-latest-release-date": {
-      "value": "-"
-    },
     "umbrel-os-release-notes": {
       "value": "-",
       "supported": false
@@ -906,12 +870,6 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
-    },
-    "start-os-latest-version": {
-      "value": "-"
-    },
-    "start-os-latest-release-date": {
-      "value": "-"
     },
     "start-os-release-notes": {
       "value": "-",

@@ -113,12 +113,6 @@
     "bitcoin-only": {
       "value": "YES"
     },
-    "latest-version": {
-      "value": "v2"
-    },
-    "latest-release-date": {
-      "value": "Jun 24, 2023"
-    },
     "release-notes": {
       "value": "YES",
       "flag": "positive",

@@ -466,12 +466,6 @@
         }
       ]
     },
-    "android-latest-version": {
-      "value": "v2.2.2"
-    },
-    "android-latest-release-date": {
-      "value": "May 5, 2025"
-    },
     "android-release-notes": {
       "value": "YES",
       "supported": true,
@@ -532,12 +526,6 @@
           "url": "https://apps.apple.com/us/app/bitcoin-keeper/id1545535925"
         }
       ]
-    },
-    "ios-latest-version": {
-      "value": "v2.2.2"
-    },
-    "ios-latest-release-date": {
-      "value": "May 5, 2025"
     },
     "ios-release-notes": {
       "value": "YES",
@@ -615,12 +603,6 @@
       "supported": true,
       "flag": "neutral"
     },
-    "macos-latest-version": {
-      "value": "v0.2.3"
-    },
-    "macos-latest-release-date": {
-      "value": "May 5, 2025"
-    },
     "macos-release-notes": {
       "value": "YES",
       "supported": true,
@@ -669,12 +651,6 @@
       "value": "BETA",
       "supported": true,
       "flag": "neutral"
-    },
-    "linux-latest-version": {
-      "value": "v0.2.3"
-    },
-    "linux-latest-release-date": {
-      "value": "May 5, 2025"
     },
     "linux-release-notes": {
       "value": "YES",
@@ -725,12 +701,6 @@
       "supported": true,
       "flag": "neutral"
     },
-    "windows-latest-version": {
-      "value": "v0.2.3"
-    },
-    "windows-latest-release-date": {
-      "value": "May 5, 2025"
-    },
     "windows-release-notes": {
       "value": "YES",
       "supported": true,
@@ -780,12 +750,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "umbrel-os-latest-version": {
-      "value": "-"
-    },
-    "umbrel-os-latest-release-date": {
-      "value": "-"
-    },
     "umbrel-os-release-notes": {
       "value": "-",
       "supported": false
@@ -812,12 +776,6 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
-    },
-    "start-os-latest-version": {
-      "value": "-"
-    },
-    "start-os-latest-release-date": {
-      "value": "-"
     },
     "start-os-release-notes": {
       "value": "-",

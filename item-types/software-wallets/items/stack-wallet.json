@@ -471,12 +471,6 @@
         }
       ]
     },
-    "android-latest-version": {
-      "value": "v2.1.12"
-    },
-    "android-latest-release-date": {
-      "value": "Apr 19, 2025"
-    },
     "android-release-notes": {
       "value": "YES",
       "supported": true,
@@ -537,12 +531,6 @@
           "url": "https://apps.apple.com/us/app/stack-wallet-by-cypher-stack/id1634811534"
         }
       ]
-    },
-    "ios-latest-version": {
-      "value": "v2.1.12"
-    },
-    "ios-latest-release-date": {
-      "value": "Apr 19, 2025"
     },
     "ios-release-notes": {
       "value": "YES",
@@ -626,12 +614,6 @@
       "supported": true,
       "flag": "positive"
     },
-    "macos-latest-version": {
-      "value": "v2.1.12"
-    },
-    "macos-latest-release-date": {
-      "value": "Apr 19, 2025"
-    },
     "macos-release-notes": {
       "value": "YES",
       "supported": true,
@@ -680,12 +662,6 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
-    },
-    "linux-latest-version": {
-      "value": "v2.1.12"
-    },
-    "linux-latest-release-date": {
-      "value": "Apr 19, 2025"
     },
     "linux-release-notes": {
       "value": "YES",
@@ -736,12 +712,6 @@
       "supported": true,
       "flag": "positive"
     },
-    "windows-latest-version": {
-      "value": "v2.1.12"
-    },
-    "windows-latest-release-date": {
-      "value": "Apr 19, 2025"
-    },
     "windows-release-notes": {
       "value": "YES",
       "supported": true,
@@ -791,12 +761,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "umbrel-os-latest-version": {
-      "value": "-"
-    },
-    "umbrel-os-latest-release-date": {
-      "value": "-"
-    },
     "umbrel-os-release-notes": {
       "value": "-",
       "supported": false
@@ -823,12 +787,6 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
-    },
-    "start-os-latest-version": {
-      "value": "-"
-    },
-    "start-os-latest-release-date": {
-      "value": "-"
     },
     "start-os-release-notes": {
       "value": "-",

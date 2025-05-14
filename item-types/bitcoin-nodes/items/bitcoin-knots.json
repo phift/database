@@ -108,12 +108,6 @@
     "bitcoin-only": {
       "value": "YES"
     },
-    "latest-version": {
-      "value": "v28.1.20250305"
-    },
-    "latest-release-date": {
-      "value": "Mar 6, 2025"
-    },
     "release-notes": {
       "value": "YES",
       "flag": "positive",

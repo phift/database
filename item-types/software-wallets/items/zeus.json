@@ -468,12 +468,6 @@
         }
       ]
     },
-    "android-latest-version": {
-      "value": "v0.10.2"
-    },
-    "android-latest-release-date": {
-      "value": "Apr 15, 2025"
-    },
     "android-release-notes": {
       "value": "YES",
       "supported": true,
@@ -538,12 +532,6 @@
           "url": "https://apps.apple.com/us/app/zeus-ln/id1456038895"
         }
       ]
-    },
-    "ios-latest-version": {
-      "value": "v0.10.2"
-    },
-    "ios-latest-release-date": {
-      "value": "Apr 15, 2025"
     },
     "ios-release-notes": {
       "value": "YES",
@@ -627,12 +615,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "macos-latest-version": {
-      "value": "-"
-    },
-    "macos-latest-release-date": {
-      "value": "-"
-    },
     "macos-release-notes": {
       "value": "-",
       "supported": false
@@ -659,12 +641,6 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
-    },
-    "linux-latest-version": {
-      "value": "-"
-    },
-    "linux-latest-release-date": {
-      "value": "-"
     },
     "linux-release-notes": {
       "value": "-",
@@ -693,12 +669,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "windows-latest-version": {
-      "value": "-"
-    },
-    "windows-latest-release-date": {
-      "value": "-"
-    },
     "windows-release-notes": {
       "value": "-",
       "supported": false
@@ -726,12 +696,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "umbrel-os-latest-version": {
-      "value": "-"
-    },
-    "umbrel-os-latest-release-date": {
-      "value": "-"
-    },
     "umbrel-os-release-notes": {
       "value": "-",
       "supported": false
@@ -758,12 +722,6 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
-    },
-    "start-os-latest-version": {
-      "value": "-"
-    },
-    "start-os-latest-release-date": {
-      "value": "-"
     },
     "start-os-release-notes": {
       "value": "-",

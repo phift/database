@@ -442,12 +442,6 @@
       "value": "-",
       "supported": false
     },
-    "android-latest-version": {
-      "value": "-"
-    },
-    "android-latest-release-date": {
-      "value": "-"
-    },
     "android-release-notes": {
       "value": "-",
       "supported": false
@@ -473,12 +467,6 @@
       "value": "BETA",
       "supported": true,
       "flag": "neutral"
-    },
-    "ios-latest-version": {
-      "value": "v0.1"
-    },
-    "ios-latest-release-date": {
-      "value": "Mar 19, 2021"
     },
     "ios-release-notes": {
       "value": "YES",
@@ -556,12 +544,6 @@
       "supported": true,
       "flag": "positive"
     },
-    "macos-latest-version": {
-      "value": "v1.5"
-    },
-    "macos-latest-release-date": {
-      "value": "Sep 12, 2023"
-    },
     "macos-release-notes": {
       "value": "YES",
       "supported": true,
@@ -610,12 +592,6 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
-    },
-    "linux-latest-version": {
-      "value": "v1.5"
-    },
-    "linux-latest-release-date": {
-      "value": "Sep 12, 2023"
     },
     "linux-release-notes": {
       "value": "YES",
@@ -666,12 +642,6 @@
       "supported": true,
       "flag": "positive"
     },
-    "windows-latest-version": {
-      "value": "v1.5"
-    },
-    "windows-latest-release-date": {
-      "value": "Sep 12, 2023"
-    },
     "windows-release-notes": {
       "value": "YES",
       "supported": true,
@@ -721,12 +691,6 @@
       "supported": false,
       "flag": "negative"
     },
-    "umbrel-os-latest-version": {
-      "value": "-"
-    },
-    "umbrel-os-latest-release-date": {
-      "value": "-"
-    },
     "umbrel-os-release-notes": {
       "value": "-",
       "supported": false
@@ -753,12 +717,6 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
-    },
-    "start-os-latest-version": {
-      "value": "-"
-    },
-    "start-os-latest-release-date": {
-      "value": "-"
     },
     "start-os-release-notes": {
       "value": "-",

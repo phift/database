@@ -130,12 +130,6 @@
     "bitcoin-only": {
       "value": "YES"
     },
-    "latest-version": {
-      "value": "-"
-    },
-    "latest-release-date": {
-      "value": "-"
-    },
     "release-notes": {
       "value": "-"
     },

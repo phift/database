@@ -108,8 +108,6 @@ All the features supported:
 | Networks | networks | Bitcoin signet | btc-signet |
 | Firmware | firmware | Firmware Name | firmware-name |
 | Firmware | firmware | Bitcoin-only | bitcoin-only |
-| Firmware | firmware | Latest Version | latest-version |
-| Firmware | firmware | Latest Release Date | latest-release-date |
 | Firmware | firmware | Release Notes | release-notes |
 | Firmware | firmware | Source-available | source-available |
 | Firmware | firmware | Free & Open Source (FOSS) | open-source |

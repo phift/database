@@ -162,16 +162,12 @@ All the features supported:
 | Android Support | android-support | Supported | android-supported |
 | Android Support | android-support | Google Play | android-googleplay-support |
 | Android Support | android-support | Direct APK Download | android-apk-support |
-| Android Support | android-support | Latest Version | android-latest-version |
-| Android Support | android-support | Latest Release Date | android-latest-release-date |
 | Android Support | android-support | Release Notes | android-release-notes |
 | Android Support | android-support | Source-available | android-source-available |
 | Android Support | android-support | Free & Open Source (FOSS) | android-open-source |
 | Android Support | android-support | License | android-license |
 | Android Support | android-support | Reproducible Builds | android-reproducible-builds |
 | iOS Support | ios-support | Supported | ios-supported |
-| iOS Support | ios-support | Latest Version | ios-latest-version |
-| iOS Support | ios-support | Latest Release Date | ios-latest-release-date |
 | iOS Support | ios-support | Release Notes | ios-release-notes |
 | iOS Support | ios-support | Source-available | ios-source-available |
 | iOS Support | ios-support | Free & Open Source (FOSS) | ios-open-source |
@@ -184,40 +180,30 @@ All the features supported:
 | Web Support | web-support | License | web-license |
 | Web Support | web-support | Reproducible Builds | web-reproducible-builds |
 | MacOS Support | macos-support | Supported | macos-supported |
-| MacOS Support | macos-support | Latest Version | macos-latest-version |
-| MacOS Support | macos-support | Latest Release Date | macos-latest-release-date |
 | MacOS Support | macos-support | Release Notes | macos-release-notes |
 | MacOS Support | macos-support | Source-available | macos-source-available |
 | MacOS Support | macos-support | Free & Open Source (FOSS) | macos-open-source |
 | MacOS Support | macos-support | License | macos-license |
 | MacOS Support | macos-support | Reproducible Builds | macos-reproducible-builds |
 | Linux Support | linux-support | Supported | linux-supported |
-| Linux Support | linux-support | Latest Version | linux-latest-version |
-| Linux Support | linux-support | Latest Release Date | linux-latest-release-date |
 | Linux Support | linux-support | Release Notes | linux-release-notes |
 | Linux Support | linux-support | Source-available | linux-source-available |
 | Linux Support | linux-support | Free & Open Source (FOSS) | linux-open-source |
 | Linux Support | linux-support | License | linux-license |
 | Linux Support | linux-support | Reproducible Builds | linux-reproducible-builds |
 | Windows Support | windows-support | Supported | windows-supported |
-| Windows Support | windows-support | Latest Version | windows-latest-version |
-| Windows Support | windows-support | Latest Release Date | windows-latest-release-date |
 | Windows Support | windows-support | Release Notes | windows-release-notes |
 | Windows Support | windows-support | Source-available | windows-source-available |
 | Windows Support | windows-support | Free & Open Source (FOSS) | windows-open-source |
 | Windows Support | windows-support | License | windows-license |
 | Windows Support | windows-support | Reproducible Builds | windows-reproducible-builds |
 | Umbrel OS Support | umbrel-os-support | Supported | umbrel-os-supported |
-| Umbrel OS Support | umbrel-os-support | Latest Version | umbrel-os-latest-version |
-| Umbrel OS Support | umbrel-os-support | Latest Release Date | umbrel-os-latest-release-date |
 | Umbrel OS Support | umbrel-os-support | Release Notes | umbrel-os-release-notes |
 | Umbrel OS Support | umbrel-os-support | Source-available | umbrel-os-source-available |
 | Umbrel OS Support | umbrel-os-support | Free & Open Source (FOSS) | umbrel-os-open-source |
 | Umbrel OS Support | umbrel-os-support | License | umbrel-os-license |
 | Umbrel OS Support | umbrel-os-support | Reproducible Builds | umbrel-os-reproducible-builds |
 | Start OS Support | start-os-support | Supported | start-os-supported |
-| Start OS Support | start-os-support | Latest Version | start-os-latest-version |
-| Start OS Support | start-os-support | Latest Release Date | start-os-latest-release-date |
 | Start OS Support | start-os-support | Release Notes | start-os-release-notes |
 | Start OS Support | start-os-support | Source-available | start-os-source-available |
 | Start OS Support | start-os-support | Free & Open Source (FOSS) | start-os-open-source |

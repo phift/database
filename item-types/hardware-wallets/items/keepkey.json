@@ -252,12 +252,6 @@
       "value": "NO",
       "supported": false
     },
-    "latest-version": {
-      "value": "v7.10.0"
-    },
-    "latest-release-date": {
-      "value": "Feb 12, 2025"
-    },
     "release-notes": {
       "value": "YES",
       "supported": true,
