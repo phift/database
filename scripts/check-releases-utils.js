@@ -1,23 +1,10 @@
 const fs = require('fs');
 const { exit } = require('process');
 const axios = require('axios');
-const util = require('util');
 const path = require('path');
-const cheerio = require('cheerio');
-
 const twitter = require('./tweet');
 const nostr = require('./nostr');
 const utils = require('./utils');
-
-const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-const longMonths = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-
-const shortMonths = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
 
 class BaseCommand {
 
@@ -56,7 +43,7 @@ class BaseCommand {
                 throw new Error('Invalid version found: ' + release.version);
             }
     
-            if (!isValidDate(release.date)) {
+            if (!utils.isValidDate(release.date)) {
                 throw new Error('Invalid release data found: ' + release.date);
             }
         } else {
@@ -85,7 +72,7 @@ class BaseCommand {
             } catch (err) {
                 if (err.response?.status === 429 && i < retries - 1) {
                     console.warn(`429 received. Retrying in ${delayMs}ms...`);
-                    await sleep(delayMs);
+                    await utils.sleep(delayMs);
                 } else {
                     throw err;
                 }
@@ -197,7 +184,7 @@ class GithubLatestReleaseCommand extends GithubCommand {
 
     parseRelease(data) {
         console.log("Using latest releases API")
-        var date = getDate(data.published_at)
+        var date = utils.getDate(data.published_at)
         var version = data.name.trim()
         console.log("Release name: " + version)
         if (version === undefined || version === "") {
@@ -244,7 +231,7 @@ class GithubAllReleasesCommand extends GithubCommand {
                     exit(1);
                 }
                 if (match) {
-                    date = getDate(release.published_at)
+                    date = utils.getDate(release.published_at)
                     //assets = release.assets
                     version = release.name.trim()
                     console.log("Release name: " + version)
@@ -278,7 +265,7 @@ class GithubTagCommand extends GithubCommand {
         }
 
         console.log("Tag name: " + version)
-        return { version: version, date: today()};
+        return { version: version, date: utils.today()};
     }
 
     getUrl() {
@@ -304,7 +291,7 @@ class GitlagTagCommand extends BaseCommand {
         }
 
         console.log("Tag name: " + version)
-        return { version: version, date: today()};
+        return { version: version, date: utils.today()};
     }
 
     getUrl() {
@@ -387,10 +374,6 @@ async function runCommandsSequentially(commands) {
     } else {
         console.log("✅ Finished successfully");
     }
-}
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function checkRelease(itemType, itemId, platforms, latestVersion, latestReleaseDate) {
@@ -549,27 +532,10 @@ function updateRelease(itemType, itemId, platforms, releaseVersion, releaseDate)
     });
 }
 
-function getShortMonthByIndex(index) {
-    return shortMonths[index]
-}
-
-function getShortMonth(date) {
-    return shortMonths[date.getMonth()]
-}
-
-function getLongMonthIndex(month) {
-    return longMonths.indexOf(month)
-}
-
 function isValidVersion(str, preReleaseSupported) {
     const base = '^v\\d+(\\.\\d+)*';
     const preRelease = '(?:-(alpha|beta|rc)(\\.\\d+)?)?';
     const regex = new RegExp(preReleaseSupported ? `${base}${preRelease}$` : `${base}$`);
-    return regex.test(str);
-}
-
-function isValidDate(str) {
-    const regex = /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [1-9]|[1-2][0-9]|3[01], \d{4}$/;
     return regex.test(str);
 }
 
@@ -677,85 +643,10 @@ function postNewRelease(itemType, itemId, itemName, version, changelogUrl, brand
     twitter.postTweet();
     
     // This is added to wait for a fail on Twitter posting
-    sleep(2000);
+    utils.sleep(2000);
 
     nostr.postNostr();
     console.log("-------------------")
-}
-
-function getDate(publishedAt) {
-    if (publishedAt != "") {
-        return new Date(publishedAt).toLocaleDateString(undefined, dateOptions);
-    } else {
-        return today()
-    }
-}
-
-function today() {
-    return new Date().toLocaleDateString(undefined, dateOptions);
-}
-
-// Input format: March 14, 2024
-function formatMonthDDYYYY(inputDate) {
-    // Split the input date string into parts
-    const parts = inputDate.match(/^(\w+)\s(\d{1,2}),\s(\d{4})$/);
-
-    if (parts && parts.length === 4) {
-        const year = parseInt(parts[3]);
-        const monthIndex = getLongMonthIndex(parts[1]);
-        const day = parseInt(parts[2]);
-
-        // Create a JavaScript Date object
-        const date = new Date(year, monthIndex, day);
-
-        // Format the date in the desired output format (e.g., "Dec 22, 2023")
-        return `${getShortMonth(date)} ${date.getDate()}, ${date.getFullYear()}`;
-    }
-
-    // Return the original input if parsing fails
-    return inputDate;
-}
-
-// Input format: 15th March 2023
-function formatDDMonthYYYY(inputDate) {
-    // Split the input date string into parts
-    const parts = inputDate.match(/^(\d{1,2})(st|nd|rd|th)\s(\w+)\s(\d{4})$/);
-
-    if (parts && parts.length === 5) {
-        const day = parseInt(parts[1]);
-        const monthIndex = getLongMonthIndex(parts[3]);
-        const year = parseInt(parts[4]);
-
-        // Create a JavaScript Date object
-        const date = new Date(year, monthIndex, day);
-
-        // Format the date in the desired output format (e.g., "Dec 22, 2023")
-        return `${getShortMonth(date)} ${date.getDate()}, ${date.getFullYear()}`;
-    }
-
-    // Return the original input if parsing fails
-    return inputDate;
-}
-
-// Input format: 2023-12-22
-function formatYYYYMMDD(inputDate) {
-    // Split the input date string into parts
-    const parts = inputDate.match(/(\d{4})-(\d{2})-(\d{2})/);
-
-    if (parts && parts.length === 4) {
-        const year = parseInt(parts[1]);
-        const monthIndex = parseInt(parts[2]) - 1; // JavaScript Date months are 0-based
-        const day = parseInt(parts[3]);
-
-        // Create a JavaScript Date object
-        const date = new Date(year, monthIndex, day);
-
-        // Format the date in the desired output format (e.g., "Dec 22, 2023")
-        return `${getShortMonth(date)} ${date.getDate()}, ${date.getFullYear()}`;
-    }
-
-    // Return the original input if parsing fails
-    return inputDate;
 }
 
 module.exports = {
@@ -765,10 +656,5 @@ module.exports = {
     GitlagTagCommand,
     ChangeLogCommand,
     FirstLineChangeLogCommand,
-    runCommandsSequentially,
-    formatYYYYMMDD,
-    formatMonthDDYYYY,
-    formatDDMonthYYYY,
-    getShortMonthByIndex,
-    today
+    runCommandsSequentially
   };

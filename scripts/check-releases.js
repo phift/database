@@ -1,6 +1,4 @@
-const fs = require('fs');
 const cheerio = require('cheerio');
-
 const twitter = require('./tweet');
 const nostr = require('./nostr');
 const utils = require('./utils');
@@ -12,12 +10,7 @@ const {
     GitlagTagCommand,
     ChangeLogCommand,
     FirstLineChangeLogCommand,
-    runCommandsSequentially,
-    formatYYYYMMDD,
-    formatMonthDDYYYY,
-    formatDDMonthYYYY,
-    getShortMonthByIndex,
-    today
+    runCommandsSequentially
   } = require('./check-releases-utils');
 
 // Hardware Wallets
@@ -69,7 +62,7 @@ class ColdcardMk4Command extends ChangeLogCommand {
                 const match = line.match(regex);
                 if (match) {
                     version = match[1];
-                    date = formatYYYYMMDD(match[2]);
+                    date = utils.formatYYYYMMDD(match[2]);
                     break;
                 }
             } else if (line == "# Mk4 Specific Changes") {
@@ -98,7 +91,7 @@ class ColdcardQCommand extends ChangeLogCommand {
                 const match = line.match(regex);
                 if (match) {
                     version = match[1];
-                    date = formatYYYYMMDD(match[2]);
+                    date = utils.formatYYYYMMDD(match[2]);
                     break;
                 }
             } else if (line == "# Q Specific Changes") {
@@ -121,7 +114,7 @@ class CoolWalletProCommand extends FirstLineChangeLogCommand {
     }
 
     formatDate(date) {
-        return formatYYYYMMDD(date)
+        return utils.formatYYYYMMDD(date)
     }
 }
 
@@ -148,7 +141,7 @@ class TrezorModelOneCommand extends FirstLineChangeLogCommand {
     }
 
     formatDate(date) {
-        return formatDDMonthYYYY(date)
+        return utils.formatDDMonthYYYY(date)
     }
 }
 
@@ -168,11 +161,11 @@ class TrezorModelTSafeCommand extends ChangeLogCommand {
             const match = line.match(regex);
             if (match) {
                 version = match[1];
-                date = formatDDMonthYYYY(match[2]);
+                date = utils.formatDDMonthYYYY(match[2]);
                 if (match[2] === "internal release") {
-                    date = today()
+                    date = utils.today()
                 } else {
-                    date = formatDDMonthYYYY(match[2]);
+                    date = utils.formatDDMonthYYYY(match[2]);
                 }
                 break;
             }
@@ -195,7 +188,7 @@ class ElectrumCommand extends FirstLineChangeLogCommand {
     }
 
     formatDate(date) {
-        return formatMonthDDYYYY(date)
+        return utils.formatMonthDDYYYY(date)
     }
 
     getPlatforms() {
@@ -215,7 +208,7 @@ class MuunAndroidCommand extends FirstLineChangeLogCommand {
     }
 
     formatDate(date) {
-        return formatYYYYMMDD(date)
+        return utils.formatYYYYMMDD(date)
     }
 
     getPlatforms() {
@@ -278,7 +271,7 @@ class MyNodeCommand extends ChangeLogCommand {
                     const dateMatch = nextLine.match(dateRegex);
         
                     if (dateMatch) {
-                        date = `${getShortMonthByIndex(parseInt(dateMatch[1]) - 1)} ${dateMatch[2]}, ${2000 + parseInt(dateMatch[3])}`;
+                        date = `${utils.getShortMonthByIndex(parseInt(dateMatch[1]) - 1)} ${dateMatch[2]}, ${2000 + parseInt(dateMatch[3])}`;
                     }
                 }
         
@@ -303,7 +296,7 @@ class NodlCommand extends ChangeLogCommand {
         if (match) {
             version = match[1];
         }
-        return { version: version, date: today()};
+        return { version: version, date: utils.today()};
     }
 }
 
@@ -329,7 +322,7 @@ class ParmanodeCommand extends ChangeLogCommand {
                 break; // Stop after finding the first valid version line
             }
         }
-        return { version: version, date: today()};
+        return { version: version, date: utils.today()};
     }
 }
 
