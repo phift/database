@@ -1,923 +1,591 @@
 const fs = require('fs');
-const { exit } = require('process');
-const axios = require('axios');
-const util = require('util');
-const path = require('path');
 const cheerio = require('cheerio');
 
-eval(fs.readFileSync('./tweet.js', 'utf-8'));
-eval(fs.readFileSync('./nostr.js', 'utf-8'));
+const twitter = require('./tweet');
+const nostr = require('./nostr');
+const utils = require('./utils');
 
-setTwitterEnabled(process.argv[2] === 'true' ? true : false)
-setNostrEnabled(process.argv[3] === 'true' ? true : false)
+const {
+    GithubLatestReleaseCommand,
+    GithubAllReleasesCommand,
+    GithubTagCommand,
+    GitlagTagCommand,
+    ChangeLogCommand,
+    FirstLineChangeLogCommand,
+    runCommandsSequentially,
+    formatYYYYMMDD,
+    formatMonthDDYYYY,
+    formatDDMonthYYYY,
+    getShortMonthByIndex,
+    today
+  } = require('./check-releases-utils');
 
-const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+// Hardware Wallets
 
-const sleep = util.promisify(setTimeout);
+class BitkeyCommand extends ChangeLogCommand {
 
-async function processReleases() {
-    const dirs = fs.readdirSync("../item-types/", { withFileTypes: true })
-        .filter(dirent => dirent.isDirectory());
-
-    for (const dirent of dirs) {
-        const itemType = dirent.name;
-        const path = `../item-types/${itemType}/json/check-releases.json`;
-
-        try {
-            if (fs.existsSync(path)) {
-                const data = fs.readFileSync(path, 'utf8');
-                const json = JSON.parse(data);
-
-                for (const key of Object.keys(json)) {
-                    await fetchRelease(itemType, json[key]);
-                    await sleep(1000);
-                }
-            }
-        } catch (err) {
-            console.error(`Error reading or parsing ${path}:`, err);
-            process.exit(1);
-        }
-    }
-    console.log("✅ Check releases finished OK");
-}
-
-processReleases();
-
-function fetchRelease(itemType, json) {
-
-    const enabled = json["enabled"]
-    const itemId = json["item-id"]
-    const changelogUrl = json["changelog-url"]
-    const githubOwner = json["github-org"]
-    const githubRepo = json["github-repo"]
-    const gitlabProjectId = json["gitlab-project-id"]
-    const tag = json.tag
-    const latestRelease = json["latest-release"]
-    const allReleases = json["all-releases"]
-    const allReleasesInclude = json["all-releases-include"]
-    const allReleasesExclude = json["all-releases-exclude"]
-    const assetsMatch = json["assets-match"]
-    const preReleaseSupported = itemId == "frostnap"
-
-    if (enabled == false) {
-        console.warn(`⚠️ ${json["item-id"]} disabled`)
-        return
-    }
-    
-    const githubApiKey = process.env.GITHUB_TOKEN
-    const gitlabApiKey = process.env.GITLAB_TOKEN
-    
-    var headers = {
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: `Bearer ${githubApiKey}`,
-      };
-    var apiUrl 
-    if (tag == true) {
-        if (gitlabProjectId != undefined) {
-            headers = {
-                Authorization: `Bearer ${gitlabApiKey}`
-              };
-            apiUrl = `https://gitlab.com/api/v4/projects/${gitlabProjectId}/repository/tags`;
-        } else {
-            apiUrl = `https://api.github.com/repos/${githubOwner}/${githubRepo}/tags`;
-        }
-    } else if (latestRelease == true) {
-        apiUrl = `https://api.github.com/repos/${githubOwner}/${githubRepo}/releases/latest`;
-    } else if (allReleases == true) {
-        apiUrl = `https://api.github.com/repos/${githubOwner}/${githubRepo}/releases`;
-    } else if (changelogUrl != undefined) {
-        apiUrl = changelogUrl
-        headers = {}
-    } else {
-        console.error(`${json["item-id"]} - Not defined api url to use`);
-        exit(1);
-    }
-    
-    console.log('---------------------');
-    console.log(`Item Id: ${json["item-id"]}`);
-    console.log("Request url: " + apiUrl)
-    axios
-      .get(apiUrl, { headers })
-      .then((response) => {
-
-        var latestVersion
-        var latestReleaseDate
-        // var assetFileNames = [];
-    
-        // var assets = []
-        var body = ""
-
-        if (itemId == "bitkey") {
-            const $ = cheerio.load(response.data);
-            let found = false;
-
-            $('.border-t.py-6').each((_, element) => {
-                if (found) return;
-
-                const date = $(element).find('.text-primary50').first().text().trim();
-                const versionText = $(element).find('.font-semibold').first().text().trim();
-                const type = $(element).find('.text-primary50').first().next().text().trim();
-
-                if (type.toLowerCase().includes('firmware')) {
-                    latestVersion = versionText
-                    latestReleaseDate = date
-                    found = true
-                }
-            });
-        } else if (latestRelease == true) {
-            console.log("Using latest releases API")
-            body = response.data.body
-    
-            latestReleaseDate = getDate(response.data.published_at)
-            //assets = response.data.assets
-            latestVersion = response.data.name.trim()
-            console.log("Release name: " + latestVersion)
-            if (latestVersion === undefined || latestVersion === "") {
-                latestVersion = response.data.tag_name.trim()
-                console.log("Tag name: " + latestVersion)
-            }
-        } else if (allReleases == true) {
-            console.log("Using releases API")
-            response.data.forEach((release) => {
-                if (latestVersion === undefined) {
-                    var match = false
-                    if (allReleasesInclude != undefined) {
-                        match = release.name.toLowerCase().includes(allReleasesInclude.toLowerCase())
-                    } else if (allReleasesExclude != undefined) {
-                        match = !release.name.toLowerCase().includes(allReleasesExclude.toLowerCase())
-                    } else if (assetsMatch != undefined) {
-                        release.assets.forEach((asset) => {
-                            if (asset.name.endsWith(assetsMatch)) {
-                                match = true
-                            }
-                        });
-                    } else {
-                        console.error('Not defined any allReleasesInclude or allReleasesExclude or assetsMatch');
-                        exit(1);
-                    }
-                    if (match) {
-                        body = release.body
-                        latestReleaseDate = getDate(release.published_at)
-                        //assets = release.assets
-                        latestVersion = release.name.trim()
-                        console.log("Release name: " + latestVersion)
-                        if (latestVersion === undefined || latestVersion === "") {
-                            latestVersion = release.tag_name
-                            console.log("Tag name: " + latestVersion)
-                        }
-                    }
-                }
-            });
-        } else if (tag == true) {
-            console.log("Using tags API")
-            const tags = response.data;
-            latestTag = tags[0];
-
-            for (const tag of tags) {
-                if (latestVersion == undefined && !tag.name.trim().includes("$(MARKETING_VERSION)")) {
-                    latestVersion = tag.name.trim()
-                }
-            }
-
-            console.log("Tag name: " + latestVersion)
-            latestReleaseDate = today()
-        } else if (changelogUrl != undefined) {
-            var body = response.data
-            // Split the content into lines
-            const lines = body.split('\n');
-    
-            if (itemId == "parmanode") {
-                const regex = /^Version ([\d.]+)/;
-                for (const line of lines) {
-                    // Skip empty lines and lines starting with #
-                    if (line.trim() === "" || line.trim().startsWith("#")) {
-                        continue;
-                    }
-                
-                    const match = line.match(regex);
-                    if (match) {
-                        latestVersion = match[1];
-                        latestReleaseDate = today();
-                        break; // Stop after finding the first valid version line
-                    }
-                }
-            } else if (itemId.startsWith("mynode-")) {
-                // === v0.3.25 ===
-                // - Released 1/11/24
-
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i].trim();
-                
-                    if (line.startsWith("===")) {
-                        const versionRegex = /^=== v([\d.]+) ===/;
-                        const versionMatch = line.match(versionRegex);
-                
-                        if (versionMatch) {
-                            latestVersion = versionMatch[1];
-                
-                            // Check if the next line exists
-                            const nextLine = lines[i + 1]?.trim();
-                            const dateRegex = /^- Released ([\d.]+)\/([\d.]+)\/([\d.]+)/;
-                            const dateMatch = nextLine.match(dateRegex);
-                
-                            if (dateMatch) {
-                                latestReleaseDate = `${getShortMonthByIndex(parseInt(dateMatch[1]) - 1)} ${dateMatch[2]}, ${2000 + parseInt(dateMatch[3])}`;
-                            }
-                        }
-                
-                        break; // Only need the first match
-                    }
-                }
-            } else if (itemId.startsWith("nodl-")) {
-                const line = lines[0]
-                const regex = /^([\d.]+) -/;
-                const match = line.match(regex);
-                if (match) {
-                    latestVersion = match[1];
-                    latestReleaseDate = today();
-                }
-            } else if (itemId == "coolwallet-pro") {
-                // Coolwallet Pro. Example: ## [332] - 2023-08-10
-                const regex = /^## \[([\d]+)\] - (\d{4}-\d{2}-\d{2})/;
-                for (const line of lines) {
-                    const match = line.match(regex);
-                    if (match) {
-                        latestVersion = match[1];
-                        latestReleaseDate = formatYYYYMMDD(match[2]);
-                        break;
-                    }
-                }
-            } else if (itemId == "coldcard-mk4") {
-                // Coldcard Mk4. Example: ## 5.2.2 - 2023-12-21
-                const regex = /^## ([\d.]+) - (\d{4}-\d{2}-\d{2})/;
-                var onSection = false
-                for (const line of lines) {
-                    if (onSection == true) {
-                        const match = line.match(regex);
-                        if (match) {
-                            latestVersion = match[1];
-                            latestReleaseDate = formatYYYYMMDD(match[2]);
-                            break;
-                        }
-                    } else if (line == "# Mk4 Specific Changes") {
-                        onSection = true
-                    }
-                }
-            } else if (itemId == "coldcard-q") {
-                // Coldcard Q. Example: ## 0.0.6Q - 2024-02-22
-                const regex = /^## ([\d.]+)Q - (\d{4}-\d{2}-\d{2})/;
-                var onSection = false
-                for (const line of lines) {
-                    if (onSection == true) {
-                        const match = line.match(regex);
-                        if (match) {
-                            latestVersion = match[1];
-                            latestReleaseDate = formatYYYYMMDD(match[2]);
-                            break;
-                        }
-                    } else if (line == "# Q Specific Changes") {
-                        onSection = true
-                    }
-                }
-            } else if (itemId == "trezor-model-t" || itemId.startsWith("trezor-safe")) {
-                // Example: ## [2.7.0] (20th March 2024) or ## [2.8.5] (internal release)
-                const regex = /^## \[([\d.]+)\] \((\d{1,2}(?:st|nd|rd|th) \w+ \d{4}|internal release)\)/;
-                for (const line of lines) {
-                    const match = line.match(regex);
-                    if (match) {
-                        latestVersion = match[1];
-                        latestReleaseDate = formatDDMonthYYYY(match[2]);
-                        if (match[2] === "internal release") {
-                            latestReleaseDate = today()
-                        } else {
-                            latestReleaseDate = formatDDMonthYYYY(match[2]);
-                        }
-                        break;
-                    }
-                }
-            } else if (itemId == "trezor-model-one") {
-                // Example: ## 1.12.1 [15th March 2023]
-                const regex = /^## ([\d.]+) \[(\d{1,2}\w\w \w+ \d{4})\]/;
-                for (const line of lines) {
-                    const match = line.match(regex);
-                    if (match) {
-                        console.log("Matched line: " + line)
-                        latestVersion = match[1];
-                        latestReleaseDate = formatDDMonthYYYY(match[2]);
-                        break;
-                    }
-                }
-            } else if (itemId == "muun") {
-                // ## [51.5] - 2023-12-22
-                const regex = /^## \[([\d.]+)\] - (\d{4}-\d{2}-\d{2})/;
-                for (const line of lines) {
-                    const match = line.match(regex);
-                    if (match) {
-                        console.log("Matched line: " + line)
-                        latestVersion = match[1];
-                        latestReleaseDate = formatYYYYMMDD(match[2]);
-                        break;
-                    }
-                }
-            } else if (itemId == "electrum") {
-                // # Release 4.4.6 (August 18, 2023) (security update)
-                // Find the first line starting with "#"
-                const regex = /^# Release ([\d.]+) \(([^)]+)\)/;
-                for (const line of lines) {
-                    const match = line.match(regex);
-                    if (match) {
-                        console.log("Matched line: " + line)
-                        latestVersion = match[1];
-                        latestReleaseDate = formatMonthDDYYYY(match[2]);
-                        break;
-                    }
-                }
-            } else {
-                console.error("Date parser not found")
-                exit(1);
-            }
-            
-            if (latestVersion == undefined) {
-                console.error("latestVersion not found")
-                exit(1);
-            }
-    
-            if (latestReleaseDate == undefined) {
-                console.error("latestReleaseDate not found")
-                exit(1);
-            }
-        }
-    
-        if (!ignoreVersion(itemId, latestVersion, preReleaseSupported)) {
-
-            console.log("Pre processed latestVersion: " + latestVersion)
-            if (itemType == "bitcoin-nodes") {
-                // MiniBolt
-                latestVersion = latestVersion.replace(/^MiniBolt /, '');
-        
-                // Bitcoin Core
-                latestVersion = latestVersion.replace(/^Bitcoin Core /, '');
-        
-                // Bitcoin Knots
-                latestVersion = latestVersion.replace(/^Bitcoin Knots /, '');
-                latestVersion = latestVersion.replace(/knots/, '');
-        
-                // Umbrel
-                latestVersion = latestVersion.replace(/^umbrelOS /, '');
-
-                // Raspibolt
-                latestVersion = latestVersion.replace(/^RaspiBolt /, '');
-            } else if (itemType == "hardware-wallets") {
-    
-                // Bitbox
-                latestVersion = latestVersion.replace(/ - Multi$/, '');
-                latestVersion = latestVersion.replace(/ - Bitcoin-only$/, '');
-    
-                // OneKey
-                latestVersion = latestVersion.replace(/^mini\//, '');
-                latestVersion = latestVersion.replace(/^classic\//, '');
-                latestVersion = latestVersion.replace(/^touch\//, '');
-    
-                // Passport
-                latestVersion = latestVersion.replace(/^Passport Firmware /, '');
-                latestVersion = latestVersion.replace(/^Passport /, '');
-                latestVersion = latestVersion.replace(/ Firmware$/, '');
-    
-                // Portal
-                latestVersion = latestVersion.replace(/^Firmware /, '');
-
-                // ProKey
-                latestVersion = latestVersion.replace(/^Prokey Firmware /, '');
-    
-                // Keepkey
-                latestVersion = latestVersion.replace(/^Release /, '');
-    
-                // Krux
-                latestVersion = latestVersion.replace(/^Version /, '');
-    
-                // Keystone
-                latestVersion = latestVersion.replace(/-BTC$/, '');
-                latestVersion = latestVersion.replace(/-btc$/, '');
-    
-                // Grid+ Lattice1
-                latestVersion = latestVersion.replace(/^HSM-/, '');
-    
-                // Satochip
-                const match = latestVersion.match(/^Satochip (v\d+(\.\d+)+)/)
-                if (match) {
-                    latestVersion = match[1];
-                }
-            } else if (itemType == "software-wallets") {
-
-                // Bitcoin Core
-                latestVersion = latestVersion.replace(/^Bitcoin Core /, '');
-
-                // Bitcoin Keeper
-                latestVersion = latestVersion.replace(/^Keeper Desktop /, '');
-    
-                // My Cytadel: Version 1.5 (Blazing Venus)
-                latestVersion = latestVersion.replace(/^Version (\d+(\.\d+)+) \(.*\)$/, '$1');
-    
-                // Zeuz: v0.8.5-hotfix
-                latestVersion = latestVersion.replace(/-hotfix$/, '');
-    
-                // Proton Wallet: v1.0.0+58
-                latestVersion = latestVersion.replace(/\+\d+$/, '');
-    
-                // Nunchuk: android.1.9.46
-                latestVersion = latestVersion.replace(/^android./, '');
-    
-                // Phoenix
-                if (itemId == "phoenix") {
-                    latestVersion = latestVersion.replace(/^Android /, '');
-                    latestVersion = latestVersion.replace(/^Phoenix Android /, '');
-                    latestVersion = latestVersion.replace(/^Phoenix /, '');
-                    latestVersion = latestVersion.replace(/^Phoenix Android\/iOS /, '');
-                }
-    
-                // Specter
-                latestVersion = latestVersion.replace(/^Specter /, '');
-    
-                // Stack Wallet
-                latestVersion = latestVersion.replace(/^Stack Wallet /, '');
-    
-                // Wasabi v2.0.4 - Faster Than Fast Latest
-                latestVersion = latestVersion.replace(/^Wasabi v(\d+(\.\d+)+) - .*$/, '$1');
-                latestVersion = latestVersion.replace(/^Wasabi Wallet v(\d+(\.\d+)+) - .*$/, '$1');
-                latestVersion = latestVersion.replace(/^Wasabi Wallet v(\d+(\.\d+)+)*$/, '$1');
-
-                // 2.7.14-1035
-                if (itemId == "muun") {
-                    latestVersion = latestVersion.split("-")[0]
-                }
-            }
-
-            // For example: "2023-09-08T2009-v5.1.4"
-            if (!preReleaseSupported) {
-                latestVersion = latestVersion.replace(/.*-([^:]+)$/, '$1');
-            }
-    
-            latestVersion = latestVersion.replace(/^(v\d+(\.\d+)+):(.*)$/, '$1');
-            latestVersion = latestVersion.replace(/^Android Release\s*/, '');
-            latestVersion = latestVersion.replace(/^Release\s*/, '');
-            latestVersion = latestVersion.replace(/^release_/, '');
-
-            latestVersion = latestVersion.replace(/^v\./, '');
-    
-            // Check if the input starts with "v"
-            if (!latestVersion.startsWith("v")) {
-                // If it doesn't match the version pattern, add the "v" prefix
-                latestVersion = "v" + latestVersion;
-            }
-
-            console.log("Post processed latestVersion: " + latestVersion)
-    
-            if (!isValidVersion(latestVersion, preReleaseSupported)) {
-                console.error('Invalid version found: ' + latestVersion);
-                exit(1);
-            }
-    
-            if (!isValidDate(latestReleaseDate)) {
-                console.error('Invalid release data found: ' + latestReleaseDate);
-                exit(1);
-            }
-    
-            // Iterate through release assets and collect their file names
-            // assets.forEach((asset) => {
-            //     assetFileNames.push(asset.name);
-            // });
-            //console.log('Release Notes:\n', body);
-            //console.log('Asset File Names:', assetFileNames.join());
-            checkRelease(itemType, json, latestVersion, latestReleaseDate);
-        } else {
-            console.log("Ignoring version")
-        }
-      })
-      .catch((error) => {
-        console.error(`Error fetching release information from ${apiUrl}:`, error.message);
-        exit(1);
-      });
-}
-
-function checkRelease(itemType, json, latestVersion, latestReleaseDate) {
-    // Define the path to your JSON file.
-    const filePath = `../item-types/${itemType}/items/${json["item-id"]}.json`;
-
-    // Read the JSON file.
-    fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading JSON file:', err);
-            exit(1);
-        }
-
-        try {
-            const item = JSON.parse(data);
-
-            var releaseVersion
-            var releaseDate
-            if (itemType == "software-wallets") {
-    
-                // TODO For Bluewallet, some versions are not for all the platforms. Inspect the assets to see which platform to update
-                json.platforms.forEach(platform => {
-                    console.log(platform + ":")
-                    var currentVersion = item[`${platform}-support`][`${platform}-latest-version`].value
-                    var currentReleaseDate = item[`${platform}-support`][`${platform}-latest-release-date`].value
-                    console.log("- Current version found: " + currentVersion + " (" + currentReleaseDate + ")")
-                    console.log("- Latest version found: " + latestVersion + " (" + latestReleaseDate + ")")
-    
-                    if (latestVersion !== currentVersion) {
-                        releaseVersion = latestVersion
-                        releaseDate = latestReleaseDate
-                    }
-                });
-            } else {
-                var currentVersion = item["firmware"]["latest-version"].value
-                var currentReleaseDate = item["firmware"]["latest-release-date"].value
-                console.log("- Current version found: " + currentVersion + " (" + currentReleaseDate + ")")
-                console.log("- Latest version found: " + latestVersion + " (" + latestReleaseDate + ")")
-
-                
-                if (latestVersion !== currentVersion) {
-                    releaseVersion = latestVersion
-                    releaseDate = latestReleaseDate
-                }
-            }
-
-            if (releaseVersion != undefined) {
-                updateRelease(itemType, json, releaseVersion, releaseDate)
-            } else {
-                console.log("New release not found")
-            }
-            console.log('---------------------');
-
-        } catch (parseError) {
-            console.error('Error parsing JSON:', parseError);
-            exit(1);
-        }
-    });
-}
-
-function updateRelease(itemType, json, releaseVersion, releaseDate) {
-    if (releaseVersion == undefined) {
-        console.error('Missing releaseVersion');
-        exit(1);
+    constructor() {
+        super("bitkey", "hardware-wallets", "https://bitkey.world/en-US/releases");
     }
 
-    if (releaseDate == undefined) {
-        console.error('Missing releaseDate');
-        exit(1);
-    }
-       
-    const filePath = `../item-types/${itemType}/items/${json["item-id"]}.json`;
-    fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading JSON file:', err);
-            exit(1);
-        }
-    
-        try {
-            const item = JSON.parse(data);
-            var modifyJson = false
-            var currentVersion
-            var currentReleaseDate
-            var changelogUrl
+    parseRelease(data) {
+        var version
+        var date
+        const $ = cheerio.load(data);
+        let found = false;
 
-            if (itemType == "software-wallets") {
-                // TODO For Bluewallet, some versions are not for all the platforms. Inspect the assets to see which platform to update
+        $('.border-t.py-6').each((_, element) => {
+            if (found) return
 
-                json.platforms.forEach(platform => {
-                    currentVersion = item[`${platform}-support`][`${platform}-latest-version`].value
-                    currentReleaseDate = item[`${platform}-support`][`${platform}-latest-release-date`].value
-                    if (releaseVersion !== currentVersion) {
-                        item[`${platform}-support`][`${platform}-latest-version`].value = releaseVersion
-                        item[`${platform}-support`][`${platform}-latest-release-date`].value= releaseDate
-                        modifyJson = true
+            const dateText = $(element).find('.text-primary50').first().text().trim();
+            const versionText = $(element).find('.font-semibold').first().text().trim();
+            const type = $(element).find('.text-primary50').first().next().text().trim();
 
-                        if (item[`${platform}-support`][`${platform}-release-notes`]["links"] && 
-                            item[`${platform}-support`][`${platform}-release-notes`]["links"].length > 0) {                            
-                                changelogUrl = item[`${platform}-support`][`${platform}-release-notes`]["links"][0]["url"];
-                                console.log(`Changelog url (${platform}): ` + changelogUrl);
-                        }
-                    }
-                });
-            } else {
-                currentVersion = item["firmware"]["latest-version"].value
-                currentReleaseDate = item["firmware"]["latest-release-date"].value
-                if (releaseVersion !== currentVersion) {
-                    item["firmware"]["latest-version"].value = releaseVersion
-                    item["firmware"]["latest-release-date"].value = releaseDate
-                    modifyJson = true
-
-                    if (item[`firmware`][`release-notes`]["links"] && item[`firmware`][`release-notes`]["links"].length > 0) {
-                        changelogUrl = item[`firmware`][`release-notes`]["links"][0]["url"]
-                        console.log("Changelog url: " + changelogUrl);
-                    }
-                }
-            }
-    
-            if (modifyJson) {
-                console.log("Updating JSON")
-    
-                // Convert the modified object back to a JSON string.
-                const updatedJsonString = JSON.stringify(item, null, 2);
-    
-                // Write the updated JSON string back to the file.
-                fs.writeFile(filePath, updatedJsonString, (writeErr) => {
-                    if (writeErr) {
-                        console.error('Error writing JSON file:', writeErr);
-                        exit(1);
-                    } else {
-                        console.log('JSON file updated successfully.');
-                    }
-                });
-    
-                var newRelease
-                if (json.platforms != undefined) {
-                    json.platforms.forEach(platform => {
-                        newRelease = updateReleasesFile(itemType, json["item-id"], releaseDate, releaseVersion, changelogUrl, platform);
-                    });
-                } else {
-                    newRelease = updateReleasesFile(itemType, json["item-id"], releaseDate, releaseVersion, changelogUrl, "");
-                }
-
-                if (newRelease) {
-                    const inputDate = new Date(releaseVersion);
-                    const oneWeekAgo = new Date();
-                    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-                    if (inputDate > oneWeekAgo) {
-                        postNewRelease(itemType, json["item-id"], item.name, releaseVersion, changelogUrl, item.company, json.platforms)
-                    } else {
-                        console.log("Post ignored, release date more than one week old.")
-                    }
-                }
-            } else {
-                console.error('Error updating JSON. Both versions are the same');
-                exit(1);
-            }
-    
-        } catch (parseError) {
-            console.error('Error parsing JSON:', parseError);
-            exit(1);
-        }
-    });
-}
-
-const longMonths = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-
-const shortMonths = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
-
-function getShortMonthByIndex(index) {
-    return shortMonths[index]
-}
-
-function getShortMonth(date) {
-    return shortMonths[date.getMonth()]
-}
-
-function getLongMonthIndex(month) {
-    return longMonths.indexOf(month)
-}
-
-function isValidVersion(str, preReleaseSupported) {
-    const base = '^v\\d+(\\.\\d+)*';
-    const preRelease = '(?:-(alpha|beta|rc)(\\.\\d+)?)?';
-    const regex = new RegExp(preReleaseSupported ? `${base}${preRelease}$` : `${base}$`);
-    return regex.test(str);
-}
-
-function isValidDate(str) {
-    const regex = /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [1-9]|[1-2][0-9]|3[01], \d{4}$/;
-    return regex.test(str);
-}
-
-function updateReleasesFile(itemType, itemId, date, version, changelogUrl, platform) {
-    const fileName = `releases.md`;
-    const filePath = path.join(__dirname, "..", fileName);
-
-    let content = "";
-    if (fs.existsSync(filePath)) {
-        content = fs.readFileSync(filePath, 'utf8');
-    }
-
-    const typeHeader = `## ${itemType}`;
-    const idHeader = `### ${itemId}`;
-    const versionString = platform !== "" ? `${version} (${platform})` : version;
-    const newEntry = `- ${date} - ${versionString} - ${changelogUrl}`;
-
-    if (content.includes(newEntry)) {
-        return false
-    }
-
-    // If the type doesn't exist, add the full structure
-    if (!content.includes(typeHeader)) {
-        content += `\n${typeHeader}\n${idHeader}\n${newEntry}\n`;
-    } else {
-        // Type exists, check if the ID exists within that type
-        const typeSectionRegex = new RegExp(`(${typeHeader}[\\s\\S]*?)(?=\\n## |$)`, 'g');
-        content = content.replace(typeSectionRegex, (typeSection) => {
-            if (typeSection.includes(idHeader)) {
-                // ID exists, append the new entry if it's not already present
-                const idSectionRegex = new RegExp(`(${idHeader}\\n)([\\s\\S]*?)(?=\\n### |\\n## |$)`);
-                return typeSection.replace(idSectionRegex, (match, header, entries) => {
-                    if (!entries.includes(newEntry)) {
-                        return `${header}${entries.trim()}\n${newEntry}\n`;
-                    }
-                    return match;
-                });
-            } else {
-                // ID does not exist, add it to the type section
-                return `${typeSection.trim()}\n${idHeader}\n${newEntry}\n`;
+            if (type.toLowerCase().includes('firmware')) {
+                version = versionText
+                date = dateText
+                found = true
             }
         });
-    }
-
-    fs.writeFileSync(filePath, content.trim() + "\n", 'utf8');
-    console.log(`Updated ${fileName} with new entry.`);
-    return true
-}
-
-function postNewRelease(itemType, itemId, itemName, version, changelogUrl, brandId, platforms) {
-    console.log("-------------------")
-    console.log("Release to post")
-    console.log("Item Type: " + itemType)
-    console.log("Item Id: " + itemId)
-    console.log("Item Name: " + itemName)
-    console.log("Version: " + version)
-    console.log("Changelog Url: " + changelogUrl)
-    console.log("Platforms: " + platforms)
-
-    if (itemName == undefined) {
-        console.error("itemName is undefined")
-        exit(1)
-    }
-
-    if (version == undefined) {
-        console.error("version is undefined")
-        exit(1)
-    }
-
-    appendTextToTweet(`${itemName}`)
-    appendTextToNostr(`${itemName}`)
-    if (platforms) {
-        appendTextToTweet(` (${platforms})`)
-        appendTextToNostr(` (${platforms})`)
-    }
-
-    appendTextToTweet(` ${version} released`)
-    appendTextToNostr(` ${version} released`)
-
-    var brand = readJSONFile(`../brands/${brandId}.json`)
-    if (brand?.twitter?.value) {
-        appendTextToTweet(` by ${brand.twitter.value}`)
-    }
-    if (brand?.nostr?.url) {
-        appendTextToNostr(` by #[0]`)
-        appendNostrPublicKeyTag(brand?.nostr?.url.split('/').pop())
-    }
-
-    if (changelogUrl) {
-        appendTextToTweet(`\n\nRelease notes: ${changelogUrl}`)
-        appendTextToNostr(`\n\nRelease notes: ${changelogUrl}`)
-    }
-
-    var tbhPromo
-    if (itemType == "software-wallets") {
-        tbhPromo = "\n\nDiscover and compare the Best Bitcoin Software Wallets. https://thebitcoinhole.com/software-wallets"
-    } else if (itemType == "hardware-wallets") {
-        tbhPromo = "\n\nDiscover and compare the Best Bitcoin Hardware Wallets. https://thebitcoinhole.com/hardware-wallets"
-    } else if (itemType == "bitcoin-nodes") {
-        tbhPromo = "\n\nDiscover and compare the Best Bitcoin Nodes. https://thebitcoinhole.com/bitcoin-nodes"
-    }
-    appendTextToTweet(tbhPromo)
-    appendTextToNostr(tbhPromo)
-
-    postTweet();
-    
-    // This is added to wait for a fail on Twitter posting
-    sleep(2000);
-
-    postNostr();
-    console.log("-------------------")
-}
-
-function getDate(publishedAt) {
-    if (publishedAt != "") {
-        return new Date(publishedAt).toLocaleDateString(undefined, dateOptions);
-    } else {
-        return today()
+        return { version: version, date: date }
     }
 }
 
-function ignoreVersion(itemId, latestVersion, preReleaseSupported) {
+class ColdcardMk4Command extends ChangeLogCommand {
 
-    // Ignore if it ends with "-pre1", "-pre2", etc.
-    var pattern = /-pre\d+$/;
-    if (pattern.test(latestVersion)) {
-        return true
+    constructor() {
+        super("coldcard-mk4", "hardware-wallets",  "https://raw.githubusercontent.com/Coldcard/firmware/master/releases/ChangeLog.md");
     }
 
-    // Ignore if it contains "-alpha"
-    if (!preReleaseSupported && latestVersion.toLowerCase().includes("-alpha")) {
-        return true
-    }
-
-    // Ignore if contains the word beta
-    if (!preReleaseSupported && latestVersion.toLowerCase().includes("beta")) {
-        return true
-    }
-
-    // Seedsigner
-    if (itemId == "seedsigner" && latestVersion.endsWith("_EXP")) {
-        return true
-    }
-
-    // Ignore if it ends with "-rc", "-rc1", "-rc2", etc.
-    pattern = /-rc\d*$/;
-    if (!preReleaseSupported && pattern.test(latestVersion)) {
-        return true
-    }
-
-    return false
-}
-
-function today() {
-    return new Date().toLocaleDateString(undefined, dateOptions);
-}
-
-// Input format: March 14, 2024
-function formatMonthDDYYYY(inputDate) {
-    // Split the input date string into parts
-    const parts = inputDate.match(/^(\w+)\s(\d{1,2}),\s(\d{4})$/);
-
-    if (parts && parts.length === 4) {
-        const year = parseInt(parts[3]);
-        const monthIndex = getLongMonthIndex(parts[1]);
-        const day = parseInt(parts[2]);
-
-        // Create a JavaScript Date object
-        const date = new Date(year, monthIndex, day);
-
-        // Format the date in the desired output format (e.g., "Dec 22, 2023")
-        return `${getShortMonth(date)} ${date.getDate()}, ${date.getFullYear()}`;
-    }
-
-    // Return the original input if parsing fails
-    return inputDate;
-}
-
-// Input format: 15th March 2023
-function formatDDMonthYYYY(inputDate) {
-    // Split the input date string into parts
-    const parts = inputDate.match(/^(\d{1,2})(st|nd|rd|th)\s(\w+)\s(\d{4})$/);
-
-    if (parts && parts.length === 5) {
-        const day = parseInt(parts[1]);
-        const monthIndex = getLongMonthIndex(parts[3]);
-        const year = parseInt(parts[4]);
-
-        // Create a JavaScript Date object
-        const date = new Date(year, monthIndex, day);
-
-        // Format the date in the desired output format (e.g., "Dec 22, 2023")
-        return `${getShortMonth(date)} ${date.getDate()}, ${date.getFullYear()}`;
-    }
-
-    // Return the original input if parsing fails
-    return inputDate;
-}
-
-// Input format: 2023-12-22
-function formatYYYYMMDD(inputDate) {
-    // Split the input date string into parts
-    const parts = inputDate.match(/(\d{4})-(\d{2})-(\d{2})/);
-
-    if (parts && parts.length === 4) {
-        const year = parseInt(parts[1]);
-        const monthIndex = parseInt(parts[2]) - 1; // JavaScript Date months are 0-based
-        const day = parseInt(parts[3]);
-
-        // Create a JavaScript Date object
-        const date = new Date(year, monthIndex, day);
-
-        // Format the date in the desired output format (e.g., "Dec 22, 2023")
-        return `${getShortMonth(date)} ${date.getDate()}, ${date.getFullYear()}`;
-    }
-
-    // Return the original input if parsing fails
-    return inputDate;
-}
-
-function readJSONFile(filePath) {
-    try {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        return JSON.parse(fileContent);
-    } catch (error) {
-        console.error(`Error reading JSON file at ${filePath}:`, error);
-        exit(1)
+    parseRelease(data) {
+        var version
+        var date
+        const lines = data.split('\n');
+        // Coldcard Mk4. Example: ## 5.2.2 - 2023-12-21
+        const regex = /^## ([\d.]+) - (\d{4}-\d{2}-\d{2})/;
+        var onSection = false
+        for (const line of lines) {
+            if (onSection == true) {
+                const match = line.match(regex);
+                if (match) {
+                    version = match[1];
+                    date = formatYYYYMMDD(match[2]);
+                    break;
+                }
+            } else if (line == "# Mk4 Specific Changes") {
+                onSection = true
+            }
+        }
+        return { version: version, date: date};
     }
 }
+
+class ColdcardQCommand extends ChangeLogCommand {
+
+    constructor() {
+        super("coldcard-q", "hardware-wallets",  "https://raw.githubusercontent.com/Coldcard/firmware/master/releases/ChangeLog.md");
+    }
+
+    parseRelease(data) {
+        var version
+        var date
+        const lines = data.split('\n');
+        // Coldcard Q. Example: ## 0.0.6Q - 2024-02-22
+        const regex = /^## ([\d.]+)Q - (\d{4}-\d{2}-\d{2})/;
+        var onSection = false
+        for (const line of lines) {
+            if (onSection == true) {
+                const match = line.match(regex);
+                if (match) {
+                    version = match[1];
+                    date = formatYYYYMMDD(match[2]);
+                    break;
+                }
+            } else if (line == "# Q Specific Changes") {
+                onSection = true
+            }
+        }
+        return { version: version, date: date };
+    }
+}
+
+class CoolWalletProCommand extends FirstLineChangeLogCommand {
+
+    constructor() {
+        super("coolwallet-pro", "hardware-wallets",  "https://raw.githubusercontent.com/CoolBitX-Technology/coolwallet-pro-se/main/CHANGELOG.md");
+    }
+
+    getRegex() {
+        // Coolwallet Pro. Example: ## [332] - 2023-08-10
+        return /^## \[([\d]+)\] - (\d{4}-\d{2}-\d{2})/;
+    }
+
+    formatDate(date) {
+        return formatYYYYMMDD(date)
+    }
+}
+
+class SatochipCommand extends GithubLatestReleaseCommand {
+    constructor(itemId) {
+        super(itemId, "hardware-wallets", "Toporin", "SatochipApplet");
+    }
+
+    sanitizeVersion(version) {
+        const match = version.match(/^Satochip (v\d+(\.\d+)+)/);
+        return match ? match[1] : version;
+    }
+}
+
+class TrezorModelOneCommand extends FirstLineChangeLogCommand {
+
+    constructor() {
+        super("trezor-model-one", "hardware-wallets",  "https://raw.githubusercontent.com/trezor/trezor-firmware/master/legacy/firmware/CHANGELOG.md");
+    }
+
+    getRegex() {
+        // Example: ## 1.12.1 [15th March 2023]
+        return /^## ([\d.]+) \[(\d{1,2}\w\w \w+ \d{4})\]/;
+    }
+
+    formatDate(date) {
+        return formatDDMonthYYYY(date)
+    }
+}
+
+class TrezorModelTSafeCommand extends ChangeLogCommand {
+
+    constructor(itemId, changelogUrl) {
+        super(itemId, "hardware-wallets",  changelogUrl);
+    }
+
+    parseRelease(data) {
+        var version
+        var date
+        const lines = data.split('\n');
+        // Example: ## [2.7.0] (20th March 2024) or ## [2.8.5] (internal release)
+        const regex = /^## \[([\d.]+)\] \((\d{1,2}(?:st|nd|rd|th) \w+ \d{4}|internal release)\)/;
+        for (const line of lines) {
+            const match = line.match(regex);
+            if (match) {
+                version = match[1];
+                date = formatDDMonthYYYY(match[2]);
+                if (match[2] === "internal release") {
+                    date = today()
+                } else {
+                    date = formatDDMonthYYYY(match[2]);
+                }
+                break;
+            }
+        }
+        return { version: version, date: date };
+    }
+}
+
+// Software Wallets
+
+class ElectrumCommand extends FirstLineChangeLogCommand {
+
+    constructor() {
+        super("electrum", "software-wallets",  "https://raw.githubusercontent.com/spesmilo/electrum/master/RELEASE-NOTES");
+    }
+
+    getRegex() {
+        // # Release 4.4.6 (August 18, 2023) (security update)
+        return /^# Release ([\d.]+) \(([^)]+)\)/;
+    }
+
+    formatDate(date) {
+        return formatMonthDDYYYY(date)
+    }
+
+    getPlatforms() {
+        return ["windows", "macos", "linux", "android"];
+    }
+}
+
+class MuunAndroidCommand extends FirstLineChangeLogCommand {
+
+    constructor() {
+        super("muun", "software-wallets",  "https://raw.githubusercontent.com/muun/apollo/master/android/CHANGELOG.md");
+    }
+
+    getRegex() {
+        // ## [51.5] - 2023-12-22
+        return /^## \[([\d.]+)\] - (\d{4}-\d{2}-\d{2})/;
+    }
+
+    formatDate(date) {
+        return formatYYYYMMDD(date)
+    }
+
+    getPlatforms() {
+        return ["android"];
+    }
+}
+
+class MuuniOSCommand extends GithubTagCommand {
+
+    constructor() {
+        super("muun", "software-wallets", "muun", "falcon", ["ios"]);
+    }
+
+    sanitizeVersion(version) {
+        return version.split("-")[0]
+    }
+}
+
+class MyCitadelCommand extends GithubLatestReleaseCommand {
+
+    constructor(githubRepo, platforms) {
+        super("my-citadel", "software-wallets", "mycitadel", githubRepo, platforms);
+    }
+
+    sanitizeVersion(version) {
+        version = version.replace(/^Version (\d+(\.\d+)+) \(.*\)$/, '$1');
+        version = version.replace(/^Release /, '');
+        return version
+    }
+
+}
+
+// Bitcoin Nodes
+
+class MyNodeCommand extends ChangeLogCommand {
+
+    constructor(itemId) {
+        super(itemId, "bitcoin-nodes", "https://raw.githubusercontent.com/mynodebtc/mynode/master/CHANGELOG");
+    }
+
+    parseRelease(data) {
+        var version
+        var date
+        // === v0.3.25 ===
+        // - Released 1/11/24
+        const lines = data.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+        
+            if (line.startsWith("===")) {
+                const versionRegex = /^=== v([\d.]+) ===/;
+                const versionMatch = line.match(versionRegex);
+        
+                if (versionMatch) {
+                    version = versionMatch[1];
+        
+                    // Check if the next line exists
+                    const nextLine = lines[i + 1]?.trim();
+                    const dateRegex = /^- Released ([\d.]+)\/([\d.]+)\/([\d.]+)/;
+                    const dateMatch = nextLine.match(dateRegex);
+        
+                    if (dateMatch) {
+                        date = `${getShortMonthByIndex(parseInt(dateMatch[1]) - 1)} ${dateMatch[2]}, ${2000 + parseInt(dateMatch[3])}`;
+                    }
+                }
+        
+                break; // Only need the first match
+            }
+        }
+        return { version: version, date: date};
+    }
+}
+
+class NodlCommand extends ChangeLogCommand {
+
+    constructor(itemId, changelogUrl) {
+        super(itemId, "bitcoin-nodes", changelogUrl);
+    }
+
+    parseRelease(data) {
+        var version
+        const line = data.split('\n')[0]
+        const regex = /^([\d.]+) -/;
+        const match = line.match(regex);
+        if (match) {
+            version = match[1];
+        }
+        return { version: version, date: today()};
+    }
+}
+
+class ParmanodeCommand extends ChangeLogCommand {
+
+    constructor() {
+        super("parmanode", "bitcoin-nodes", "https://raw.githubusercontent.com/ArmanTheParman/Parmanode/refs/heads/master/changelog.txt");
+    }
+
+    parseRelease(data) {
+        var version
+        const lines = data.split('\n');
+        const regex = /^Version ([\d.]+)/;
+        for (const line of lines) {
+            // Skip empty lines and lines starting with #
+            if (line.trim() === "" || line.trim().startsWith("#")) {
+                continue;
+            }
+        
+            const match = line.match(regex);
+            if (match) {
+                version = match[1];
+                break; // Stop after finding the first valid version line
+            }
+        }
+        return { version: version, date: today()};
+    }
+}
+
+class UmbrelCommand extends GithubAllReleasesCommand {
+
+    constructor(itemId) {
+        super(itemId, "bitcoin-nodes", "getumbrel", "umbrel", undefined, "umbrel");
+    }
+
+    sanitizeVersion(version) {
+        return version.replace(/^umbrelOS /, '');
+    }
+}
+
+const commands = [
+
+    // Hardware Wallets
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("bitbox02-btconly", "hardware-wallets", "digitalbitbox", "bitbox02-firmware", undefined, "Bitcoin-only");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/ - Bitcoin-only$/, '');
+        }
+    })(),
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("bitbox02-multi", "hardware-wallets", "digitalbitbox", "bitbox02-firmware", undefined, "Multi");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/ - Multi$/, '');
+        }
+    })(),
+    new BitkeyCommand(),
+    new ColdcardMk4Command(),
+    new ColdcardQCommand(),
+    new CoolWalletProCommand(),
+    new GithubLatestReleaseCommand("cypherock-x1", "hardware-wallets", "Cypherock", "x1_wallet_firmware"),
+    new GithubLatestReleaseCommand("frostnap", "hardware-wallets", "frostsnap", "frostsnap"),
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("gridplus-lattice1", "hardware-wallets", "GridPlus", "lattice-software-releases", undefined, "HSM-");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^HSM-/, '');
+        }
+    })(),
+    new GithubTagCommand("jade", "hardware-wallets", "Blockstream", "Jade"),
+    new GithubTagCommand("jade-plus", "hardware-wallets", "Blockstream", "Jade"),
+    new GithubTagCommand("jade-plus-metal", "hardware-wallets", "Blockstream", "Jade"),
+    new GithubLatestReleaseCommand("keepkey", "hardware-wallets", "keepkey", "keepkey-firmware"),
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("keystone-3-pro", "hardware-wallets", "KeystoneHQ", "keystone3-firmware", undefined, "-BTC");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/-BTC$/, '').replace(/-btc$/, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("krux", "hardware-wallets", "selfcustody", "krux"),
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("onekey-classic-1s", "hardware-wallets", "OneKeyHQ", "firmware", undefined, "classic");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^classic\//, '');
+        }
+    })(),
+
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("onekey-classic-1s-pure", "hardware-wallets", "OneKeyHQ", "firmware", undefined, "classic");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^classic\//, '');
+        }
+    })(),
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("onekey-pro", "hardware-wallets", "OneKeyHQ", "firmware", undefined, "touch");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^touch\//, '');
+        }
+    })(),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("passport-batch-2", "hardware-wallets", "Foundation-Devices", "passport2");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Passport Firmware /, '').replace(/^Passport /, '').replace(/ Firmware$/, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("portal", "hardware-wallets", "TwentyTwoHW", "portal-software"),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("prokey-optimum", "hardware-wallets", "prokey-io", "prokey-optimum-firmware");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Prokey Firmware /, '');
+        }
+    })(),
+    new SatochipCommand("satochip-diy"),
+    new SatochipCommand("satochip"),
+    new GithubTagCommand("seedsigner", "hardware-wallets", "SeedSigner", "seedsigner"),
+    new GithubLatestReleaseCommand("specter-diy", "hardware-wallets", "cryptoadvance", "specter-diy"),
+    new TrezorModelOneCommand(),
+    new TrezorModelTSafeCommand("trezor-model-t", "https://raw.githubusercontent.com/trezor/trezor-firmware/refs/heads/main/core/CHANGELOG.T2T1.md"),
+    new TrezorModelTSafeCommand("trezor-safe-3", "https://raw.githubusercontent.com/trezor/trezor-firmware/refs/heads/main/core/CHANGELOG.T2B1.md"),
+    new TrezorModelTSafeCommand("trezor-safe-3-btconly", "https://raw.githubusercontent.com/trezor/trezor-firmware/refs/heads/main/core/CHANGELOG.T2B1.md"),
+    new TrezorModelTSafeCommand("trezor-safe-5", "https://raw.githubusercontent.com/trezor/trezor-firmware/refs/heads/main/core/CHANGELOG.T3T1.md"),
+    new TrezorModelTSafeCommand("trezor-safe-5-btconly", "https://raw.githubusercontent.com/trezor/trezor-firmware/refs/heads/main/core/CHANGELOG.T3T1.md"),
+
+    // Software Wallets
+    new GithubLatestReleaseCommand("aqua", "software-wallets", "AquaWallet", "aqua-wallet", ["android", "ios"]),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("bitcoin-core", "software-wallets", "bitcoin", "bitcoin", ["windows", "macos", "linux"]);
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Bitcoin Core /, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("bitcoin-keeper", "software-wallets", "bithyve", "bitcoin-keeper", ["android", "ios"]),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("bitcoin-keeper", "software-wallets", "bithyve", "keeper-desktop", ["linux", "macos", "windows"]);
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Keeper Desktop /, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("bitcoin-safe", "software-wallets", "andreasgriffin", "bitcoin-safe", ["linux", "macos", "windows"]),
+    new GithubAllReleasesCommand("bluewallet", "software-wallets", "BlueWallet", "BlueWallet", ["android"], undefined, undefined, "apk"),
+    new GithubAllReleasesCommand("bluewallet", "software-wallets", "BlueWallet", "BlueWallet", ["ios"], undefined, undefined, "ipa"),
+    new GithubAllReleasesCommand("bluewallet", "software-wallets", "BlueWallet", "BlueWallet", ["macos"], undefined, undefined, "dmg"),
+    new (class extends GithubAllReleasesCommand {
+        constructor() {
+            super("stack-wallet", "software-wallets", "cypherstack", "stack_wallet", ["android", "ios", "windows", "macos", "linux"], "Stack Wallet");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Stack Wallet /, '');
+        }
+    })(), 
+    new ElectrumCommand(),
+    new GithubLatestReleaseCommand("envoy", "software-wallets", "Foundation-Devices", "envoy", ["android", "ios"]),
+    new GithubLatestReleaseCommand("green", "software-wallets", "Blockstream", "green_qt", ["windows", "macos", "linux"]),
+    new GithubLatestReleaseCommand("green", "software-wallets", "Blockstream", "green_android", ["android"]),
+    new GithubLatestReleaseCommand("green", "software-wallets", "Blockstream", "green_ios", ["ios"]),
+    new GithubLatestReleaseCommand("liana", "software-wallets", "wizardsardine", "liana", ["windows", "macos", "linux"]),
+    new MyCitadelCommand("mycitadel-desktop", ["windows", "macos", "linux"]),
+    new MyCitadelCommand("mycitadel-apple", ["ios"]),
+    new MuunAndroidCommand(),
+    new MuuniOSCommand(),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("nunchuk", "software-wallets", "nunchuk-io", "nunchuk-android", ["android"]);
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^android\./, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("nunchuk", "software-wallets", "nunchuk-io", "nunchuk-desktop", ["windows", "macos", "linux"]),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("phoenix", "software-wallets", "ACINQ", "phoenix", ["android", "ios"]);
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Android /, '')
+                        .replace(/^Phoenix Android /, '')
+                        .replace(/^Phoenix /, '')
+                        .replace(/^Phoenix Android\/iOS /, '');
+        }
+    })(),
+    new (class extends GithubTagCommand {
+        constructor() {
+            super("proton-wallet", "software-wallets", "ProtonWallet", "flutter-app", ["android"]);
+        }
+        sanitizeVersion(version) {
+            return version.replace(/\+\d+$/, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("simple-bitcoin-wallet", "software-wallets", "akumaigorodski", "wallet", ["android"]),
+    new GithubLatestReleaseCommand("sparrow", "software-wallets", "sparrowwallet", "sparrow", ["windows", "macos", "linux"]),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("specter", "software-wallets", "cryptoadvance", "specter-desktop", ["windows", "macos", "linux", "umbrel-os"]);
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Specter /, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("specter", "software-wallets", "Start9Labs", "specter-startos", ["start-os"]),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("wasabi-wallet", "software-wallets", "zkSNACKs", "WalletWasabi", ["windows", "macos", "linux"]);
+        }
+        sanitizeVersion(version) {
+            return version
+            .replace(/^Wasabi v(\d+(\.\d+)+) - .*$/, '$1')
+            .replace(/^Wasabi Wallet v(\d+(\.\d+)+) - .*$/, '$1')
+            .replace(/^Wasabi Wallet v(\d+(\.\d+)+)*$/, '$1');
+        }
+    })(),    
+    new GithubLatestReleaseCommand("zeus", "software-wallets", "ZeusLN", "zeus", ["android", "ios"]),
+
+    // Bitcoin Nodes
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("bitcoin-core", "bitcoin-nodes", "bitcoin", "bitcoin");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Bitcoin Core /, '');
+        }
+    })(),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("bitcoin-knots", "bitcoin-nodes", "bitcoinknots", "bitcoin");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^Bitcoin Knots /, '').replace(/knots/, '');
+        }
+    })(),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("minibolt", "bitcoin-nodes", "minibolt-guide", "minibolt");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^MiniBolt /, '');
+        }
+    })(),
+    new GitlagTagCommand("citadel", "bitcoin-nodes", "48888641"),
+    new MyNodeCommand("mynode-community-edition"),
+    new MyNodeCommand("mynode-model-one"),
+    new MyNodeCommand("mynode-model-two"),
+    new MyNodeCommand("mynode-premium"),
+    new NodlCommand("nodl-one-mark-2", "https://gitlab.lightning-solutions.eu/nodl-private/nodl-admin-private/-/raw/nodl-one/www/changelog.txt?ref_type=heads"),
+    new NodlCommand("nodl-two", "https://gitlab.lightning-solutions.eu/nodl-private/nodl-admin-private/-/raw/nodl-two/www/changelog.txt?ref_type=heads"),
+    new ParmanodeCommand(),
+    new GithubLatestReleaseCommand("raspiblitz", "bitcoin-nodes", "raspiblitz", "raspiblitz"),
+    new (class extends GithubLatestReleaseCommand {
+        constructor() {
+            super("raspibolt", "bitcoin-nodes", "raspibolt", "raspibolt");
+        }
+        sanitizeVersion(version) {
+            return version.replace(/^RaspiBolt /, '');
+        }
+    })(),
+    new GithubLatestReleaseCommand("start9-diy", "bitcoin-nodes", "Start9Labs", "start-os"),
+    new GithubLatestReleaseCommand("start9-server-one", "bitcoin-nodes", "Start9Labs", "start-os"),
+    new GithubLatestReleaseCommand("start9-server-pure", "bitcoin-nodes", "Start9Labs", "start-os"),
+    new UmbrelCommand("umbrel-diy"),
+    new UmbrelCommand("umbrel-home")
+];
+
+twitter.setTwitterEnabled(process.argv[2] === 'true' ? true : false)
+nostr.setNostrEnabled(process.argv[3] === 'true' ? true : false)
+
+runCommandsSequentially(commands);
