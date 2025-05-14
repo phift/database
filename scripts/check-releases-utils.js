@@ -528,7 +528,7 @@ function updateRelease(itemType, itemId, platforms, releaseVersion, releaseDate)
                 }
 
                 if (newRelease) {
-                    const inputDate = new Date(releaseVersion);
+                    const inputDate = new Date(Date.parse(releaseDate))
                     const oneWeekAgo = new Date();
                     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
                     if (inputDate > oneWeekAgo) {
