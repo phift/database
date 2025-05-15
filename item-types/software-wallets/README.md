@@ -78,7 +78,6 @@ All the features supported:
 | Category | Category Id | Feature | Feature Id |
 | --- | --- | --- | --- |
 | Basic Information | basic-information | Launch Year | year |
-
 | Communities | communities | Telegram | telegram |
 | Communities | communities | Reddit | reddit |
 | Networks | networks | Bitcoin-only | bitcoin-only |

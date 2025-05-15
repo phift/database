@@ -85,7 +85,6 @@ All the features supported:
 | Basic Information | basic-information | Launch Year | year |
 | Basic Information | basic-information | Assembled In | assembled-in |
 | Basic Information | basic-information | DIY | diy |
-
 | Communities | communities | Telegram | telegram |
 | Communities | communities | Reddit | reddit |
 | Official Store | official-store | PO Box Support | po-box-support |

@@ -79,8 +79,6 @@ All the features supported:
 
 | Category | Category Id | Feature | Feature Id |
 | --- | --- | --- | --- |
-
-
 | Payment Methods to buy the device | payment-methods | BTC On Chain | btc-on-chain |
 | Payment Methods to buy the device | payment-methods | BTC Lightning | btc-lightning |
 | Payment Methods to buy the device | payment-methods | Alt Coins | alt-coins |

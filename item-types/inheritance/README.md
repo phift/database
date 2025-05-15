@@ -80,8 +80,6 @@ All the features supported:
 
 | Category | Category Id | Feature | Feature Id |
 | --- | --- | --- | --- |
-
-
 | Subscription Payment Methods | payment-methods | BTC On Chain | btc-on-chain |
 | Subscription Payment Methods | payment-methods | BTC Lightning | btc-lightning |
 | Subscription Payment Methods | payment-methods | Alt Coins | alt-coins |
