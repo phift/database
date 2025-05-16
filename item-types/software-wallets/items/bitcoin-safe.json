@@ -21,7 +21,10 @@
     "btc-testnet": {
       "value": "YES",
       "supported": true,
-      "flag": "positive"
+      "flag": "positive",
+      "texts": [
+        "Testnet4 support"
+      ]
     },
     "btc-regtest": {
       "value": "YES",
