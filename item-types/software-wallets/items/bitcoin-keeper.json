@@ -264,9 +264,9 @@
       "flag": "positive"
     },
     "multiple-send-addresses": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "signing": {
