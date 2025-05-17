@@ -118,11 +118,15 @@ All the features supported:
 | Address Format | address-format | Nested Segwit (P2SH) | nested-segwit |
 | Address Format | address-format | Native Segwit (P2WPKH) | native-segwit |
 | Address Format | address-format | Taproot (P2TR) | taproot |
-| Receive Addresses | addresses | View Address as Text | view-address-text |
-| Receive Addresses | addresses | View Address as QR | view-address-qr |
-| Receive Addresses | addresses | Display Multiple Addresses | display-multiple-addresses |
-| Receive Addresses | addresses | Verify Address from Text | verify-address-text |
-| Receive Addresses | addresses | Verify Address from QR | verify-address-qr |
+| Receive | receive | View Address as Text | view-address-text |
+| Receive | receive | View Address as QR | view-address-qr |
+| Receive | receive | Display Multiple Addresses | display-multiple-addresses |
+| Receive | receive | Verify Address from Text | verify-address-text |
+| Receive | receive | Verify Address from QR | verify-address-qr |
+| Send | send | Scan Address from QR | scan-address-qr |
+| Send | send | Scan Address from Text (OCR) | scan-address-ocr |
+| Send | send | Send to Internal Address | send-internal-address |
+| Send | send | Multiple Send Addresses | multiple-send-addresses |
 | Signing | signing | Sign by USB | usb-data |
 | Signing | signing | Sign by NFC | nfc |
 | Signing | signing | Sign by QR | qr |

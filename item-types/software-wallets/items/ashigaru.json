@@ -216,7 +216,7 @@
       ]
     }
   },
-  "addresses": {
+  "receive": {
     "view-address-text": {
       "value": "YES",
       "supported": true,
@@ -241,6 +241,28 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
+    }
+  },
+  "send": {
+    "scan-address-qr": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "scan-address-ocr": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "send-internal-address": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "multiple-send-addresses": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "signing": {

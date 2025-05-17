@@ -219,7 +219,7 @@
       "flag": "negative"
     }
   },
-  "addresses": {
+  "receive": {
     "view-address-text": {
       "value": "YES",
       "supported": true,
@@ -241,6 +241,28 @@
       "flag": "negative"
     },
     "verify-address-qr": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    }
+  },
+  "send": {
+    "scan-address-qr": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "scan-address-ocr": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "send-internal-address": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "multiple-send-addresses": {
       "value": "NO",
       "supported": false,
       "flag": "negative"
