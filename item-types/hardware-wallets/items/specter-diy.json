@@ -216,8 +216,15 @@
       "flag": "positive"
     },
     "secure-boot": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Secure bootloader for Specter hardware wallet",
+          "url": "https://github.com/cryptoadvance/specter-bootloader"
+        }
+      ]
     },
     "upgradable-firmware": {
       "value": "YES",
@@ -314,8 +321,12 @@
       "flag": "positive"
     },
     "countdown-brick-reset-pin": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "After 10 wrong PIN entries, the device resets and deletes all data."
+      ]
     },
     "brick-reset-pin": {
       "value": "NO",
@@ -435,8 +446,9 @@
   },
   "address-format": {
     "legacy": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "nested-segwit": {
       "value": "YES",
@@ -567,7 +579,7 @@
       "links": [
         {
           "title": "Descriptors support",
-          "url": "https://docs.specter.solutions/diy/descriptors/"
+          "url": "https://specter.solutions/docs/diy/descriptors/#miniscript"
         }
       ]
     },
