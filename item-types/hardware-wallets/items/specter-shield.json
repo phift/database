@@ -1,6 +1,6 @@
 {
-  "id": "specter-diy",
-  "name": "Specter DIY",
+  "id": "specter-shield",
+  "name": "Specter Shield",
   "buildable": true,
   "price-history-enabled": false,
   "basic-information": {
@@ -51,17 +51,17 @@
       "value": "-"
     },
     "weight": {
-      "value": "369g / 13oz"
+      "value": "248g / 8.74oz"
     },
     "dimensions": {
-      "value": "167 x 65 x 20 mm"
+      "value": "134 x 67 x 26 mm"
     },
     "materials": {
       "value": "Plastic"
     },
     "available-in-colors": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "waterproof": {
       "value": "NO",
@@ -113,18 +113,18 @@
   },
   "power": {
     "battery": {
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
+    },
+    "removable-battery": {
       "value": "NO",
       "flag": "negative",
       "supported": false
     },
-    "removable-battery": {
-      "value": "-",
-      "flag": "negative",
-      "supported": false
-    },
     "battery-size": {
-      "value": "-",
-      "flag": "negative"
+      "value": "1400 mAh",
+      "flag": "positive"
     },
     "usb-charging": {
       "value": "Mini USB",
@@ -176,8 +176,9 @@
   },
   "security": {
     "secure-element": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "supply-chain-physical-attacks": {
       "value": "YES",
@@ -356,7 +357,7 @@
   },
   "private-keys": {
     "stateless": {
-      "value": "YES",
+      "value": "Optional",
       "supported": true
     },
     "user-added-entropy": {
@@ -369,7 +370,8 @@
     },
     "multiple-private-keys": {
       "value": "NO",
-      "supported": false
+      "supported": false,
+      "flag": "negative"
     },
     "passphrase-support": {
       "value": "YES",
@@ -406,9 +408,9 @@
       "flag": "positive"
     },
     "backup-recovery-nfc-card": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "create-12-words": {
       "value": "YES",
