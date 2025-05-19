@@ -65,7 +65,7 @@
       "flag": "positive"
     },
     "exchange-rate-provider": {
-      "value": "?"
+      "value": "Coingecko"
     }
   },
   "app-lock": {
@@ -422,8 +422,12 @@
   },
   "other-features": {
     "transaction-labeling": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "texts": [
+        "Based on BIP329"
+      ]
     },
     "batch-transactions": {
       "value": "YES",
@@ -446,8 +450,9 @@
       "flag": "negative"
     },
     "encrypted-storage": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "dark-mode": {
       "value": "YES",
@@ -892,9 +897,9 @@
       "flag": "positive"
     },
     "specter-diy": {
-      "value": "Watch-only",
+      "value": "YES",
       "supported": true,
-      "flag": "neutral"
+      "flag": "positive"
     },
     "krux": {
       "value": "NO",
