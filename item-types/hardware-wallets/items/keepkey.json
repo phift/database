@@ -294,10 +294,6 @@
       "flag": "positive",
       "links": [
         {
-          "title": "Deterministic Build process",
-          "url": "https://medium.com/@highlander_35968/deterministic-build-process-11674787d92f"
-        },
-        {
           "title": "Verifying Published Binaries",
           "url": "https://github.com/keepkey/keepkey-firmware#verifying-published-binaries"
         },

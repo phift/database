@@ -381,7 +381,7 @@
       "links": [
         {
           "title": "Generating a Mnemonic",
-          "url": "https://selfcustody.github.io/krux/getting-started/generating-a-mnemonic/"
+          "url": "https://selfcustody.github.io/krux/getting-started/usage/generating-a-mnemonic/"
         }
       ]
     },
@@ -397,7 +397,7 @@
       "links": [
         {
           "title": "Loading a Mnemonic: Passphrase",
-          "url": "https://selfcustody.github.io/krux/getting-started/loading-a-mnemonic/#passphrase"
+          "url": "https://selfcustody.github.io/krux/getting-started/usage/loading-a-mnemonic/#passphrase"
         }
       ]
     },
@@ -432,11 +432,11 @@
       "links": [
         {
           "title": "Loading a Mnemonic: From Storage",
-          "url": "https://selfcustody.github.io/krux/getting-started/loading-a-mnemonic/#from-storage"
+          "url": "https://selfcustody.github.io/krux/getting-started/usage/loading-a-mnemonic/#from-storage"
         },
         {
           "title": "Encrypt Mnemonic",
-          "url": "https://selfcustody.github.io/krux/getting-started/navigating-the-main-menu/#encrypt-mnemonic"
+          "url": "https://selfcustody.github.io/krux/getting-started/features/encrypted-mnemonics/"
         }
       ]
     },
@@ -542,13 +542,7 @@
     "multi-sig": {
       "value": "YES",
       "supported": true,
-      "flag": "positive",
-      "links": [
-        {
-          "title": "Using a Multisig Wallet",
-          "url": "https://selfcustody.github.io/krux/getting-started/using-a-multisig-wallet/"
-        }
-      ]
+      "flag": "positive"
     },
     "frost": {
       "value": "NO",

@@ -652,11 +652,11 @@
       "links": [
         {
           "title": "Signing a message with Sparrow Wallet",
-          "url": "https://support.bitbox.swiss/sparrow-wallet/signing-a-message-with-sparrow-wallet"
+          "url": "https://support.bitbox.swiss/sparrow-wallet/sign-message-bitbox02-sparrow"
         },
         {
           "title": "How can I sign messages via Electrum with my BitBox02?",
-          "url": "https://support.bitbox.swiss/how-can-i-sign-messages-via-electrum-with-my-bitbox02"
+          "url": "https://support.bitbox.swiss/electrum/how-to-sign-messages-electrum-bitbox02"
         }
       ]
     },
