@@ -443,13 +443,7 @@
     "batch-transactions": {
       "value": "YES",
       "supported": true,
-      "flag": "positive",
-      "links": [
-        {
-          "title": "Creating A Batch Spend",
-          "url": "https://www.youtube.com/watch?v=AvtZF4djofg"
-        }
-      ]
+      "flag": "positive"
     },
     "miniscript": {
       "value": "NO",
