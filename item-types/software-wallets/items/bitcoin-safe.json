@@ -661,13 +661,7 @@
     "linux-reproducible-builds": {
       "value": "NO",
       "supported": false,
-      "flag": "negative",
-      "links": [
-        {
-          "title": "Reproducible builds",
-          "url": "https://github.com/andreasgriffin/bitcoin-safe/blob/master/docs/reproducible.md"
-        }
-      ]
+      "flag": "negative"
     }
   },
   "windows-support": {
