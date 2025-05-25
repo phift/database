@@ -850,12 +850,9 @@
       "flag": "positive"
     },
     "krux": {
-      "value": "Partially",
+      "value": "YES",
       "supported": true,
-      "flag": "neutral",
-      "texts": [
-        "Basic functionality should work due to the BBQR/UR standard"
-      ]
+      "flag": "positive"
     },
     "tapsigner": {
       "value": "NO",

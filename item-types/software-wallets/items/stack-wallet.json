@@ -76,9 +76,9 @@
       "flag": "positive"
     },
     "duress-pin": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "dynamic-keypad": {
       "value": "YES",
