@@ -2,7 +2,6 @@
   "id": "safepal-x1",
   "name": "SafePal X1",
   "purchasable": true,
-  "pre-order": false,
   "basic-information": {
     "year": {
       "value": "2023"

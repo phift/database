@@ -26,7 +26,6 @@ The following is a sample of the JSON format:
     "id": "item-id",
     "name": "Item Name",
     "purchasable": true,
-    "pre-order": false,
     "category-name": {
       "feature-name-1": {
         "value": "YES", 
