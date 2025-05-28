@@ -1,7 +1,7 @@
 {
   "id": "specter-shield",
   "name": "Specter Shield",
-  "buildable": true,
+  "purchasable": true,
   "price-history-enabled": false,
   "basic-information": {
     "year": {
@@ -26,23 +26,23 @@
   },
   "official-store": {
     "po-box-support": {
-      "value": "-",
+      "value": "?",
       "supported": false
     },
     "btc-on-chain": {
-      "value": "-",
-      "supported": false
+      "value": "YES",
+      "supported": true
     },
     "btc-lightning": {
-      "value": "-",
-      "supported": false
+      "value": "YES",
+      "supported": true
     },
     "alt-coins": {
-      "value": "-",
+      "value": "NO",
       "supported": false
     },
     "credit-debit-card": {
-      "value": "-",
+      "value": "NO",
       "supported": false
     }
   },
