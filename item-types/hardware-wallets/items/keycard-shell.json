@@ -1,24 +1,24 @@
 {
-  "id": "bc-vault",
-  "name": "BC Vault",
+  "id": "keycard-shell",
+  "name": "Keycard Shell",
   "purchasable": true,
+  "pre-order": true,
   "basic-information": {
     "year": {
-      "value": "2018"
+      "value": "2025"
     },
     "assembled-in": {
-      "value": "Slovenia"
+      "value": "?"
     },
     "diy": {
       "value": "NO",
       "supported": false
     }
   },
-  "company": "real-security",
+  "company": "keycard",
   "communities": {
     "telegram": {
-      "value": "@BC_Vault",
-      "url": "https://t.me/BC_Vault"
+      "value": "-"
     },
     "reddit": {
       "value": "-"
@@ -30,9 +30,9 @@
       "supported": false
     },
     "btc-on-chain": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
     },
     "btc-lightning": {
       "value": "NO",
@@ -40,8 +40,8 @@
       "supported": false
     },
     "alt-coins": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "credit-debit-card": {
       "value": "YES",
@@ -50,34 +50,25 @@
   },
   "size-materials": {
     "warranty": {
-      "value": "2 years",
-      "flag": "positive"
+      "value": "?"
     },
     "weight": {
-      "value": "41g / 1.446 oz"
+      "value": "?"
     },
     "dimensions": {
-      "value": "57 x 100 x 10 mm"
+      "value": "?"
     },
     "materials": {
-      "value": "Plastic/Aluminium"
+      "value": "Plastic"
     },
     "available-in-colors": {
-      "value": "YES",
-      "texts": [
-        "Full graphic customisation"
-      ],
-      "links": [
-        {
-          "title": "Customize your BC Vault",
-          "url": "https://bc-vault.com/customize-your-bc-vault/"
-        }
-      ]
+      "value": "NO",
+      "supported": false
     },
     "waterproof": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
     }
   },
   "display": {
@@ -87,17 +78,16 @@
       "supported": true
     },
     "screen-type": {
-      "value": "OLED"
+      "value": "TFT"
     },
     "gorilla-glass": {
-      "value": "NO",
-      "flag": "negative",
+      "value": "?",
       "supported": false
     },
     "color-screen": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
     },
     "touch-screen": {
       "value": "NO",
@@ -105,11 +95,11 @@
       "supported": false
     },
     "screen-size": {
-      "value": "2.42\"",
+      "value": "2\"",
       "flag": "positive"
     },
     "screen-resolution": {
-      "value": "128 x 64 px"
+      "value": "?"
     }
   },
   "input": {
@@ -117,30 +107,32 @@
       "value": "Buttons"
     },
     "qwerty-keyboard": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
     }
   },
   "power": {
     "battery": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true,
+      "texts": [
+        "With the use of a very common replaceable Nokia BL-4C battery."
+      ]
     },
     "removable-battery": {
-      "value": "-",
-      "flag": "negative",
-      "supported": false
-    },
-    "battery-size": {
-      "value": "-",
-      "flag": "negative"
-    },
-    "usb-charging": {
-      "value": "USB-C",
+      "value": "YES",
       "flag": "positive",
       "supported": true
+    },
+    "battery-size": {
+      "value": "900 mAh",
+      "flag": "positive"
+    },
+    "usb-charging": {
+      "value": "?",
+      "supported": false
     },
     "wireless-charging": {
       "value": "NO",
@@ -150,12 +142,12 @@
   },
   "connectivity": {
     "usb-data": {
-      "value": "USB-C",
+      "value": "USB-C (disabled by default)",
       "supported": true
     },
     "bluetooth": {
       "value": "NO",
-      "supported": false
+      "supported": true
     },
     "wifi": {
       "value": "NO",
@@ -170,37 +162,36 @@
       "supported": false
     },
     "microsd-card": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
+    },
+    "qr-scanner": {
       "value": "YES",
       "supported": true,
       "flag": "positive"
     },
-    "qr-scanner": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
-    },
     "air-gapped": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "Only for transactions",
+      "supported": true,
+      "flag": "neutral",
+      "texts": [
+        "Firmware upgrades are not air-gapped, USB is required."
+      ]
     }
   },
   "security": {
     "secure-element": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES (EAL6+)",
+      "supported": true,
+      "flag": "positive"
     },
     "supply-chain-physical-attacks": {
       "value": "YES",
       "supported": true,
       "flag": "positive",
       "texts": [
-        "BC Vault does include some mitigations to make it more difficult for attackers:",
-        "- The device is glued shut. BC Vault is difficult to open without noticeable damage to the outside.",
-        "- The firmware is signed by us and cannot be tampered with",
-        "- The application verifies the signed transaction data returned from the device to protect against a rogue device that has been tampered with",
-        "- Tamper evident packaging"
+        "The open-source protocol allows any wallet using the Keycard to check it's genuine and not counterfeited."
       ]
     },
     "deterministic-nonces": {
@@ -208,7 +199,7 @@
       "supported": false
     },
     "anti-klepto": {
-      "value": "NO",
+      "value": "?",
       "supported": false
     }
   },
@@ -219,9 +210,8 @@
       "flag": "positive"
     },
     "btc-testnet": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "alt-coins": {
       "value": "YES",
@@ -235,8 +225,9 @@
       "flag": "negative"
     },
     "secure-boot": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "upgradable-firmware": {
       "value": "YES",
@@ -271,42 +262,52 @@
       "links": [
         {
           "title": "Releases Notes",
-          "url": "https://bc-vault.com/category/release-notes-en/"
+          "url": "https://github.com/keycard-tech/keycard-shell/releases"
         }
       ]
     },
     "source-available": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Source Code",
+          "url": "https://github.com/keycard-tech/keycard-shell"
+        }
+      ]
     },
     "open-source": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "license": {
-      "value": "-"
+      "value": "MIT",
+      "links": [
+        {
+          "title": "License",
+          "url": "https://github.com/keycard-tech/keycard-shell/blob/master/LICENSE"
+        }
+      ]
     },
     "reproducible-builds": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "device-lock": {
     "pin-entry": {
-      "value": "On Device",
-      "flag": "positive",
-      "texts": [
-        "A PIN is composed of jogger input combination – UP, DOWN, LEFT and RIGHT. It is at your own discretion to use as long a PIN as you feel comfortable with. You can even choose, not to use a PIN at all and use empty input (just confirm empty combination), but we do not recommend that.",
-        "Wallet PIN - used for sending currencies from individual wallets with the combination of Wallet Password in the Application"
-      ]
+      "value": "?"
     },
     "dummy-wallet": {
       "value": "YES",
       "supported": true,
-      "flag": "positive"
+      "flag": "positive",
+      "texts": [
+        "A feature added in version 3.1.0 of the applet is a duress PIN, which is completely transparent in the API and undetectable. It changes the keys generated during derivation in a deterministic way. Wallets should make sure they account for this by hiding balance and wallet address until proper authentication, and eventually be able to transparently switch to using the addresses generated after inserting the duress PIN."
+      ]
     },
     "dynamic-keypad": {
       "value": "NO",
@@ -334,9 +335,9 @@
       "flag": "negative"
     },
     "alphanumeric-pin": {
-      "value": "YES (Via computer)",
-      "supported": true,
-      "flag": "neutral"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "pattern-lock": {
       "value": "NO",
@@ -353,39 +354,28 @@
       "supported": false
     },
     "user-added-entropy": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive",
-      "links": [
-        {
-          "title": "Why do I need to shake my BC Vault?",
-          "url": "https://support.bc-vault.com/support/solutions/articles/43000079985-why-do-i-need-to-shake-my-bc-vault-"
-        }
-      ]
+      "value": "?",
+      "supported": false
     },
     "multiple-private-keys": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
     },
     "passphrase-support": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "passphrase-entry": {
-      "value": "-",
-      "flag": "negative"
+      "value": "?"
     },
     "master-key-fingerprint": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "bip85": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "shamir-backup": {
       "value": "NO",
@@ -398,42 +388,36 @@
       "flag": "negative"
     },
     "backup-recovery-microsd": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive",
-      "texts": [
-        "Encrypted Micro SD card backup"
-      ]
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "backup-recovery-nfc-card": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "create-12-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "create-24-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "display-12-24-words": {
-      "value": "On Device",
+      "value": "YES",
       "supported": true,
       "flag": "positive"
     },
     "import-12-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "import-24-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     },
     "seed-qr": {
       "value": "NO",
@@ -443,36 +427,30 @@
   },
   "address-format": {
     "legacy": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "?",
+      "supported": false
     },
     "nested-segwit": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "?",
+      "supported": false
     },
     "native-segwit": {
-      "value": "YES",
-      "supported": true,
-      "flag": "positive"
+      "value": "?",
+      "supported": false
     },
     "taproot": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     }
   },
   "addresses": {
     "view-address-text": {
-      "value": "On App",
-      "supported": true,
-      "flag": "neutral"
+      "value": "?",
+      "supported": false
     },
     "view-address-qr": {
-      "value": "On App",
-      "supported": true,
-      "flag": "neutral"
+      "value": "?",
+      "supported": false
     },
     "export-address-sdcard": {
       "value": "NO",
@@ -480,22 +458,14 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "?",
+      "supported": false
     }
   },
   "signing": {
     "multi-sig": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative",
-      "links": [
-        {
-          "title": "Does BC Vault support multi-signature access to wallets?",
-          "url": "https://support.bc-vault.com/support/solutions/articles/43000374160-does-bc-vault-support-multi-signature-access-to-wallets-"
-        }
-      ]
+      "value": "?",
+      "supported": false
     },
     "frost": {
       "value": "NO",
@@ -503,9 +473,9 @@
       "flag": "negative"
     },
     "ur-2-animated-qrs": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "bbqr": {
       "value": "NO",
@@ -538,18 +508,12 @@
     "replace-by-fee": {
       "value": "YES",
       "supported": true,
-      "flag": "positive",
-      "links": [
-        {
-          "title": "How can I speedup or replace a BTC transaction after it's been sent to the blockchain and it is still pending?",
-          "url": "https://support.bc-vault.com/support/solutions/articles/43000626327-how-can-i-speedup-or-replace-an-eth-erc20-btc-ltc-grs-doge-transaction-after-it-s-been-sent-to-the"
-        }
-      ]
+      "flag": "positive"
     },
     "child-pays-for-parent": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "maximum-fee-protection": {
       "value": "?",
@@ -558,19 +522,19 @@
   },
   "privacy": {
     "coin-control": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "custom-node": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "tor": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "silent-payments": {
       "value": "NO",
@@ -598,8 +562,8 @@
       "supported": false
     },
     "u2f-authentication": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "fido-authentication": {
       "value": "NO",
@@ -616,16 +580,16 @@
       "supported": false
     },
     "windows-app": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "macos-app": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "linux-app": {
-      "value": "YES",
-      "supported": true
+      "value": "NO",
+      "supported": false
     },
     "chrome-extension": {
       "value": "NO",
@@ -650,9 +614,9 @@
   },
   "third-party-apps": {
     "nunchuk": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "electrum": {
       "value": "NO",
@@ -660,14 +624,14 @@
       "flag": "negative"
     },
     "sparrow": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "specter-desktop": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "blockstream-green": {
       "value": "NO",
@@ -675,9 +639,9 @@
       "flag": "negative"
     },
     "bluewallet": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "bitcoin-keeper": {
       "value": "NO",

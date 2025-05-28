@@ -217,7 +217,8 @@
       "supported": false
     },
     "upgradable-firmware": {
-      "value": "?"
+      "value": "?",
+      "supported": false
     },
     "upgrade-via-sdcard": {
       "value": "?",

@@ -127,7 +127,7 @@
       "flag": "positive"
     },
     "usb-charging": {
-      "value": "Mini USB",
+      "value": "Micro USB",
       "flag": "neutral",
       "supported": true
     },
