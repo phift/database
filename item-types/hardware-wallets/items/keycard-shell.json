@@ -147,7 +147,7 @@
     },
     "bluetooth": {
       "value": "NO",
-      "supported": true
+      "supported": false
     },
     "wifi": {
       "value": "NO",
