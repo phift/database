@@ -26,8 +26,8 @@
   },
   "official-store": {
     "po-box-support": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true
     },
     "btc-on-chain": {
       "value": "YES",
