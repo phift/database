@@ -288,8 +288,8 @@
   },
   "device-lock": {
     "pin-entry": {
-      "value": "On Mobile App",
-      "flag": "negative"
+      "value": "Via Companion App",
+      "flag": "neutral"
     },
     "dummy-wallet": {
       "value": "NO",
@@ -331,7 +331,7 @@
       "supported": false
     },
     "fingerprint-lock": {
-      "value": "On Mobile App",
+      "value": "Via Companion App",
       "supported": false,
       "texts": [
         "The Arculus App is only accessible on your smartphone when used with your unique biometric lock. The biometric lock gives you and you alone access to your Arculus Cold Storage Wallet."
@@ -409,12 +409,12 @@
       "flag": "positive"
     },
     "display-12-24-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "import-12-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral",
       "links": [
@@ -456,12 +456,12 @@
   },
   "addresses": {
     "view-address-text": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "view-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },

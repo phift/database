@@ -484,7 +484,7 @@
       "flag": "positive"
     },
     "view-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
@@ -494,7 +494,7 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     }

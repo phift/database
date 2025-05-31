@@ -321,9 +321,8 @@
   },
   "device-lock": {
     "pin-entry": {
-      "value": "On Mobile App",
-      "supported": false,
-      "flag": "negative"
+      "value": "Via Companion App",
+      "flag": "neutral"
     },
     "dummy-wallet": {
       "value": "NO",
@@ -359,16 +358,16 @@
       "flag": "negative"
     },
     "alphanumeric-pin": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "pattern-lock": {
       "value": "NO",
       "supported": false
     },
     "fingerprint-lock": {
-      "value": "On Mobile App",
+      "value": "Via Companion App",
       "supported": false,
       "links": [
         {
@@ -402,7 +401,7 @@
       "flag": "positive"
     },
     "passphrase-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "flag": "negative"
     },
     "master-key-fingerprint": {
@@ -431,7 +430,7 @@
       "flag": "negative"
     },
     "backup-recovery-nfc-card": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
@@ -458,12 +457,12 @@
       ]
     },
     "display-12-24-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "import-12-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral",
       "links": [
@@ -474,7 +473,7 @@
       ]
     },
     "import-24-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral",
       "links": [
@@ -514,12 +513,12 @@
   },
   "addresses": {
     "view-address-text": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "view-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },

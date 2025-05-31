@@ -287,8 +287,8 @@
   },
   "device-lock": {
     "pin-entry": {
-      "value": "On Mobile App",
-      "flag": "negative"
+      "value": "Via Companion App",
+      "flag": "neutral"
     },
     "dummy-wallet": {
       "value": "NO",
@@ -358,7 +358,7 @@
       "flag": "positive"
     },
     "passphrase-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "flag": "negative"
     },
     "master-key-fingerprint": {
@@ -449,12 +449,12 @@
   },
   "addresses": {
     "view-address-text": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "view-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },

@@ -311,7 +311,7 @@
   },
   "device-lock": {
     "pin-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "flag": "neutral",
       "texts": [
         "In order to protect you from keyloggers, on the wallet you see a randomized keypad, and a blind keypad on the computer screen."
@@ -382,7 +382,7 @@
       "flag": "positive"
     },
     "passphrase-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "flag": "negative"
     },
     "master-key-fingerprint": {
@@ -431,7 +431,7 @@
       "flag": "positive"
     },
     "import-12-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral",
       "texts": [
@@ -439,7 +439,7 @@
       ]
     },
     "import-24-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral",
       "texts": [
@@ -491,7 +491,7 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     }
@@ -521,8 +521,9 @@
       "supported": false
     },
     "message-signing": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "change-verification": {
       "value": "?",

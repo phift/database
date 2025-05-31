@@ -318,7 +318,7 @@
   },
   "device-lock": {
     "pin-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": false,
       "flag": "negative",
       "texts": [
@@ -378,7 +378,7 @@
       "supported": false
     },
     "user-added-entropy": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": false,
       "flag": "neutral",
       "texts": [
@@ -397,11 +397,11 @@
       "flag": "positive"
     },
     "passphrase-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "flag": "negative"
     },
     "master-key-fingerprint": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
@@ -441,7 +441,7 @@
       "flag": "positive"
     },
     "display-12-24-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral",
       "texts": [
@@ -453,12 +453,12 @@
       ]
     },
     "import-12-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "import-24-words": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
@@ -492,12 +492,12 @@
   },
   "addresses": {
     "view-address-text": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
     "view-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     },
@@ -507,7 +507,7 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     }

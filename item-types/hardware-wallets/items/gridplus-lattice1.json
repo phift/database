@@ -468,12 +468,12 @@
   },
   "addresses": {
     "view-address-text": {
-      "value": "YES",
+      "value": "On Device",
       "supported": true,
       "flag": "positive"
     },
     "view-address-qr": {
-      "value": "YES",
+      "value": "On Device",
       "supported": true,
       "flag": "positive"
     },

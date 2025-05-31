@@ -394,7 +394,7 @@
       "flag": "positive"
     },
     "passphrase-entry": {
-      "value": "Via Companion app",
+      "value": "Via Companion App",
       "flag": "negative"
     },
     "master-key-fingerprint": {

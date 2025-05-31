@@ -487,9 +487,9 @@
       ]
     },
     "create-24-words": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative",
+      "value": "Via Command Line",
+      "supported": true,
+      "flag": "neutral",
       "links": [
         {
           "title": "Seed Backup 12 vs 24 Words",
@@ -575,7 +575,7 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "On App",
+      "value": "Via Companion App",
       "supported": true,
       "flag": "neutral"
     }

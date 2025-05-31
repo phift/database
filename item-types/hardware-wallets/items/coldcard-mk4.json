@@ -665,9 +665,9 @@
       ]
     },
     "verify-address-qr": {
-      "value": "On App",
-      "supported": true,
-      "flag": "neutral"
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "signing": {
