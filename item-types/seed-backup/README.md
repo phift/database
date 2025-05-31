@@ -98,10 +98,10 @@ All the features supported:
 | Security | security | Tamper Evident Seal | tamper-evident-seal |
 | Capacity | capacity | Multiple Private Keys | multiple-private-keys |
 | Backup Compatibility | backup-compatibility | Output Descriptor | output-descriptor |
-| Backup Compatibility | backup-compatibility | 12 Words BIP39 | bip39-12-words |
-| Backup Compatibility | backup-compatibility | 24 Words BIP39 | bip39-24-words |
+| Backup Compatibility | backup-compatibility | 12 Words BIP-39 | bip39-12-words |
+| Backup Compatibility | backup-compatibility | 24 Words BIP-39 | bip39-24-words |
 | Backup Compatibility | backup-compatibility | Seed QR | seed-qr |
-| Backup Compatibility | backup-compatibility | Shamir Backup SLIP39 | shamir-backup |
+| Backup Compatibility | backup-compatibility | Shamir Backup SLIP-39 | shamir-backup |
 | Backup Compatibility | backup-compatibility | Hexadecimal Strings | hexadecimal-strings |
 | Backup Compatibility | backup-compatibility | ASCII Strings | ascii-strings |
 

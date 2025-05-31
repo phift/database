@@ -518,7 +518,7 @@
       "supported": true,
       "flag": "positive",
       "texts": [
-        "X1Wallet supports the feature to import any BIP39 compliant wallets that have been created at other places (such as Hot wallets or Cold wallets). The supported method of import is via BIP39 mnemonic word list of the wallet that is to be imported. X1Wallet allows importing a mnemonic with word list count of 12, 18 & 24.",
+        "X1Wallet supports the feature to import any BIP-39 compliant wallets that have been created at other places (such as Hot wallets or Cold wallets). The supported method of import is via BIP-39 mnemonic word list of the wallet that is to be imported. X1Wallet allows importing a mnemonic with word list count of 12, 18 & 24.",
         "A user or owner of X1Wallet has an option to view the critical information of their wallet (the mnemonic word list)."
       ],
       "links": [

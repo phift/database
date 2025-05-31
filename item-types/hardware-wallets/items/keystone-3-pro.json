@@ -530,7 +530,7 @@
       "supported": true,
       "flag": "positive",
       "texts": [
-        "Keystone supports SLIP39. It enables you to create a Shamir Backup for your recovery phrase. This also helps with counteracting against the two greatest risks involved with protecting your recovery seed: Theft & Destruction."
+        "Keystone supports SLIP-39. It enables you to create a Shamir Backup for your recovery phrase. This also helps with counteracting against the two greatest risks involved with protecting your recovery seed: Theft & Destruction."
       ],
       "links": [
         {

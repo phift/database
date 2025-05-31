@@ -357,7 +357,7 @@
       "supported": true,
       "flag": "positive",
       "texts": [
-        "Create a 24-word BIP39 seed phrase with 99 dice rolls or by taking a digital photo"
+        "Create a 24-word BIP-39 seed phrase with 99 dice rolls or by taking a digital photo"
       ]
     },
     "multiple-private-keys": {

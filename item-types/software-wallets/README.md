@@ -105,12 +105,12 @@ All the features supported:
 | Private Keys | private-keys | Master Key Fingerprint | master-key-fingerprint |
 | Private Keys | private-keys | Output Descriptor Backup | backup-output-descriptor |
 | Private Keys | private-keys | Output Descriptor Import | restore-output-descriptor |
-| Private Keys | private-keys | Shamir (SLIP39) Backup / Import | shamir-backup |
-| Private Keys | private-keys | BIP39 seed phrase Backup / Import | backup-recovery-seedphrase |
-| Private Keys | private-keys | 12 Words BIP39 Seed Creation | create-12-words |
-| Private Keys | private-keys | 24 Words BIP39 Seed Creation | create-24-words |
-| Private Keys | private-keys | 12 Words BIP39 Seed Import | import-12-words |
-| Private Keys | private-keys | 24 Words BIP39 Seed Import | import-24-words |
+| Private Keys | private-keys | Shamir (SLIP-39) Backup / Import | shamir-backup |
+| Private Keys | private-keys | BIP-39 seed phrase Backup / Import | backup-recovery-seedphrase |
+| Private Keys | private-keys | 12 Words BIP-39 Seed Creation | create-12-words |
+| Private Keys | private-keys | 24 Words BIP-39 Seed Creation | create-24-words |
+| Private Keys | private-keys | 12 Words BIP-39 Seed Import | import-12-words |
+| Private Keys | private-keys | 24 Words BIP-39 Seed Import | import-24-words |
 | Private Keys | private-keys | Seed Phrase Autocomplete | seed-phrase-autocomplete |
 | Private Keys | private-keys | In-App Keyboard | inapp-keyboard |
 | Private Keys | private-keys | SeedQR | seed-qr |
