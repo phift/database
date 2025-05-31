@@ -10,8 +10,8 @@
       "value": "?"
     },
     "diy": {
-      "value": "NO",
-      "supported": false
+      "value": "Optional",
+      "supported": true
     }
   },
   "company": "keep-key",
@@ -222,8 +222,9 @@
       "flag": "negative"
     },
     "secure-boot": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "upgradable-firmware": {
       "value": "YES",
@@ -293,6 +294,10 @@
       "supported": true,
       "flag": "positive",
       "links": [
+        {
+          "title": "Verifying KeepKey firmware",
+          "url": "https://www.keepkey.com/blog/verifying_keepkey_firmware"
+        },
         {
           "title": "Verifying Published Binaries",
           "url": "https://github.com/keepkey/keepkey-firmware#verifying-published-binaries"

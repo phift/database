@@ -247,8 +247,9 @@
       "flag": "positive"
     },
     "secure-boot": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "upgradable-firmware": {
       "value": "YES",
@@ -326,7 +327,8 @@
   },
   "device-lock": {
     "pin-entry": {
-      "value": "NO"
+      "value": "On Device",
+      "flag": "positive"
     },
     "dummy-wallet": {
       "value": "NO",
@@ -349,12 +351,14 @@
       "supported": false
     },
     "anti-phishing-words": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "alphanumeric-pin": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "pattern-lock": {
       "value": "NO",

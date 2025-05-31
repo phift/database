@@ -11,8 +11,8 @@
       "value": "Czech Republic"
     },
     "diy": {
-      "value": "NO",
-      "supported": false
+      "value": "Optional",
+      "supported": true
     }
   },
   "company": "trezor",
