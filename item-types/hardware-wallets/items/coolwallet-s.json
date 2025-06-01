@@ -301,7 +301,7 @@
     }
   },
   "device-lock": {
-    "pin-entry": {
+    "pin-lock": {
       "value": "Via Companion App",
       "flag": "neutral"
     },

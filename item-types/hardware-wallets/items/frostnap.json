@@ -282,7 +282,7 @@
     }
   },
   "device-lock": {
-    "pin-entry": {
+    "pin-lock": {
       "value": "?"
     },
     "dummy-wallet": {

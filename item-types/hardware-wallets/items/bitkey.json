@@ -330,7 +330,7 @@
     }
   },
   "device-lock": {
-    "pin-entry": {
+    "pin-lock": {
       "value": "NO",
       "supported": false,
       "flag": "negative"
@@ -375,7 +375,7 @@
       "supported": false
     },
     "fingerprint-lock": {
-      "value": "YES",
+      "value": "On Device",
       "supported": true
     }
   },

@@ -343,7 +343,7 @@
     }
   },
   "device-lock": {
-    "pin-entry": {
+    "pin-lock": {
       "value": "On Device",
       "flag": "positive",
       "texts": [

@@ -104,7 +104,7 @@
       "flag": "neutral"
     },
     "screen-resolution": {
-      "value": "128 x 128 px)"
+      "value": "128 x 128 px"
     }
   },
   "input": {
@@ -322,7 +322,7 @@
     }
   },
   "device-lock": {
-    "pin-entry": {
+    "pin-lock": {
       "value": "On Device",
       "flag": "positive"
     },
@@ -369,10 +369,10 @@
       "supported": false
     },
     "fingerprint-lock": {
-      "value": "YES",
+      "value": "On Device",
       "supported": true,
       "texts": [
-        "FingCapacitive Touch Sensor. 509 dpi Resolution. 160 x 160 Pixels With 8 bit Depth"
+        "FingCapacitive Touch Sensor."
       ]
     }
   },

@@ -305,7 +305,7 @@
     }
   },
   "device-lock": {
-    "pin-entry": {
+    "pin-lock": {
       "value": "On Device",
       "supported": true,
       "flag": "positive"
