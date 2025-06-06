@@ -3,7 +3,7 @@ const path = require('path');
 const jsonlint = require('jsonlint');
 
 function validateJsonFile(filePath) {
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileContent = fs.readFileSync(filePath, 'utf8').trim();
   try {
     const parsedJson = jsonlint.parse(fileContent);
 
