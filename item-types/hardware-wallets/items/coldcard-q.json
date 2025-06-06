@@ -173,7 +173,6 @@
     "nfc": {
       "value": "YES (disabled by default)",
       "supported": true,
-      "flag": "positive",
       "links": [
         {
           "title": "NFC-V Compatibility",

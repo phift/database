@@ -162,8 +162,7 @@
     },
     "nfc": {
       "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "supported": false
     },
     "microsd-card": {
       "value": "NO",

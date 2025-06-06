@@ -163,7 +163,6 @@
     "nfc": {
       "value": "YES",
       "supported": true,
-      "flag": "positive",
       "texts": [
         "Like the Tangem cards, the ring is equipped with NFC (Near Field Communication) antennas, enabling effortless communication with compatible devices — any NFC-enabled smartphone. This allows for seamless transactions and easy management of cryptocurrency holdings."
       ]

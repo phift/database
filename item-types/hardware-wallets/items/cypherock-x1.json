@@ -165,7 +165,6 @@
     },
     "nfc": {
       "value": "YES",
-      "flag": "neutral",
       "supported": true,
       "texts": [
         "The NFC communication is only between the X1 wallet and the X1 cards."

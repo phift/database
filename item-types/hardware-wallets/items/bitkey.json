@@ -169,7 +169,6 @@
     },
     "nfc": {
       "value": "YES",
-      "flag": "positive",
       "supported": true
     },
     "microsd-card": {
