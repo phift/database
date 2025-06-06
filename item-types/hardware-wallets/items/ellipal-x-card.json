@@ -347,9 +347,9 @@
       "flag": "negative"
     },
     "multiple-private-keys": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES (Extra cards required)",
+      "flag": "neutral",
+      "supported": true
     },
     "passphrase-support": {
       "value": "YES",
