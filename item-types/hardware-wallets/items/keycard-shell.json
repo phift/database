@@ -8,11 +8,11 @@
       "value": "2025"
     },
     "assembled-in": {
-      "value": "?"
+      "value": "China"
     },
     "diy": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true
     }
   },
   "company": "keycard",
@@ -26,7 +26,8 @@
   },
   "official-store": {
     "po-box-support": {
-      "value": "?",
+      "value": "NO",
+      "flag": "negative",
       "supported": false
     },
     "btc-on-chain": {
@@ -50,13 +51,15 @@
   },
   "size-materials": {
     "warranty": {
-      "value": "?"
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
     },
     "weight": {
       "value": "?"
     },
     "dimensions": {
-      "value": "?"
+      "value": "105 x 65 x 19 mm"
     },
     "materials": {
       "value": "Plastic"
@@ -66,9 +69,9 @@
       "supported": false
     },
     "waterproof": {
-      "value": "YES",
-      "flag": "positive",
-      "supported": true
+      "value": "NO",
+      "flag": "negative",
+      "supported": false
     }
   },
   "display": {
@@ -81,7 +84,8 @@
       "value": "TFT"
     },
     "gorilla-glass": {
-      "value": "?",
+      "value": "NO",
+      "flag": "negative",
       "supported": false
     },
     "color-screen": {
@@ -99,7 +103,7 @@
       "flag": "positive"
     },
     "screen-resolution": {
-      "value": "?"
+      "value": "320 x 240 px"
     }
   },
   "input": {
@@ -131,8 +135,8 @@
       "flag": "positive"
     },
     "usb-charging": {
-      "value": "?",
-      "supported": false
+      "value": "USB-C",
+      "supported": true
     },
     "wireless-charging": {
       "value": "NO",
@@ -158,8 +162,11 @@
       "supported": false
     },
     "nfc": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "texts": [
+        "Keycard only"
+      ]
     },
     "microsd-card": {
       "value": "NO",
@@ -195,12 +202,14 @@
       ]
     },
     "deterministic-nonces": {
-      "value": "?",
+      "value": "NO",
+      "flag": "negative",
       "supported": false
     },
     "anti-klepto": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "networks": {
@@ -210,8 +219,9 @@
       "flag": "positive"
     },
     "btc-testnet": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "alt-coins": {
       "value": "YES",
@@ -299,7 +309,8 @@
   },
   "device-lock": {
     "pin-lock": {
-      "value": "?"
+      "value": "On Device",
+      "flag": "positive"
     },
     "dummy-wallet": {
       "value": "YES",
@@ -315,9 +326,9 @@
       "flag": "negative"
     },
     "countdown-brick-reset-pin": {
-      "value": "NO",
-      "supported": false,
-      "flag": "negative"
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "brick-reset-pin": {
       "value": "NO",
@@ -350,32 +361,38 @@
   },
   "private-keys": {
     "stateless": {
-      "value": "NO",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "user-added-entropy": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "multiple-private-keys": {
-      "value": "NO",
-      "flag": "negative",
-      "supported": false
+      "value": "YES (Extra cards required)",
+      "flag": "neutral",
+      "supported": true
     },
     "passphrase-support": {
-      "value": "?",
-      "supported": false
+      "value": "SOON",
+      "supported": false,
+      "flag": "neutral"
     },
     "passphrase-entry": {
-      "value": "?"
+      "value": "SOON - On Device",
+      "flag": "neutral"
     },
     "master-key-fingerprint": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "bip85": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     },
     "shamir-backup": {
       "value": "NO",
@@ -403,8 +420,9 @@
       "flag": "positive"
     },
     "create-24-words": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "display-12-24-words": {
       "value": "YES",
@@ -412,45 +430,53 @@
       "flag": "positive"
     },
     "import-12-words": {
-      "value": "?",
-      "supported": false
+      "value": "On Device",
+      "supported": true,
+      "flag": "positive"
     },
     "import-24-words": {
-      "value": "?",
-      "supported": false
+      "value": "On Device",
+      "supported": true,
+      "flag": "positive"
     },
     "seed-qr": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    }
+  },
+  "address-format": {
+    "legacy": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "nested-segwit": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "native-segwit": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "taproot": {
       "value": "NO",
       "supported": false,
       "flag": "negative"
     }
   },
-  "address-format": {
-    "legacy": {
-      "value": "?",
-      "supported": false
-    },
-    "nested-segwit": {
-      "value": "?",
-      "supported": false
-    },
-    "native-segwit": {
-      "value": "?",
-      "supported": false
-    },
-    "taproot": {
-      "value": "?",
-      "supported": false
-    }
-  },
   "addresses": {
     "view-address-text": {
-      "value": "?",
-      "supported": false
+      "value": "On Device",
+      "supported": true,
+      "flag": "positive"
     },
     "view-address-qr": {
-      "value": "?",
-      "supported": false
+      "value": "On Device",
+      "supported": true,
+      "flag": "positive"
     },
     "export-address-sdcard": {
       "value": "NO",
@@ -458,8 +484,9 @@
       "flag": "negative"
     },
     "verify-address-qr": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "signing": {
@@ -491,12 +518,14 @@
       "flag": "negative"
     },
     "change-verification": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     },
     "change-address-display": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
     }
   },
   "fees": {
@@ -516,8 +545,9 @@
       "flag": "positive"
     },
     "maximum-fee-protection": {
-      "value": "?",
-      "supported": false
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "privacy": {
