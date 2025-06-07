@@ -275,6 +275,10 @@
       "supported": false,
       "flag": "negative"
     },
+    "psbt-file": {
+      "value": "?",
+      "supported": false
+    },
     "nfc": {
       "value": "YES",
       "supported": true,
