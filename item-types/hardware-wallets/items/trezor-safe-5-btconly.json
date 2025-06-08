@@ -780,6 +780,26 @@
     }
   },
   "third-party-apps": {
+    "bitcoin-safe": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "theya": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "wasabi-wallet": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
+    "zeus": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive"
+    },
     "nunchuk": {
       "value": "YES",
       "supported": true,
