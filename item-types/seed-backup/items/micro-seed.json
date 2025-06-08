@@ -25,10 +25,10 @@
   },
   "size-materials": {
     "weight": {
-      "value": "?"
+      "value": "1000g / 35.27g"
     },
     "dimensions": {
-      "value": "?"
+      "value": "62 x 62 x 62 mm"
     },
     "materials": {
       "value": "Titanium or Stainless steel"
@@ -49,16 +49,22 @@
       "supported": true
     },
     "crush-proof": {
-      "value": "?",
-      "supported": false
+      "value": "Partially",
+      "flag": "neutral",
+      "supported": true,
+      "texts": [
+        "No if upright, yes if flat"
+      ]
     },
     "corrosion-proof": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
     },
     "shock-proof": {
-      "value": "?",
-      "supported": false
+      "value": "YES",
+      "flag": "positive",
+      "supported": true
     },
     "stress-tests": {
       "value": "-",
