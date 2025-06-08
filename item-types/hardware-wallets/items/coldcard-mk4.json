@@ -738,6 +738,52 @@
       "flag": "positive"
     }
   },
+  "spending-policy": {
+    "magnitude-limits": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "COLDCARD Co-Signing",
+          "url": "https://coldcard.com/docs/coldcard-cosigning/"
+        }
+      ]
+    },
+    "velocity-limits": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "COLDCARD Co-Signing",
+          "url": "https://coldcard.com/docs/coldcard-cosigning/"
+        }
+      ]
+    },
+    "whitelisted-addresses": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "COLDCARD Co-Signing",
+          "url": "https://coldcard.com/docs/coldcard-cosigning/"
+        }
+      ]
+    },
+    "2fa-authentication": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "COLDCARD Co-Signing",
+          "url": "https://coldcard.com/docs/coldcard-cosigning/"
+        }
+      ]
+    }
+  },
   "fees": {
     "fee-control": {
       "value": "YES",
