@@ -599,6 +599,11 @@
       "value": "Only Export",
       "supported": true,
       "flag": "neutral"
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

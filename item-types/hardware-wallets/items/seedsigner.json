@@ -436,6 +436,11 @@
       "texts": [
         "Guided interface to manually create a SeedQR for instant input"
       ]
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

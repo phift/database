@@ -443,6 +443,11 @@
       "texts": [
         "Scan QR code to import wallet descriptor."
       ]
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

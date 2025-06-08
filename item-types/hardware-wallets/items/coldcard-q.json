@@ -595,6 +595,17 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "key-teleport": {
+      "value": "YES",
+      "supported": true,
+      "flag": "positive",
+      "links": [
+        {
+          "title": "Coldcard Key Teleport",
+          "url": "https://keyteleport.com/"
+        }
+      ]
     }
   },
   "address-format": {

@@ -520,6 +520,11 @@
       "value": "NO",
       "supported": false,
       "flag": "negative"
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

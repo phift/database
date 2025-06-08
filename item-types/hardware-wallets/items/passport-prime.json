@@ -512,6 +512,11 @@
       "texts": [
         "You can export Passport's master seed phrase via SeedQR. Both Compact and standard SeedQR are supported."
       ]
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

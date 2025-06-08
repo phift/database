@@ -544,6 +544,11 @@
           "url": "https://www.youtube.com/watch?v=Kx7fHgfUZ6w"
         }
       ]
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

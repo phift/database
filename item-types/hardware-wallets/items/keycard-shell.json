@@ -443,6 +443,11 @@
       "value": "YES",
       "supported": true,
       "flag": "positive"
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {

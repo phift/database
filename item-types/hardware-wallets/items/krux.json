@@ -496,6 +496,11 @@
           "url": "https://selfcustody.github.io/krux/getting-started/usage/loading-a-mnemonic/"
         }
       ]
+    },
+    "key-teleport": {
+      "value": "NO",
+      "supported": false,
+      "flag": "negative"
     }
   },
   "address-format": {
